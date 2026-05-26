@@ -1,0 +1,234 @@
+<div class="lp-wrapper">
+    <div class="fv-container">
+        <!-- 背景画像（コンテナの高さを決める基準） -->
+        <img src="./img/wankosoad1.webp" alt="" class="fv-img">
+
+        <!-- award PNG（背景の上に重ねる） -->
+        <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1">
+        <img src="./img/award2.png" alt="累計販売10000包突破" class="overlay-img2">
+        <img src="./img/hagumi.png" alt="はぐみ酵素もプレゼント" class="overlay-img3">
+        <a href="https://jfjg1u-sk.myshopify.com/collections/corohug" class="cvbtn">
+            <img src="./img/cvbtn.png" alt="ご購入はこちら">
+        </a>
+    </div>
+    <div class="product-container">
+        <img src="./img/wankosoad2.webp" class="product-img">
+        <div class="wankosoad3-container">
+            <img src="./img/wankosoad3.webp" class="product-img">
+            <img src="./img/omoi_txt.png" alt="想い" class="overlay-omoi">
+        </div>
+        <img src="./img/wankosoad4.webp" class="product-img">
+        <div class="wankosoad5-container">
+            <img src="./img/wankosoad5.webp" class="product-img">
+            <img src="./img/hakko.png" alt="発酵" class="overlay-hakko">
+        </div>
+    </div>
+</div>
+
+<style>
+    .lp-wrapper {
+        position: relative;
+        width: 100%;
+        max-width: 750px;
+        margin: 0 auto;
+        overflow-x: hidden;
+    }
+
+    .fv-container {
+        position: relative;
+        width: 100%;
+    }
+
+    /* 背景画像：幅100%・高さは画像に合わせて自動 */
+    .fv-img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    /* フェードインアニメーション（初回のみ） */
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+            transform: translateY(16px);
+        }
+
+        100% {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+
+
+    /* award1：左上 */
+    .overlay-img1 {
+        position: absolute;
+        top: 150px;
+        left: 20px;
+        width: 200px;
+        height: auto;
+        z-index: 10;
+        pointer-events: none;
+        animation: fadeIn 1s ease both;
+    }
+
+    /* award2：award1の右隣 */
+    .overlay-img2 {
+        position: absolute;
+        top: 150px;
+        left: 220px;
+        width: 200px;
+        height: auto;
+        z-index: 10;
+        pointer-events: none;
+        animation:
+            fadeIn 1s ease both;
+    }
+
+    /* hagumi：スクロールフェードイン（初期状態：非表示） */
+    .overlay-img3 {
+        position: absolute;
+        top: 700px;
+        left: 600px;
+        width: 150px;
+        height: auto;
+        z-index: 10;
+        pointer-events: none;
+        opacity: 0;
+        animation:
+            fadeIn 1.5s ease both;
+    }
+
+    /* CVボタン用の鼓動（パルス）アニメーション */
+    @keyframes pulse {
+        0% {
+            transform: scale(1);
+        }
+
+        50% {
+            transform: scale(1.02);
+            /* 少し大きくなる */
+        }
+
+        100% {
+            transform: scale(1);
+        }
+    }
+
+    .cvbtn {
+        position: absolute;
+        top: 860px;
+        left: 45px;
+        width: 660px;
+        /* 横幅を 660px に調整（お好みで調整してください） */
+        height: auto;
+        z-index: 10;
+        transform-origin: center;
+        /* 拡大縮小の基準点を中央に */
+        /* 読み込み時にフェードインし、1秒後からループで脈打つアニメーションを開始 */
+        animation:
+            pulse 2s ease-in-out 1s infinite;
+    }
+
+    .cvbtn img {
+        width: 100%;
+        height: auto;
+        display: block;
+    }
+
+
+    .product-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .product-img {
+        display: block;
+        width: 100%;
+        height: auto;
+    }
+
+    .wankosoad3-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .overlay-omoi {
+        position: absolute;
+        top: 40px;
+        left: 40px;
+
+    }
+
+    .wankosoad5-container {
+        position: relative;
+        width: 100%;
+    }
+
+    .overlay-hakko {
+        position: absolute;
+        top: 65%;
+        left: 50%;
+        transform: translate(-50%, calc(-50% + 20px));
+        width: 85%;
+        /* 横幅は適宜調整してください */
+        height: auto;
+        z-index: 10;
+        pointer-events: none;
+        opacity: 0;
+        transition: opacity 1.2s ease, transform 1.2s ease;
+    }
+
+    .overlay-hakko.is-visible {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+</style>
+
+<script>
+    // hagumi（overlay-img3）スクロールフェードイン
+    // ※ scrollイベント方式：実際にスクロールしたときだけ発火
+    var img3 = document.querySelector('.overlay-img3');
+
+    if (img3) {
+        function checkImg3() {
+            var rect = img3.getBoundingClientRect();
+            // 要素の上端が画面下端より上に入ったら表示
+            if (rect.top < window.innerHeight - 40) {
+                img3.classList.add('is-visible');
+                window.removeEventListener('scroll', checkImg3);
+            }
+        }
+        // scrollしたときだけチェック（読み込み時は発火しない）
+        window.addEventListener('scroll', checkImg3, { passive: true });
+    }
+
+    // omoi_txt（overlay-omoi）スクロールフェードイン
+    var omoi = document.querySelector('.overlay-omoi');
+
+    if (omoi) {
+        function checkOmoi() {
+            var rect = omoi.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 40) {
+                omoi.classList.add('is-visible');
+                window.removeEventListener('scroll', checkOmoi);
+            }
+        }
+        window.addEventListener('scroll', checkOmoi, { passive: true });
+    }
+
+    // hakko（overlay-hakko）スクロールフェードイン
+    var hakko = document.querySelector('.overlay-hakko');
+
+    if (hakko) {
+        function checkHakko() {
+            var rect = hakko.getBoundingClientRect();
+            if (rect.top < window.innerHeight - 40) {
+                hakko.classList.add('is-visible');
+                window.removeEventListener('scroll', checkHakko);
+            }
+        }
+        window.addEventListener('scroll', checkHakko, { passive: true });
+    }
+</script>
