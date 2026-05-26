@@ -31,6 +31,15 @@
                 <img src="./img/cmt_1.png" alt="コメント" class="overlay-cmt1">
                 <img src="./img/cmt_2.png" alt="コメント" class="overlay-cmt2">
             </div>
+            <div class="wankosoad7-container">
+                <img src="./img/wankosoad7.webp" class="product-img">
+                <img src="./img/wankoso_1.png" alt="ワン酵素" class="overlay-wankoso">
+                <img src="./img/hakko_3.png" alt="発酵" class="overlay-hakko_3">
+            </div>
+            <div class="wankosoad8-container">
+                <img src="./img/wankosoad8.webp" class="product-img">
+                <img src="./img/hakko_4.png" alt="発酵" class="overlay-hakko_4">
+            </div>
         </div>
     </div>
 
@@ -231,6 +240,63 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        .overlay-hakko_3 {
+            position: absolute;
+            top: 82%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + 20px));
+            width: 90%;
+            /* 横幅は適宜調整してください */
+            height: auto;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.2s ease 3s, transform 1.2s ease;
+        }
+
+        .overlay-hakko_3.is-visible {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        .overlay-wankoso {
+            position: absolute;
+            top: 82.5%;
+            left: 66%;
+            transform: translate(-50%, calc(-50% + 20px));
+            width: 85%;
+            /* 横幅は適宜調整してください */
+            height: auto;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.2s ease 2s, transform 1.2s ease;
+        }
+
+        .overlay-wankoso.is-visible {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
+
+        .overlay-hakko_4 {
+            position: absolute;
+            top: 91%;
+            left: 50%;
+            transform: translate(-50%, calc(-50% + 20px));
+            width: 90%;
+            /* 横幅は適宜調整してください */
+            height: auto;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+            transition: opacity 1.2s ease 0.5s, transform 1.2s ease;
+        }
+
+        .overlay-hakko_4.is-visible {
+            opacity: 1;
+            transform: translate(-50%, -50%);
+        }
     </style>
 
     <script>
@@ -294,6 +360,37 @@
                 }
             }
             window.addEventListener('scroll', checkCmts, { passive: true });
+        }
+
+        // hakko_3 & wankoso スクロールフェードイン
+        var hakko3 = document.querySelector('.overlay-hakko_3');
+        var wankoso = document.querySelector('.overlay-wankoso');
+
+        if (hakko3 || wankoso) {
+            function checkWanko7() {
+                var target = hakko3 || wankoso;
+                var rect = target.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 40) {
+                    if (hakko3) hakko3.classList.add('is-visible');
+                    if (wankoso) wankoso.classList.add('is-visible');
+                    window.removeEventListener('scroll', checkWanko7);
+                }
+            }
+            window.addEventListener('scroll', checkWanko7, { passive: true });
+        }
+
+        // hakko_4 スクロールフェードイン
+        var hakko4 = document.querySelector('.overlay-hakko_4');
+
+        if (hakko4) {
+            function checkHakko4() {
+                var rect = hakko4.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 40) {
+                    hakko4.classList.add('is-visible');
+                    window.removeEventListener('scroll', checkHakko4);
+                }
+            }
+            window.addEventListener('scroll', checkHakko4, { passive: true });
         }
     </script>
 </body>
