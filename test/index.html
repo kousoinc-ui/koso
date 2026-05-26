@@ -26,6 +26,11 @@
                 <img src="./img/wankosoad5.webp" class="product-img">
                 <img src="./img/hakko.png" alt="発酵" class="overlay-hakko">
             </div>
+            <div class="wankosoad6-container">
+                <img src="./img/wankosoad6.webp" class="product-img">
+                <img src="./img/cmt_1.png" alt="コメント" class="overlay-cmt1">
+                <img src="./img/cmt_2.png" alt="コメント" class="overlay-cmt2">
+            </div>
         </div>
     </div>
 
@@ -74,7 +79,7 @@
             height: auto;
             z-index: 10;
             pointer-events: none;
-            animation: fadeIn 1s ease both;
+            animation: fadeIn 1s ease 0.5s both;
         }
 
         /* award2：award1の右隣 */
@@ -87,7 +92,7 @@
             z-index: 10;
             pointer-events: none;
             animation:
-                fadeIn 1s ease both;
+                fadeIn 1s ease 0.5s both;
         }
 
         /* hagumi：スクロールフェードイン（初期状態：非表示） */
@@ -101,7 +106,7 @@
             pointer-events: none;
             opacity: 0;
             animation:
-                fadeIn 1.5s ease both;
+                fadeIn 1s ease 1.5s both;
         }
 
         /* CVボタン用の鼓動（パルス）アニメーション */
@@ -111,7 +116,7 @@
             }
 
             50% {
-                transform: scale(1.02);
+                transform: scale(1.03);
                 /* 少し大きくなる */
             }
 
@@ -182,12 +187,49 @@
             z-index: 10;
             pointer-events: none;
             opacity: 0;
-            transition: opacity 1.2s ease, transform 1.2s ease;
+            transition: opacity 1.2s ease 0.5s, transform 1.2s ease;
         }
 
         .overlay-hakko.is-visible {
             opacity: 1;
             transform: translate(-50%, -50%);
+        }
+
+        .overlay-cmt1 {
+            position: absolute;
+            top: 72.5%;
+            left: 12%;
+            width: 23%;
+            height: auto;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 1.2s ease 1s, transform 1.2s ease;
+        }
+
+        .overlay-cmt1.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .overlay-cmt2 {
+            position: absolute;
+            top: 70%;
+            left: 62%;
+            width: 23%;
+            height: auto;
+            z-index: 10;
+            pointer-events: none;
+            opacity: 0;
+            transform: translateY(20px);
+            /* cmt2は少し遅れてふわっと表示されるようにディレイを設定 */
+            transition: opacity 1.2s ease 2s, transform 1.2s ease 0.3s;
+        }
+
+        .overlay-cmt2.is-visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 
@@ -235,6 +277,23 @@
                 }
             }
             window.addEventListener('scroll', checkHakko, { passive: true });
+        }
+
+        // cmt1 & cmt2スクロールフェードイン
+        var cmt1 = document.querySelector('.overlay-cmt1');
+        var cmt2 = document.querySelector('.overlay-cmt2');
+
+        if (cmt1 || cmt2) {
+            function checkCmts() {
+                var target = cmt1 || cmt2;
+                var rect = target.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 40) {
+                    if (cmt1) cmt1.classList.add('is-visible');
+                    if (cmt2) cmt2.classList.add('is-visible');
+                    window.removeEventListener('scroll', checkCmts);
+                }
+            }
+            window.addEventListener('scroll', checkCmts, { passive: true });
         }
     </script>
 </body>
