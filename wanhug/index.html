@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>わん酵素 特別体験モニター</title>
+    <style>
+        /* --- 基本ベース・スマホ最適化 --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #fcf9f5;
+            /* ぬくもりのある背景色 */
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+        }
+
+        .lp-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto;
+            overflow-x: hidden;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
+
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        /* --- 共通スクロールフェードインアニメーション（バグ修正版） --- */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.0s cubic-bezier(0.215, 0.610, 0.355, 1.000),
+                transform 1.0s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+        }
+
+        .scroll-fade.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- ファーストビュー（FV） --- */
+        .fv-container {
+            position: relative;
+            width: 100%;
+        }
+
+        @keyframes fvFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .overlay-img1 {
+            position: absolute;
+            top: 15%;
+            left: 4%;
+            width: 27%;
+            animation: fvFadeIn 0.8s ease 0.3s both;
+        }
+
+        .overlay-img2 {
+            position: absolute;
+            top: 15%;
+            left: 30%;
+            width: 27%;
+            animation: fvFadeIn 0.8s ease 0.6s both;
+        }
+
+        .overlay-img3 {
+            position: absolute;
+            top: 70%;
+            left: 75%;
+            width: 21%;
+            animation: fvFadeIn 0.8s ease 1.2s both;
+        }
+
+        /* --- 購入フローティングボタン（パルスアニメーション） --- */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        .cvbtn {
+            position: absolute;
+            top: 87%;
+            left: 5%;
+            width: 90%;
+            z-index: 10;
+            animation: pulse 2.3s ease-in-out infinite;
+        }
+
+        /* --- 各セクション・コンテナ --- */
+        .product-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .relative-box {
+            position: relative;
+            width: 100%;
+        }
+
+        /* 想い・発酵等の配置微調整（絶対配置） */
+        .overlay-omoi {
+            position: absolute;
+            top: 2%;
+            left: 5%;
+            width: 90%;
+        }
+
+        .overlay-hakko {
+            position: absolute;
+            top: 30%;
+            left: 10%;
+            width: 80%;
+        }
+
+        .overlay-cmt1 {
+            position: absolute;
+            top: 72.5%;
+            left: 4%;
+            width: 28%;
+        }
+
+        .overlay-cmt2 {
+            position: absolute;
+            top: 50%;
+            left: 62%;
+            width: 29%;
+        }
+
+        .overlay-hakko_2 {
+            position: absolute;
+            top: 10%;
+            left: 20%;
+            width: 60%;
+        }
+
+        .overlay-wankoso {
+            position: absolute;
+            top: 40%;
+            left: 8%;
+            width: 85%;
+        }
+
+        .overlay-hakko_3 {
+            position: absolute;
+            top: 75%;
+            left: 5%;
+            width: 90%;
+        }
+
+        .overlay-hakko_4 {
+            position: absolute;
+            top: 15%;
+            left: 5%;
+            width: 90%;
+        }
+
+        /* --- コだわり2：犬が飲むGIFのコンテナ --- */
+        .point2-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .overlay-gif-drink {
+            position: absolute;
+            top: 33%;
+            left: 19%;
+            width: 60%;
+            border-radius: 8px;
+            /* カドをほんのり丸くして美しく */
+        }
+
+        /* --- こだわり3：素材の時間差フェードイン --- */
+        .point3-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .overlay-point3_1 {
+            position: absolute;
+            top: 23%;
+            left: 5%;
+            width: 90%;
+        }
+
+        .overlay-point3_2 {
+            position: absolute;
+            top: 48%;
+            left: 5%;
+            width: 90%;
+        }
+
+        .overlay-point3_3 {
+            position: absolute;
+            top: 74%;
+            left: 5%;
+            width: 90%;
+        }
+
+        /* 時間差（ディレイ）の指定 */
+        .point3-wrap .overlay-point3_1.is-visible {
+            transition-delay: 0.1s;
+        }
+
+        .point3-wrap .overlay-point3_2.is-visible {
+            transition-delay: 0.4s;
+        }
+
+        .point3-wrap .overlay-point3_3.is-visible {
+            transition-delay: 0.7s;
+        }
+
+        /* --- お届けステップ・レビュー --- */
+        .overlay-step {
+            position: absolute;
+            top: 35%;
+            left: 12%;
+            width: 75%;
+        }
+
+        .overlay-review_top {
+            position: absolute;
+            top: 5%;
+            left: 12%;
+            width: 75%;
+        }
+
+        .overlay-review_1 {
+            position: absolute;
+            top: 45%;
+            left: 23%;
+            width: 53%;
+        }
+
+        /* --- 下部CVエリア --- */
+        .cvbtn_2 {
+            position: absolute;
+            top: 79%;
+            left: 5%;
+            width: 90%;
+            animation: pulse 2.3s ease-in-out infinite;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="lp-wrapper">
+
+        <div class="fv-container">
+            <img src="./img/wankosoad1.webp" alt="わん酵素メイン" class="fv-img">
+            <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1">
+            <img src="./img/award2.png" alt="累計販売10000包突破" class="overlay-img2">
+            <img src="./img/hagumi.png" alt="はぐみ酵素もプレゼント" class="overlay-img3">
+            <a href="https://jfjg1u-sk.myshopify.com/collections/corohug" class="cvbtn">
+                <img src="./img/cvbtn.png" alt="特別モニターに応募する">
+            </a>
+        </div>
+
+        <div class="product-container">
+            <img src="./img/wankosoad2.webp" class="product-img" alt="背景1">
+
+            <div class="relative-box">
+                <img src="./img/wankosoad3.webp" class="product-img" alt="背景2">
+                <img src="./img/omoi_txt.png" alt="コロちゃんへの想い" class="overlay-omoi scroll-fade">
+            </div>
+
+            <img src="./img/wankosoad4.webp" class="product-img" alt="背景3">
+
+            <div class="relative-box">
+                <img src="./img/wankosoad5.webp" class="product-img" alt="背景4">
+                <img src="./img/hakko.png" alt="10年長期発酵のこだわり" class="overlay-hakko scroll-fade">
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad6.webp" class="product-img" alt="背景5">
+                <img src="./img/cmt_1.png" alt="愛犬家の声1" class="overlay-cmt1 scroll-fade">
+                <img src="./img/cmt_2.png" alt="愛犬家の声2" class="overlay-cmt2 scroll-fade">
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad7.webp" class="product-img" alt="背景6">
+                <img src="./img/hakko_2.png" alt="低分子化" class="overlay-hakko_2 scroll-fade">
+                <img src="./img/overlay-wankoso" alt="わん酵素の特徴" class="overlay-wankoso scroll-fade">
+                <img src="./img/hakko_3.png" alt="一滴も無駄にしない" class="overlay-hakko_3 scroll-fade">
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad8.webp" class="product-img" alt="背景7">
+                <img src="./img/hakko_4.png" alt="無添加へのこだわり" class="overlay-hakko_4 scroll-fade">
+            </div>
+
+            <div class="points-container">
+                <img src="./img/point_title.webp" alt="3つのこだわり">
+                <img src="./img/point1.webp" alt="こだわり1詳細">
+
+                <div class="point2-wrap">
+                    <img src="./img/point2.webp" alt="こだわり2詳細">
+                    <img src="./img/hiro_drink.gif" alt="ワンちゃんが夢中で飲む様子" class="overlay-gif-drink scroll-fade">
+                </div>
+
+                <div class="point3-wrap">
+                    <img src="./img/point3.webp" alt="こだわり3厳選素材ベース">
+                    <img src="./img/point3_1.webp" alt="出す：とうもろこしのひげ" class="overlay-point3_1 scroll-fade">
+                    <img src="./img/point3_2.webp" alt="守る：たんぽぽ" class="overlay-point3_2 scroll-fade">
+                    <img src="./img/point3_3.webp" alt="補う：サンシュユ・クコ" class="overlay-point3_3 scroll-fade">
+                </div>
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad9.webp" class="step-img" alt="ステップ背景">
+                <img src="./img/step_1.png" alt="3ステップ購入の流れ" class="overlay-step scroll-fade">
+            </div>
+
+            <div class="fv-container">
+                <img src="./img/wankosoad1.webp" alt="わん酵素メイン" class="fv-img">
+                <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1">
+                <img src="./img/award2.png" alt="累計販売10000包突破" class="overlay-img2">
+                <img src="./img/hagumi.png" alt="はぐみ酵素もプレゼント" class="overlay-img3">
+                <a href="https://jfjg1u-sk.myshopify.com/collections/corohug" class="cvbtn">
+                    <img src="./img/cvbtn.png" alt="特別モニターに応募する">
+                </a>
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad10.webp" class="product-img" alt="レビュー背景">
+                <img src="./img/review_top.png" alt="レビュータイトル" class="overlay-review_top scroll-fade">
+                <img src="./img/review_1.png" alt="口コミ詳細" class="overlay-review_1 scroll-fade">
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad11.webp" class="product-img" alt="安心へのQA">
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad12.webp" class="product-img" alt="ラスト案内">
+                <a href="https://jfjg1u-sk.myshopify.com/collections/corohug" class="cvbtn_2">
+                    <img src="./img/cvbtn.png" alt="特別モニターに応募する">
+                </a>
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad13.webp" class="product-img" alt="フッター記載">
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var fadeElements = document.querySelectorAll('.scroll-fade');
+
+            // スマホの電池やメモリに優しい「IntersectionObserver」を採用
+            var observer = new IntersectionObserver(function (entries, observer) {
+                entries.forEach(function (entry) {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('is-visible');
+                        observer.unobserve(entry.target); // 1回表示されたら監視を終了して軽量化
+                    }
+                });
+            }, {
+                rootMargin: '0px 0px -40px 0px' // 画面の下端から40px上がってきたらフェードイン
+            });
+
+            fadeElements.forEach(function (el) {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+
+</html>
