@@ -156,23 +156,23 @@
 
         .overlay-hakko_2 {
             position: absolute;
-            top: 10%;
+            top: 20%;
             left: 20%;
             width: 60%;
         }
 
         .overlay-wankoso {
             position: absolute;
-            top: 40%;
-            left: 8%;
+            top: -28%;
+            left: 25%;
             width: 85%;
         }
 
         .overlay-hakko_3 {
             position: absolute;
-            top: 75%;
-            left: 5%;
-            width: 90%;
+            top: 47%;
+            left: 10%;
+            width: 80%;
         }
 
         .overlay-hakko_4 {
@@ -267,18 +267,53 @@
             width: 90%;
             animation: pulse 2.3s ease-in-out infinite;
         }
+
+        .cvbtn,
+        .cvbtn_2 {
+            will-change: transform;
+        }
+
+        .lazy-img {
+            loading: lazy;
+        }
+
+        .fixed-cv {
+            position: fixed;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90%;
+            max-width: 650px;
+            z-index: 9999;
+        }
+
+        .fixed-cv a {
+            display: block;
+            text-align: center;
+            background: #ff7a00;
+            color: #fff;
+            font-size: 18px;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 16px;
+            border-radius: 50px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, .2);
+            animation: pulse 2.3s ease-in-out infinite;
+        }
     </style>
 </head>
+<script>
+    const SHOP_URL = "https://jfjg1u-sk.myshopify.com/cart/49940432912661:1";
+</script>
 
 <body>
     <div class="lp-wrapper">
-
         <div class="fv-container">
             <img src="./img/wankosoad1.webp" alt="わん酵素メイン" class="fv-img">
             <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1">
             <img src="./img/award2.png" alt="累計販売10000包突破" class="overlay-img2">
             <img src="./img/hagumi.png" alt="はぐみ酵素もプレゼント" class="overlay-img3">
-            <a href="https://jfjg1u-sk.myshopify.com/collections/corohug" class="cvbtn">
+            <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cvbtn">
                 <img src="./img/cvbtn.png" alt="特別モニターに応募する">
             </a>
         </div>
@@ -306,8 +341,8 @@
 
             <div class="relative-box">
                 <img src="./img/wankosoad7.webp" class="product-img" alt="背景6">
+                <img src="./img/wankoso_1.png" alt="わん酵素の特徴" class="overlay-wankoso scroll-fade">
                 <img src="./img/hakko_2.png" alt="低分子化" class="overlay-hakko_2 scroll-fade">
-                <img src="./img/overlay-wankoso" alt="わん酵素の特徴" class="overlay-wankoso scroll-fade">
                 <img src="./img/hakko_3.png" alt="一滴も無駄にしない" class="overlay-hakko_3 scroll-fade">
             </div>
 
@@ -343,7 +378,7 @@
                 <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1">
                 <img src="./img/award2.png" alt="累計販売10000包突破" class="overlay-img2">
                 <img src="./img/hagumi.png" alt="はぐみ酵素もプレゼント" class="overlay-img3">
-                <a href="https://jfjg1u-sk.myshopify.com/collections/corohug" class="cvbtn">
+                <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cvbtn">
                     <img src="./img/cvbtn.png" alt="特別モニターに応募する">
                 </a>
             </div>
@@ -360,7 +395,7 @@
 
             <div class="relative-box">
                 <img src="./img/wankosoad12.webp" class="product-img" alt="ラスト案内">
-                <a href="https://jfjg1u-sk.myshopify.com/collections/corohug" class="cvbtn_2">
+                <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cvbtn_2">
                     <img src="./img/cvbtn.png" alt="特別モニターに応募する">
                 </a>
             </div>
@@ -373,26 +408,40 @@
     </div>
 
     <script>
-        document.addEventListener("DOMContentLoaded", function () {
-            var fadeElements = document.querySelectorAll('.scroll-fade');
+        document.addEventListener("DOMContentLoaded", () => {
 
-            // スマホの電池やメモリに優しい「IntersectionObserver」を採用
-            var observer = new IntersectionObserver(function (entries, observer) {
-                entries.forEach(function (entry) {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target); // 1回表示されたら監視を終了して軽量化
-                    }
-                });
-            }, {
-                rootMargin: '0px 0px -40px 0px' // 画面の下端から40px上がってきたらフェードイン
+            // CTAリンク自動設定
+            document.querySelectorAll('.cv-link').forEach(link => {
+                link.href = SHOP_URL;
             });
 
-            fadeElements.forEach(function (el) {
-                observer.observe(el);
-            });
+            // フェードイン
+            const fadeElements =
+                document.querySelectorAll('.scroll-fade');
+
+            const observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.1,
+                    rootMargin: '0px 0px -40px 0px'
+                }
+            );
+
+            fadeElements.forEach(el => observer.observe(el));
         });
     </script>
+    <div class="fixed-cv">
+        <a href="#" class="cv-link">
+            特別モニターに応募する
+        </a>
+    </div>
 </body>
 
 </html>
