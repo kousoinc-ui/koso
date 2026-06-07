@@ -1,538 +1,1184 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>わん酵素 特別体験モニター</title>
+    <link rel="preload" as="image" href="./img/wankosoad1.webp" fetchpriority="high">
+    <link rel="preload" as="image" href="./img/cvbtn.png">
+    <style>
+        /* --- 基本ベース・スマホ最適化 --- */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-<title>優光泉</title>
+        body {
+            background-color: #fcf9f5;
+            /* ぬくもりのある背景色 */
+            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
+        }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@300;400;500&display=swap" rel="stylesheet">
+        .lp-wrapper {
+            position: relative;
+            width: 100%;
+            max-width: 750px;
+            margin: 0 auto;
+            overflow-x: hidden;
+            background-color: #fff;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.05);
+        }
 
-<style>
+        img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
 
-:root{
-  --primary:#81d8d0;
-  --primary-light:#dff6f4;
-  --gold:#c9a96e;
-  --text:#333;
-}
+        /* --- 共通スクロールフェードインアニメーション（バグ修正版） --- */
+        .scroll-fade {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 1.35s cubic-bezier(0.215, 0.610, 0.355, 1.000),
+                transform 1.35s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+            transition-delay: 0s;
+        }
 
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
-}
+        .scroll-fade.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+            transition-delay: var(--fade-delay, 0s);
+        }
 
-body{
-  font-family:"Noto Serif JP",serif;
-  color:var(--text);
-  overflow-x:hidden;
-}
+        .scroll-pop {
+            transform: translateY(24px) scale(.94);
+            transition-duration: 1.45s;
+        }
 
-/* ==========================
-FV
+        .scroll-pop.is-visible {
+            transform: translateY(0) scale(1);
+        }
+
+        .scroll-slide-left {
+            transform: translate(-34px, 16px);
+            transition-duration: 1.45s;
+        }
+
+        .scroll-slide-left.is-visible {
+            transform: translate(0, 0);
+        }
+
+        .scroll-slide-right {
+            transform: translate(34px, 16px);
+            transition-duration: 1.45s;
+        }
+
+        .scroll-slide-right.is-visible {
+            transform: translate(0, 0);
+        }
+
+        /* --- ファーストビュー（FV） --- */
+        .fv-container {
+            position: relative;
+            width: 100%;
+        }
+
+        @keyframes fvFadeIn {
+            0% {
+                opacity: 0;
+                transform: translateY(15px);
+            }
+
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .overlay-img1 {
+            position: absolute;
+            top: 40%;
+            left: 70%;
+            width: 30%;
+            animation: fvFadeIn 0.8s ease 0.5s both;
+        }
+
+        /* --- 購入フローティングボタン（パルスアニメーション） --- */
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.03);
+            }
+
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        @keyframes floatSoft {
+            0%,
+            100% {
+                transform: translateY(0) rotate(-2deg);
+            }
+
+            50% {
+                transform: translateY(-8px) rotate(2deg);
+            }
+        }
+
+        @keyframes arrowNudge {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(4px);
+            }
+        }
+
+        .cvbtn {
+            position: absolute;
+            top: 91%;
+            left: 5%;
+            width: 90%;
+            z-index: 10;
+            animation: pulse 3.2s ease-in-out infinite;
+        }
+
+        /* --- 共感パート --- */
+        .empathy-section {
+            position: relative;
+            width: 100%;
+            background: #f5eee8;
+        }
+
+        .empathy-word-top {
+            width: 100%;
+        }
+
+        .empathy-word-body {
+            position: relative;
+            width: 100%;
+        }
+
+        .empathy-word {
+            position: absolute;
+            left: 50%;
+            width: 76%;
+            transform: translateX(-50%);
+            z-index: 2;
+        }
+
+        .empathy-word.scroll-fade {
+            transform: translate(-50%, 30px);
+        }
+
+        .empathy-word.scroll-fade.is-visible {
+            transform: translate(-50%, 0);
+        }
+
+        .empathy-word.scroll-slide-left {
+            transform: translate(calc(-50% - 34px), 18px);
+        }
+
+        .empathy-word.scroll-slide-left.is-visible {
+            transform: translate(-50%, 0);
+        }
+
+        .empathy-word.scroll-slide-right {
+            transform: translate(calc(-50% + 34px), 18px);
+        }
+
+        .empathy-word.scroll-slide-right.is-visible {
+            transform: translate(-50%, 0);
+        }
+
+        .empathy-word.scroll-pop {
+            transform: translate(-50%, 24px) scale(.94);
+        }
+
+        .empathy-word.scroll-pop.is-visible {
+            transform: translate(-50%, 0) scale(1);
+        }
+
+        .empathy-word-1 {
+            top: 6%;
+            --fade-delay: 0.05s;
+        }
+
+        .empathy-word-2 {
+            top: 21.5%;
+            --fade-delay: 0.2s;
+        }
+
+        .empathy-word-3 {
+            top: 37%;
+            --fade-delay: 0.35s;
+        }
+
+        .empathy-word-4 {
+            top: 52.5%;
+            --fade-delay: 0.5s;
+        }
+
+        .empathy-word-5 {
+            top: 72%;
+            width: 78%;
+            --fade-delay: 0.65s;
+        }
+
+        /* --- 各セクション・コンテナ --- */
+        .product-container {
+            position: relative;
+            width: 100%;
+        }
+
+        .relative-box {
+            position: relative;
+            width: 100%;
+        }
+
+        /* 想い・発酵等の配置微調整（絶対配置） */
+        .overlay-omoi {
+            position: absolute;
+            top: 2%;
+            left: 5%;
+            width: 90%;
+        }
+
+        .overlay-hakko {
+            position: absolute;
+            top: 34%;
+            left: 10%;
+            width: 80%;
+        }
+
+        .overlay-cmt1 {
+            position: absolute;
+            top: 72.5%;
+            left: 4%;
+            width: 28%;
+            --fade-delay: 0.5s;
+        }
+
+        .overlay-cmt2 {
+            position: absolute;
+            top: 50%;
+            left: 62%;
+            width: 29%;
+            --fade-delay: 1.5s;
+        }
+
+        .overlay-hakko_2 {
+            position: absolute;
+            top: 10.7%;
+            left: 20%;
+            width: 60%;
+            z-index: 2;
+            --fade-delay: 1.5s;
+        }
+
+        .overlay-wankoso {
+            position: absolute;
+            top: -15.6%;
+            left: 25%;
+            width: 90%;
+            z-index: 1;
+            --fade-delay: 2.5s;
+        }
+
+        .overlay-hakko_3 {
+            position: absolute;
+            top: 25.1%;
+            left: 10%;
+            width: 80%;
+            z-index: 3;
+            --fade-delay: 2.5s;
+        }
+
+        .overlay-hakko_4 {
+            position: absolute;
+            top: 58%;
+            left: 5%;
+            width: 90%;
+            z-index: 4;
+            --fade-delay: 1s;
+        }
+
+        /* --- コだわり2：犬が飲むGIFのコンテナ --- */
+        .point2-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .overlay-gif-drink {
+            position: absolute;
+            top: 33%;
+            left: 19%;
+            width: 60%;
+            border-radius: 8px;
+            /* カドをほんのり丸くして美しく */
+        }
+
+        .point-title-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .overlay-sarani {
+            position: absolute;
+            top: -20%;
+            right: 37%;
+            width: 24%;
+            z-index: 2;
+        }
+
+        .overlay-sarani.is-visible {
+            animation: floatSoft 4.8s ease-in-out 1.2s infinite;
+        }
+
+        /* --- こだわり3：素材の時間差フェードイン --- */
+        .point3-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .overlay-point3_1 {
+            position: absolute;
+            top: 23%;
+            left: 5%;
+            width: 90%;
+            --fade-delay: 0.05s;
+        }
+
+        .overlay-point3_2 {
+            position: absolute;
+            top: 48%;
+            left: 5%;
+            width: 90%;
+            --fade-delay: 0.32s;
+        }
+
+        .overlay-point3_3 {
+            position: absolute;
+            top: 74%;
+            left: 5%;
+            width: 90%;
+            --fade-delay: 0.6s;
+        }
+
+        /* --- お届けステップ・レビュー --- */
+        .overlay-step {
+            position: absolute;
+            top: 30%;
+            left: 5%;
+            width: 90%;
+        }
+
+        .review-gif-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .review-gif-layer {
+            position: absolute;
+            inset: 0;
+            z-index: 2;
+        }
+
+        .review-gif {
+            position: absolute;
+            width: 37%;
+            border-radius: 0;
+        }
+
+        .review-gif-1 {
+            top: 34.7%;
+            left: 3.5%;
+            transform: rotate(-3deg);
+        }
+
+        .review-gif-2 {
+            top: 54.4%;
+            left: 60%;
+            transform: rotate(5deg);
+        }
+
+        .review-gif-3 {
+            top: 76.7%;
+            left: 3%;
+            transform: rotate(-6deg);
+        }
+
+        .review-slider-wrap {
+            position: relative;
+            width: 100%;
+        }
+
+        .review-slider {
+            position: absolute;
+            top: 16%;
+            left: 0;
+            display: flex;
+            gap: 18px;
+            width: 100%;
+            overflow-x: auto;
+            padding: 0 26px 18px;
+            z-index: 2;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .review-slider::-webkit-scrollbar {
+            display: none;
+        }
+
+        .review-card {
+            flex: 0 0 54%;
+            max-width: 384px;
+            scroll-snap-align: center;
+        }
+
+        .review-card img {
+            box-shadow: 0 8px 20px rgba(80, 52, 28, .18);
+        }
+
+        /* --- 下部CVエリア --- */
+        .cvbtn_2 {
+            position: absolute;
+            top: 79%;
+            left: 5%;
+            width: 90%;
+            animation: pulse 3.2s ease-in-out 0.7s infinite;
+        }
+
+        .cvbtn,
+        .cvbtn_2 {
+            will-change: transform;
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        .fixed-cv {
+            position: fixed;
+            bottom: calc(10px + env(safe-area-inset-bottom));
+            left: 50%;
+            transform: translate(-50%, calc(100% + 24px));
+            width: min(92%, 650px);
+            max-width: 650px;
+            padding: 6px;
+            border: 1px solid rgba(116, 82, 48, .14);
+            border-radius: 20px;
+            background: rgba(255, 255, 255, .92);
+            box-shadow: 0 10px 26px rgba(80, 52, 28, .2);
+            backdrop-filter: blur(10px);
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+            transition: opacity .75s ease, transform .75s cubic-bezier(0.215, 0.610, 0.355, 1.000), visibility .75s ease;
+            z-index: 9999;
+        }
+
+        .fixed-cv.is-visible {
+            opacity: 1;
+            visibility: visible;
+            pointer-events: auto;
+            transform: translate(-50%, 0);
+        }
+
+        .fixed-cv a {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            min-height: 58px;
+            background: linear-gradient(180deg, #ff9a2e 0%, #f06f00 100%);
+            color: #fff;
+            font-weight: bold;
+            text-decoration: none;
+            padding: 11px 14px 11px 18px;
+            border-radius: 16px;
+            box-shadow: inset 0 1px 0 rgba(255, 255, 255, .35), 0 5px 12px rgba(185, 91, 0, .28);
+            animation: pulse 3.2s ease-in-out 0.35s infinite;
+        }
+
+        .fixed-cv-copy {
+            display: grid;
+            gap: 2px;
+            min-width: 0;
+            text-align: left;
+            line-height: 1.25;
+        }
+
+        .fixed-cv-label {
+            display: inline-flex;
+            width: fit-content;
+            padding: 2px 8px;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .24);
+            font-size: 11px;
+            letter-spacing: 0;
+        }
+
+        .fixed-cv-main {
+            font-size: 17px;
+            letter-spacing: 0;
+            white-space: nowrap;
+        }
+
+        .fixed-cv-arrow {
+            position: relative;
+            flex: 0 0 34px;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: #fff;
+            box-shadow: 0 2px 8px rgba(111, 53, 0, .2);
+            animation: arrowNudge 2.4s ease-in-out infinite;
+        }
+
+        .fixed-cv-arrow::before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 48%;
+            width: 9px;
+            height: 9px;
+            border-top: 3px solid #f06f00;
+            border-right: 3px solid #f06f00;
+            transform: translate(-50%, -50%) rotate(45deg);
+        }
+
+        .fixed-cv a:active {
+            transform: scale(.98);
+        }
+
+        @media (max-width: 420px) {
+            .fixed-cv {
+                width: calc(100% - 20px);
+                border-radius: 18px;
+            }
+
+            .fixed-cv a {
+                gap: 9px;
+                min-height: 54px;
+                padding: 10px 11px 10px 14px;
+            }
+
+            .fixed-cv-main {
+                font-size: 15px;
+            }
+
+            .fixed-cv-arrow {
+                flex-basis: 30px;
+                width: 30px;
+                height: 30px;
+            }
+        }
+
+        .lp-footer {
+            padding: 30px 20px 100px;
+            background: #faf8f3;
+            text-align: center;
+            border-top: 1px solid #e5e5e5;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #666;
+            font-size: 14px;
+            text-decoration: none;
+            transition: .3s;
+        }
+
+        .footer-links a:hover {
+            color: #3f8f5c;
+        }
+
+        .footer-links span {
+            color: #bbb;
+        }
+
+        .footer-copy {
+            font-size: 12px;
+            color: #999;
+        }
+
+        /* FAQ */
+
+        .faq-section {
+            padding: 60px 20px;
+            background: #faf8f3;
+        }
+
+        .faq-title {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .faq-title h2 {
+            font-size: 18px;
+            color: #5d4c3f;
+            margin-bottom: 5px;
+        }
+
+        .faq-title p {
+            font-size: 13px;
+            color: #a59687;
+            letter-spacing: 2px;
+        }
+
+        .qa-item {
+            background: #fff;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, .05);
+        }
+
+        .qa-item summary {
+            list-style: none;
+        }
+
+        .qa-item summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .qa-question {
+            position: relative;
+            padding: 18px 55px 18px 20px;
+            cursor: pointer;
+            font-size: 15px;
+            font-weight: 700;
+            line-height: 1.7;
+            color: #444;
+        }
+
+        .qa-question::before {
+            content: "Q";
+            display: inline-block;
+            margin-right: 10px;
+            color: #3f8f5c;
+            font-weight: bold;
+        }
+
+        .qa-question::after {
+            content: "+";
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 24px;
+            color: #3f8f5c;
+            transition: .3s;
+        }
+
+        .qa-item[open] .qa-question::after {
+            transform: translateY(-50%) rotate(45deg);
+        }
+
+        .qa-answer {
+            padding: 0 20px 20px;
+        }
+
+        .qa-answer::before {
+            content: "A";
+            display: inline-block;
+            margin-bottom: 10px;
+            color: #d96b5f;
+            font-weight: bold;
+        }
+
+        .qa-answer p {
+            font-size: 14px;
+            line-height: 1.9;
+            color: #666;
+        }
+        /* ==========================
+   腸活パート
 ========================== */
 
-.hero{
-  height:100vh;
-  position:relative;
-  overflow:hidden;
+.tyoukatsu{
+    position:relative;
+    width:100%;
+    max-width:750px;
+    margin:0 auto;
+    aspect-ratio:750 / 2600;
+
+    background-image:url("./img/tyoukatsu_bg.webp");
+    background-size:cover;
+    background-position:center top;
+    background-repeat:no-repeat;
 }
 
-.hero-bg{
-  position:absolute;
-  inset:0;
-
-  background-image:url("https://images.unsplash.com/photo-1501004318641-b39e6451bec6");
-  background-size:cover;
-  background-position:center;
-
-  animation:zoomBg 18s ease forwards;
+.tyoukatsu img {
+    display: block;
 }
 
-.hero-overlay{
-  position:absolute;
-  inset:0;
-  background:
-  linear-gradient(
-    rgba(0,0,0,.25),
-    rgba(0,0,0,.2)
-  );
+/* タイトル */
+.tyoukatsu_1{
+    position:absolute;
+    top:2%;
+    left:50%;
+    width:75%;
+    transform:translateX(-50%);
+    z-index:5;
 }
 
-@keyframes zoomBg{
-
-  from{
-    transform:scale(1);
-  }
-
-  to{
-    transform:scale(1.12);
-  }
-
+/* 説明 */
+.tyoukatsu_2{
+    position:absolute;
+    top: 10%;
+    left: 66%;
+    width:45%;
+    transform:translateX(-50%);
 }
 
-.hero-content{
-  position:relative;
-  z-index:10;
-
-  height:100%;
-
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-
-  text-align:center;
-
-  color:#fff;
-
-  width:90%;
-  max-width:1200px;
-  margin:auto;
+.tyoukatsu_3{
+    position:absolute;
+    top: 17%;
+    left:50%;
+    width:65%;
+    transform:translateX(-50%);
 }
 
-.hero-sub{
-  letter-spacing:6px;
-  font-size:14px;
-  margin-bottom:25px;
+/* 中央ビジュアル */
+.tyoukatsu_4{
+    position:absolute;
+    top:23.5%;
+    left:25%;
+    width: 35%;
+    transform:translateX(-50%);
 }
 
-.hero-title{
-
-  font-size:clamp(42px,6vw,90px);
-
-  font-weight:400;
-
-  line-height:1.4;
-
-  animation:titleFloat 5s ease-in-out infinite;
+.tyoukatsu_5{
+    position:absolute;
+    top:23.5%;
+    left:75%;
+    width:35%;
+    transform:translateX(-50%);
 }
 
-@keyframes titleFloat{
-
-  0%{
-    transform:translateY(0);
-  }
-
-  50%{
-    transform:translateY(-10px);
-  }
-
-  100%{
-    transform:translateY(0);
-  }
-
+.tyoukatsu_6{
+    position:absolute;
+    top:34%;
+    left:50%;
+    width:35%;
+    transform:translateX(-50%);
 }
 
-.hero-text{
-
-  margin-top:35px;
-
-  line-height:2.2;
-
-  font-size:18px;
+/* 下段 */
+.tyoukatsu_7{
+    position:absolute;
+    top:50%;
+    left:50%;
+    width:90%;
+    transform:translateX(-50%);
 }
 
-.hero-btn{
-
-  margin-top:50px;
-
-  padding:18px 55px;
-
-  border-radius:999px;
-
-  text-decoration:none;
-
-  color:#fff;
-
-  border:1px solid rgba(255,255,255,.5);
-
-  backdrop-filter:blur(10px);
-
-  background:rgba(255,255,255,.15);
-
-  transition:.4s;
+.tyoukatsu_8{
+    position:absolute;
+    top: 56%;
+    left:50%;
+    width:41%;
+    transform:translateX(-50%);
 }
 
-.hero-btn:hover{
-
-  transform:translateY(-4px);
-
-  background:var(--primary);
-
+.tyoukatsu_9{
+    position:absolute;
+    top:59%;
+    left:21%;
+    width:33%;
+    transform:translateX(-50%);
 }
 
-/* ==========================
-MISSION
-========================== */
-
-.mission{
-
-  padding:150px 20px;
-
-  background:#fff;
+/* 予備 */
+.tyoukatsu_10{
+    position:absolute;
+    top:62%;
+    left:78%;
+    width:32%;
+    transform:translateX(-50%);
 }
-
-.container{
-
-  width:90%;
-  max-width:1200px;
-  margin:auto;
+.tyoukatsu_11{
+    position:absolute;
+    top:67%;
+    left:50%;
+    width:90%;
+    transform:translateX(-50%);
 }
-
-.section-label{
-
-  text-align:center;
-
-  letter-spacing:4px;
-
-  color:var(--primary);
-
-  margin-bottom:15px;
+.tyoukatsu_12{
+    position:absolute;
+    top:84%;
+    left:50%;
+    width:85%;
+    transform:translateX(-50%);
 }
-
-.section-title{
-
-  text-align:center;
-
-  font-size:52px;
-
-  font-weight:400;
-
-  margin-bottom:70px;
+.tyoukatsu_7_1{
+    position:absolute;
+    top:47%;
+    left:50%;
+    width:60%;
+    transform:translateX(-50%);
 }
-
-.mission-text{
-
-  max-width:750px;
-
-  margin:auto;
-}
-
-.mission-text p{
-
-  text-align:center;
-
-  line-height:2.5;
-
-  font-size:18px;
-
-  margin-bottom:35px;
-}
-
-/* ==========================
-PRODUCT
-========================== */
-
-.product{
-
-  background:#f8fbfb;
-
-  padding:150px 20px;
-}
-
-.product-grid{
-
-  display:grid;
-
-  grid-template-columns:
-  repeat(3,1fr);
-
-  gap:40px;
-
-  margin-top:70px;
-}
-
-.product-card{
-
-  background:#fff;
-
-  border-radius:24px;
-
-  overflow:hidden;
-
-  box-shadow:
-  0 10px 30px rgba(0,0,0,.05);
-
-  transition:.4s;
-}
-
-.product-card:hover{
-
-  transform:translateY(-12px);
-
-  box-shadow:
-  0 30px 60px rgba(0,0,0,.12);
-
-}
-
-.product-card img{
-
-  width:100%;
-  display:block;
-
-  transition:1s;
-}
-
-.product-card:hover img{
-
-  transform:scale(1.08);
-}
-
-.product-info{
-
-  padding:30px;
-}
-
-.product-info h3{
-
-  color:var(--primary);
-
-  margin-bottom:15px;
-
-  font-size:24px;
-}
-
-.product-info p{
-
-  line-height:1.8;
-}
-
-/* ==========================
-SCROLL ANIMATION
-========================== */
-
-.fade-up{
-
-  opacity:0;
-
-  transform:
-  translateY(60px);
-
-  transition:
-  opacity 1.2s ease,
-  transform 1.2s ease;
-}
-
-.fade-up.show{
-
-  opacity:1;
-
-  transform:
-  translateY(0);
-}
-
-/* ==========================
-MOBILE
-========================== */
-
-@media(max-width:768px){
-
-.hero{
-height:90vh;
-}
-
-.hero-title{
-font-size:42px;
-}
-
-.hero-text{
-font-size:15px;
-}
-
-.section-title{
-font-size:32px;
-}
-
-.product-grid{
-grid-template-columns:1fr;
-}
-
-.mission,
-.product{
-padding:90px 20px;
-}
-
-}
-
-</style>
+    </style>
 </head>
 
 <body>
-
-<section class="hero">
-
-<div class="hero-bg"></div>
-
-<div class="hero-overlay"></div>
-
-<div class="hero-content">
-
-<p class="hero-sub">
-YUKOUSEN
-</p>
-
-<h1 class="hero-title">
-自然の力を、<br>
-毎日の習慣に。
-</h1>
-
-<p class="hero-text">
-野菜・果物・穀物の恵みを発酵させて生まれた優光泉。<br>
-忙しい毎日でも、自分を大切にする時間を。
-</p>
-
-<a href="#product" class="hero-btn">
-商品を見る
-</a>
-
-</div>
-
-</section>
-
-<section class="mission fade-up">
-
-<div class="container">
-
-<p class="section-label">
-BRAND STORY
-</p>
-
-<h2 class="section-title">
-発酵から、未来を整える。
-</h2>
-
-<div class="mission-text">
-
-<p>
-優光泉は、自然の恵みと発酵の力を信じています。
-</p>
-
-<p>
-余計なものを足さず、
-素材本来の力を引き出すこと。
-</p>
-
-<p>
-毎日の健康と美容を、
-もっとシンプルに。
-</p>
-
-<p>
-それが私たちの想いです。
-</p>
-
-</div>
-
-</div>
-
-</section>
-
-<section class="product fade-up" id="product">
-
-<div class="container">
-
-<p class="section-label">
-PRODUCTS
-</p>
-
-<h2 class="section-title">
-商品ラインナップ
-</h2>
-
-<div class="product-grid">
-
-<div class="product-card fade-up">
-
-<img src="https://placehold.co/600x700/e8f7f5/81d8d0?text=STANDARD">
-
-<div class="product-info">
-
-<h3>スタンダード</h3>
-
-<p>
-優光泉の定番商品。
-毎日の健康習慣に。
-</p>
-
-</div>
-
-</div>
-
-<div class="product-card fade-up">
-
-<img src="https://placehold.co/600x700/e8f7f5/81d8d0?text=PREMIUM">
-
-<div class="product-info">
-
-<h3>プレミアム</h3>
-
-<p>
-より贅沢な発酵原料を使用した特別仕様。
-</p>
-
-</div>
-
-</div>
-
-<div class="product-card fade-up">
-
-<img src="https://placehold.co/600x700/e8f7f5/81d8d0?text=FASTING">
-
-<div class="product-info">
-
-<h3>ファスティング</h3>
-
-<p>
-理想のファスティングライフをサポート。
-</p>
-
-</div>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<script>
-
-document.addEventListener("DOMContentLoaded",()=>{
-
-const observer =
-new IntersectionObserver(
-
-(entries)=>{
-
-entries.forEach(entry=>{
-
-if(entry.isIntersecting){
-
-entry.target.classList.add("show");
-
-}
-
-});
-
-},
-
-{
-threshold:0.15
-}
-
-);
-
-document
-.querySelectorAll(".fade-up")
-.forEach(el=>observer.observe(el));
-
-});
-
-</script>
-
+    <div class="lp-wrapper">
+        <div class="fv-container">
+            <img src="./img/wankosoad1.webp" alt="わん酵素メイン" class="fv-img" width="750" height="1000" fetchpriority="high" decoding="async">
+            <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1" width="221" height="209" decoding="async">
+            <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cvbtn cv-link">
+                <img src="./img/cvbtn.png" alt="特別モニターに応募する" width="669" height="120" decoding="async">
+            </a>
+        </div>
+
+
+        <div class="product-container">
+            <img src="./img/wankosoad2.webp" class="product-img" alt="背景1" width="750" height="1500" loading="lazy" decoding="async">
+
+            <div class="relative-box">
+                <img src="./img/wankosoad3.webp" class="product-img fixed-cv-trigger" alt="背景2" width="750" height="747" loading="lazy" decoding="async">
+                <img src="./img/omoi_txt.png" alt="コロちゃんへの想い" class="overlay-omoi scroll-fade scroll-pop" width="670" height="619" loading="lazy" decoding="async">
+            </div>
+
+            <section class="empathy-section">
+                <img src="./img/wankosoad_word1.webp" class="empathy-word-top" alt="最近、こんな変化ありませんか？" width="750" height="223" loading="lazy" decoding="async">
+                <div class="empathy-word-body">
+                    <img src="./img/wankosoad_word2.webp" alt="愛犬の変化に悩む飼い主さん" width="750" height="1014" loading="lazy" decoding="async">
+                    <img src="./img/word1.webp" class="empathy-word empathy-word-1 scroll-fade scroll-slide-left" alt="昔より食べる量が減った" width="562" height="149" loading="lazy" decoding="async">
+                    <img src="./img/word2.webp" class="empathy-word empathy-word-2 scroll-fade scroll-slide-right" alt="ごはんを残すことが増えた" width="569" height="148" loading="lazy" decoding="async">
+                    <img src="./img/word3.webp" class="empathy-word empathy-word-3 scroll-fade scroll-slide-left" alt="便が安定しない日がある" width="565" height="147" loading="lazy" decoding="async">
+                    <img src="./img/word4.webp" class="empathy-word empathy-word-4 scroll-fade scroll-slide-right" alt="好き嫌いが増えてきた" width="569" height="148" loading="lazy" decoding="async">
+                    <img src="./img/word5.webp" class="empathy-word empathy-word-5 scroll-fade scroll-pop" alt="寝ている時間が長くなったり、なんとなく元気がない気がする" width="578" height="210" loading="lazy" decoding="async">
+                </div>
+            </section>
+            <img src="./img/wankosoad4.webp" class="product-img" alt="背景3" width="750" height="1181" loading="lazy" decoding="async">
+
+            <div class="relative-box">
+                <img src="./img/wankosoad5.webp" class="product-img" alt="背景4" width="750" height="926" loading="lazy" decoding="async">
+                <img src="./img/hakko.png" alt="10年長期発酵のこだわり" class="overlay-hakko scroll-fade scroll-pop" width="601" height="575" loading="lazy" decoding="async">
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad6.webp" class="product-img" alt="背景5" width="750" height="727" loading="lazy" decoding="async">
+                <img src="./img/cmt_1.png" alt="愛犬家の声1" class="overlay-cmt1 scroll-fade scroll-slide-left" width="195" height="137" loading="lazy" decoding="async">
+                <img src="./img/cmt_2.png" alt="愛犬家の声2" class="overlay-cmt2 scroll-fade scroll-slide-right" width="196" height="138" loading="lazy" decoding="async">
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad7.webp" class="product-img" alt="背景6" width="750" height="902" loading="lazy" decoding="async">
+                <img src="./img/wankosoad8.webp" class="product-img" alt="背景7" width="750" height="785" loading="lazy" decoding="async">
+                <img src="./img/wankoso_1.png" alt="わん酵素の特徴" class="overlay-wankoso scroll-fade scroll-pop" width="655" height="1554" loading="lazy" decoding="async">
+                <img src="./img/hakko_2.png" alt="低分子化" class="overlay-hakko_2 scroll-fade scroll-slide-left" width="352" height="130" loading="lazy" decoding="async">
+                <img src="./img/hakko_3.png" alt="一滴も無駄にしない" class="overlay-hakko_3 scroll-fade scroll-slide-right" width="680" height="475" loading="lazy" decoding="async">
+                <img src="./img/hakko_4.png" alt="無添加へのこだわり" class="overlay-hakko_4 scroll-fade scroll-pop" width="670" height="304" loading="lazy" decoding="async">
+            </div>
+            <section class="tyoukatsu">
+                <img src="./img/tyoukatsu_1.webp" class="tyoukatsu_1">
+                <img src="./img/tyoukatsu_2.webp" class="tyoukatsu_2">
+                <img src="./img/tyoukatsu_3.webp" class="tyoukatsu_3">
+                <img src="./img/tyoukatsu_4.webp" class="tyoukatsu_4">
+                <img src="./img/tyoukatsu_5.webp" class="tyoukatsu_5">
+                <img src="./img/tyoukatsu_6.webp" class="tyoukatsu_6">   
+                <img src="./img/tyoukatsu_7.1.webp" class="tyoukatsu_7_1">
+                <img src="./img/tyoukatsu_7.webp" class="tyoukatsu_7">
+                <img src="./img/tyoukatsu_8.webp" class="tyoukatsu_8">
+                <img src="./img/tyoukatsu_9.webp" class="tyoukatsu_9">
+                <img src="./img/tyoukatsu_10.webp" class="tyoukatsu_10">
+                <img src="./img/tyoukatsu_11.webp" class="tyoukatsu_11">
+                <img src="./img/tyoukatsu_12.webp" class="tyoukatsu_12">
+            </section>
+            <div class="points-container">
+                <div class="point-title-wrap">
+                    <img src="./img/point_title.webp" alt="3つのこだわり" width="750" height="446" loading="lazy" decoding="async">
+                    <img src="./img/sarani.png" alt="さらに" class="overlay-sarani scroll-fade scroll-pop" width="181" height="181" loading="lazy" decoding="async">
+                </div>
+                <img src="./img/point1.webp" alt="こだわり1詳細" width="750" height="745" loading="lazy" decoding="async">
+
+                <div class="point2-wrap">
+                    <img src="./img/point2.webp" alt="こだわり2詳細" width="750" height="876" loading="lazy" decoding="async">
+                    <img src="./img/hiro_drink.gif" alt="ワンちゃんが夢中で飲む様子" class="overlay-gif-drink scroll-fade scroll-pop" width="320" height="320" loading="lazy" decoding="async">
+                </div>
+
+                <div class="point3-wrap">
+                    <img src="./img/point3.webp" alt="こだわり3厳選素材ベース" width="750" height="1488" loading="lazy" decoding="async">
+                    <img src="./img/point3_1.webp" alt="出す：とうもろこしのひげ" class="overlay-point3_1 scroll-fade scroll-slide-left" width="700" height="333" loading="lazy" decoding="async">
+                    <img src="./img/point3_2.webp" alt="守る：たんぽぽ" class="overlay-point3_2 scroll-fade scroll-slide-right" width="700" height="334" loading="lazy" decoding="async">
+                    <img src="./img/point3_3.webp" alt="補う：サンシュユ・クコ" class="overlay-point3_3 scroll-fade scroll-pop" width="700" height="334" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad9.webp" class="step-img" alt="ステップ背景" width="750" height="1398" loading="lazy" decoding="async">
+                <img src="./img/step_1.png" alt="3ステップ購入の流れ" class="overlay-step scroll-fade scroll-pop" width="701" height="738" loading="lazy" decoding="async">
+            </div>
+
+            <div class="review-gif-wrap">
+                <img src="./img/wankosoad_review1.webp" class="product-img" alt="レビュー1" width="750" height="1759" loading="lazy" decoding="async">
+                <div class="review-gif-layer">
+                    <img src="./img/review_2.gif" class="review-gif review-gif-1" alt="レビュー動画仮1" width="320" height="320" loading="lazy" decoding="async">
+                    <img src="./img/review_1.gif" class="review-gif review-gif-2" alt="レビュー動画仮2" width="320" height="320" loading="lazy" decoding="async">
+                    <img src="./img/review_3.gif" class="review-gif review-gif-3" alt="レビュー動画仮3" width="320" height="320" loading="lazy" decoding="async">
+                </div>
+            </div>
+
+            <div class="review-slider-wrap">
+                <img src="./img/wankosoad_review2.webp" class="product-img" alt="レビュー2背景" width="750" height="896" loading="lazy" decoding="async">
+                <div class="review-slider" aria-label="レビュー一覧">
+                    <div class="review-card">
+                        <img src="./img/review_1.webp" alt="レビュー1" width="384" height="650" loading="lazy" decoding="async">
+                    </div>
+                    <div class="review-card">
+                        <img src="./img/review_2.webp" alt="レビュー2" width="384" height="650" loading="lazy" decoding="async">
+                    </div>
+                    <div class="review-card">
+                        <img src="./img/review_3.webp" alt="レビュー3" width="384" height="650" loading="lazy" decoding="async">
+                    </div>
+                </div>
+            </div>
+
+            <div class="fv-container">
+                <img src="./img/wankosoad1.webp" alt="わん酵素メイン" class="fv-img" width="750" height="1000" loading="lazy" decoding="async">
+                <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1" width="221" height="209" loading="lazy" decoding="async">
+                <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cvbtn cv-link">
+                    <img src="./img/cvbtn.png" alt="特別モニターに応募する" width="669" height="120" loading="lazy" decoding="async">
+                </a>
+            </div>
+
+            
+
+            <!-- FAQ -->
+            <section class="faq-section">
+
+                <div class="faq-title">
+                    <h2>購入前によくいただくご質問</h2>
+                    <p>FAQ</p>
+                </div>
+
+                <details class="qa-item">
+                    <summary class="qa-question">
+                        1日に与える量の目安を教えてください。
+                    </summary>
+                    <div class="qa-answer">
+                        <p>
+                            ワンちゃんの体重に合わせて、以下の量を目安に与えてください。<br><br>
+
+                            （10ml/包の場合）<br>
+                            ・2kg以下：1/2包<br>
+                            ・2〜5kg：1包<br>
+                            ・5〜10kg：2包<br>
+                            ・10〜15kg：3包<br>
+                            ・15〜20kg：4包<br><br>
+
+                            使い切りやすいレトルトパウチですので、新鮮な状態で与えられます。
+                        </p>
+                    </div>
+                </details>
+
+
+                <details class="qa-item">
+                    <summary class="qa-question">
+                        「10年熟成」や「低分子化」とはどういう意味ですか？
+                    </summary>
+                    <div class="qa-answer">
+                        <p>
+                            100種類以上の素材を10年以上かけてじっくり発酵させることで、
+                            栄養素が「これ以上小さくできない」というレベル（低分子）まで分解されています。<br><br>
+
+                            そのため、消化能力が落ちたシニア犬の胃腸にも負担をかけず、
+                            素早く栄養を吸収できることが大きな特徴です。
+                        </p>
+                    </div>
+                </details>
+
+
+                <details class="qa-item">
+                    <summary class="qa-question">
+                        薬を服用中ですが、併用しても大丈夫ですか？
+                    </summary>
+                    <div class="qa-answer">
+                        <p>
+                            わん酵素は食品（発酵補給食品）ですので、
+                            基本的には問題ありません。<br><br>
+
+                            ただし、通院中や投薬中の場合は、
+                            念のため原材料名が記載されたパッケージを
+                            かかりつけの獣医師に見せてご相談いただくことをおすすめしております。
+                        </p>
+                    </div>
+                </details>
+
+                <details class="qa-item">
+                    <summary class="qa-question">
+                        保存料や着色料は入っていますか？
+                    </summary>
+                    <div class="qa-answer">
+                        <p>
+                            いいえ、一切使用しておりません。<br><br>
+
+                            厳選された素材を農薬除去した上で使用し、
+                            発酵の力だけで仕上げています。<br><br>
+
+                            毎日安心して「当たり前の習慣」として取り入れていただけます。
+                        </p>
+                    </div>
+                </details>
+
+                <details class="qa-item">
+                    <summary class="qa-question">
+                        はぐみ酵素ってなんですか？
+                    </summary>
+                    <div class="qa-answer">
+                        <p>
+                            はぐみ酵素は、100種類以上の植物原料を長期間発酵・熟成させて作られた、人用の発酵健康補助食品です。<br><br>
+                            わん酵素の開発元であるエリカ健康道場が製造しており、多くのお客様にご愛飲いただいています。<br><br>
+                            今回のモニター企画では、「飼い主様にも発酵の力を体感していただきたい」という想いから、わん酵素と一緒におまけとしてお届けしています。<br><br>
+                            ※はぐみ酵素は飼い主様向けの商品です。ワンちゃんには与えず、飼い主様ご自身でお召し上がりください。
+                        </p>
+                    </div>
+                </details>
+
+            </section>
+
+            
+
+            <div class="relative-box">
+                <img src="./img/wankosoad_deta.webp" class="product-img" alt="詳細" width="750" height="938" loading="lazy" decoding="async">
+            </div>
+            <div class="relative-box">
+                <img src="./img/wankosoad11.webp" class="product-img" alt="安心へのQA" width="750" height="2405" loading="lazy" decoding="async">
+            </div>
+            <div class="relative-box">
+                <img src="./img/wankosoad_msg1.webp" class="product-img" alt="フッター記載1" width="750" height="1805" loading="lazy" decoding="async">
+                <img src="./img/wankosoad_msg2.webp" class="product-img" alt="フッター記載2" width="750" height="1812" loading="lazy" decoding="async">
+                <img src="./img/wankosoad_msg3.webp" class="product-img" alt="フッター記載3" width="750" height="1242" loading="lazy" decoding="async">
+                <img src="./img/wankosoad_msg4.webp" class="product-img" alt="フッター記載4" width="750" height="1242" loading="lazy" decoding="async">
+            </div>
+
+            <div class="relative-box">
+                <img src="./img/wankosoad12.webp" class="product-img" alt="ラスト案内" width="750" height="732" loading="lazy" decoding="async">
+                <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cvbtn_2 cv-link">
+                    <img src="./img/cvbtn.png" alt="特別モニターに応募する" width="669" height="120" loading="lazy" decoding="async">
+                </a>
+            </div>
+
+            <footer class="lp-footer">
+                <div class="footer-links">
+                    <a href="https://jfjg1u-sk.myshopify.com/policies/legal-notice">
+                        特定商取引法に関する表示
+                    </a>
+
+                    <span>|</span>
+
+                    <a href="https://jfjg1u-sk.myshopify.com/policies/privacy-policy">
+                        プライバシーポリシー
+                    </a>
+                </div>
+
+                <p class="footer-copy">
+                    © 2026 わんHug+ All Rights Reserved.
+                </p>
+            </footer>
+
+        </div>
+    </div>
+
+    <script>
+        const SHOP_URL = "https://jfjg1u-sk.myshopify.com/cart/49940432912661:1";
+
+        document.addEventListener("DOMContentLoaded", () => {
+
+            // CTAリンク自動設定
+            document.querySelectorAll('.cv-link').forEach(link => {
+                link.href = SHOP_URL;
+            });
+
+            // 固定バナーはwankosoad3以降で表示
+            const fixedCv = document.querySelector('.fixed-cv');
+            const fixedCvTrigger = document.querySelector('.fixed-cv-trigger');
+
+            if (fixedCv && fixedCvTrigger) {
+                const showFixedCv = () => {
+                    fixedCv.classList.add('is-visible');
+                    window.removeEventListener('scroll', checkFixedCv);
+                    window.removeEventListener('resize', checkFixedCv);
+                };
+
+                const checkFixedCv = () => {
+                    const triggerTop = fixedCvTrigger.getBoundingClientRect().top;
+
+                    if (triggerTop <= window.innerHeight) {
+                        showFixedCv();
+                    }
+                };
+
+                window.addEventListener('scroll', checkFixedCv, { passive: true });
+                window.addEventListener('resize', checkFixedCv);
+                checkFixedCv();
+            }
+
+            // フェードイン
+            const fadeElements =
+                document.querySelectorAll('.scroll-fade');
+
+            if (!('IntersectionObserver' in window)) {
+                fixedCv?.classList.add('is-visible');
+                fadeElements.forEach(el => el.classList.add('is-visible'));
+                return;
+            }
+
+            const observer = new IntersectionObserver(
+                entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                },
+                {
+                    threshold: 0.25,
+                    rootMargin: '0px 0px -28% 0px'
+                }
+            );
+
+            fadeElements.forEach(el => observer.observe(el));
+        });
+    </script>
+    <div class="fixed-cv">
+        <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cv-link">
+            <span class="fixed-cv-copy">
+                <span class="fixed-cv-label">初回限定キャンペーン</span>
+                <span class="fixed-cv-main">特別モニターに応募する</span>
+            </span>
+            <span class="fixed-cv-arrow" aria-hidden="true"></span>
+        </a>
+    </div>
 </body>
+
 </html>
