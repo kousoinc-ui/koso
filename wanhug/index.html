@@ -738,6 +738,34 @@
     display: block;
 }
 
+.tyoukatsu-anim {
+    opacity: 0;
+    transition: opacity 1.35s cubic-bezier(0.215, 0.610, 0.355, 1.000),
+        transform 1.35s cubic-bezier(0.215, 0.610, 0.355, 1.000);
+    transition-delay: var(--tyoukatsu-delay, 0s);
+}
+
+.tyoukatsu-anim.tyoukatsu-right {
+    transform: translate(calc(-50% + 34px), 18px);
+}
+
+.tyoukatsu-anim.tyoukatsu-left {
+    transform: translate(calc(-50% - 34px), 18px);
+}
+
+.tyoukatsu-anim.tyoukatsu-up {
+    transform: translate(-50%, 34px);
+}
+
+.tyoukatsu-anim.tyoukatsu-pop {
+    transform: translate(-50%, 22px) scale(.94);
+}
+
+.tyoukatsu-anim.is-visible {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
 /* タイトル */
 .tyoukatsu_1{
     position:absolute;
@@ -746,6 +774,7 @@
     width:75%;
     transform:translateX(-50%);
     z-index:5;
+    --tyoukatsu-delay: 0s;
 }
 
 /* 説明 */
@@ -755,6 +784,7 @@
     left: 66%;
     width:45%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .45s;
 }
 
 .tyoukatsu_3{
@@ -763,6 +793,7 @@
     left:50%;
     width:65%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .22s;
 }
 
 /* 中央ビジュアル */
@@ -772,6 +803,7 @@
     left:25%;
     width: 35%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .08s;
 }
 
 .tyoukatsu_5{
@@ -780,6 +812,7 @@
     left:75%;
     width:35%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .28s;
 }
 
 .tyoukatsu_6{
@@ -788,6 +821,7 @@
     left:50%;
     width:35%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .48s;
 }
 
 /* 下段 */
@@ -797,6 +831,7 @@
     left:50%;
     width:90%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .18s;
 }
 
 .tyoukatsu_8{
@@ -805,6 +840,7 @@
     left:50%;
     width:41%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .25s;
 }
 
 .tyoukatsu_9{
@@ -813,6 +849,7 @@
     left:21%;
     width:33%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .12s;
 }
 
 /* 予備 */
@@ -822,6 +859,7 @@
     left:78%;
     width:32%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .30s;
 }
 .tyoukatsu_11{
     position:absolute;
@@ -829,6 +867,7 @@
     left:50%;
     width:90%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .24s;
 }
 .tyoukatsu_12{
     position:absolute;
@@ -836,6 +875,7 @@
     left:50%;
     width:85%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .15s;
 }
 .tyoukatsu_7_1{
     position:absolute;
@@ -843,6 +883,7 @@
     left:50%;
     width:60%;
     transform:translateX(-50%);
+    --tyoukatsu-delay: .08s;
 }
     </style>
 </head>
@@ -899,19 +940,19 @@
                 <img src="./img/hakko_4.png" alt="無添加へのこだわり" class="overlay-hakko_4 scroll-fade scroll-pop" width="670" height="304" loading="lazy" decoding="async">
             </div>
             <section class="tyoukatsu">
-                <img src="./img/tyoukatsu_1.webp" class="tyoukatsu_1">
-                <img src="./img/tyoukatsu_2.webp" class="tyoukatsu_2">
-                <img src="./img/tyoukatsu_3.webp" class="tyoukatsu_3">
-                <img src="./img/tyoukatsu_4.webp" class="tyoukatsu_4">
-                <img src="./img/tyoukatsu_5.webp" class="tyoukatsu_5">
-                <img src="./img/tyoukatsu_6.webp" class="tyoukatsu_6">   
-                <img src="./img/tyoukatsu_7.1.webp" class="tyoukatsu_7_1">
-                <img src="./img/tyoukatsu_7.webp" class="tyoukatsu_7">
-                <img src="./img/tyoukatsu_8.webp" class="tyoukatsu_8">
-                <img src="./img/tyoukatsu_9.webp" class="tyoukatsu_9">
-                <img src="./img/tyoukatsu_10.webp" class="tyoukatsu_10">
-                <img src="./img/tyoukatsu_11.webp" class="tyoukatsu_11">
-                <img src="./img/tyoukatsu_12.webp" class="tyoukatsu_12">
+                <img src="./img/tyoukatsu_1.webp" class="tyoukatsu_1 tyoukatsu-anim tyoukatsu-pop" alt="腸活タイトル" width="566" height="323" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_2.webp" class="tyoukatsu_2 tyoukatsu-anim tyoukatsu-right" alt="腸活説明1" width="300" height="111" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_3.webp" class="tyoukatsu_3 tyoukatsu-anim tyoukatsu-up" alt="腸活説明2" width="534" height="111" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_4.webp" class="tyoukatsu_4 tyoukatsu-anim tyoukatsu-left" alt="腸活イメージ1" width="302" height="335" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_5.webp" class="tyoukatsu_5 tyoukatsu-anim tyoukatsu-right" alt="腸活イメージ2" width="302" height="335" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_6.webp" class="tyoukatsu_6 tyoukatsu-anim tyoukatsu-pop" alt="腸活イメージ3" width="302" height="336" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_7.1.webp" class="tyoukatsu_7_1 tyoukatsu-anim tyoukatsu-pop" alt="腸活ラベル" width="365" height="39" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_7.webp" class="tyoukatsu_7 tyoukatsu-anim tyoukatsu-up" alt="腸活説明3" width="623" height="56" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_8.webp" class="tyoukatsu_8 tyoukatsu-anim tyoukatsu-pop" alt="腸活イメージ4" width="266" height="444" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_9.webp" class="tyoukatsu_9 tyoukatsu-anim tyoukatsu-left" alt="腸活説明4" width="278" height="150" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_10.webp" class="tyoukatsu_10 tyoukatsu-anim tyoukatsu-right" alt="腸活説明5" width="278" height="150" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_11.webp" class="tyoukatsu_11 tyoukatsu-anim tyoukatsu-up" alt="腸活説明6" width="699" height="426" loading="lazy" decoding="async">
+                <img src="./img/tyoukatsu_12.webp" class="tyoukatsu_12 tyoukatsu-anim tyoukatsu-pop" alt="腸活まとめ" width="695" height="314" loading="lazy" decoding="async">
             </section>
             <div class="points-container">
                 <div class="point-title-wrap">
@@ -1144,7 +1185,7 @@
 
             // フェードイン
             const fadeElements =
-                document.querySelectorAll('.scroll-fade');
+                document.querySelectorAll('.scroll-fade, .tyoukatsu-anim');
 
             if (!('IntersectionObserver' in window)) {
                 fixedCv?.classList.add('is-visible');
