@@ -102,7 +102,7 @@
             top: 40%;
             left: 70%;
             width: 30%;
-            animation: fvFadeIn 0.8s ease 0.5s both;
+            animation: fvFadeIn 0.8s ease .8s both;
         }
 
         /* --- 購入フローティングボタン（パルスアニメーション） --- */
@@ -219,18 +219,18 @@
 
         .empathy-word-3 {
             top: 37%;
-            --fade-delay: 0.35s;
+            --fade-delay: 0.3s;
         }
 
         .empathy-word-4 {
             top: 52.5%;
-            --fade-delay: 0.5s;
+            --fade-delay: 0.4s;
         }
 
         .empathy-word-5 {
             top: 72%;
             width: 78%;
-            --fade-delay: 0.65s;
+            --fade-delay: 0.5s;
         }
 
         /* --- 各セクション・コンテナ --- */
@@ -272,7 +272,7 @@
             top: 50%;
             left: 62%;
             width: 29%;
-            --fade-delay: 1.5s;
+            --fade-delay: 2s;
         }
 
         .overlay-hakko_2 {
@@ -308,7 +308,7 @@
             left: 5%;
             width: 90%;
             z-index: 4;
-            --fade-delay: 1s;
+            --fade-delay: 0.5s;
         }
 
         /* --- コだわり2：犬が飲むGIFのコンテナ --- */
@@ -784,7 +784,7 @@
     left: 66%;
     width:45%;
     transform:translateX(-50%);
-    --tyoukatsu-delay: .45s;
+    --tyoukatsu-delay: .8s;
 }
 
 .tyoukatsu_3{
@@ -812,7 +812,7 @@
     left:75%;
     width:35%;
     transform:translateX(-50%);
-    --tyoukatsu-delay: .28s;
+    --tyoukatsu-delay: .0s;
 }
 
 .tyoukatsu_6{
@@ -840,7 +840,7 @@
     left:50%;
     width:41%;
     transform:translateX(-50%);
-    --tyoukatsu-delay: .25s;
+    --tyoukatsu-delay: .18s;
 }
 
 .tyoukatsu_9{
@@ -884,6 +884,49 @@
     width:60%;
     transform:translateX(-50%);
     --tyoukatsu-delay: .08s;
+}
+.message-section {
+  /* 横幅と高さの制限（ご指定の条件） */
+  width: 100%;
+  max-width: 750px;
+  max-height: 750px;
+  
+  /* 縦横の比率を維持（縦長な1:2.5の比率をキープ） */
+  aspect-ratio:  750 / 750; 
+  
+  /* 背景の設定：画像の場合は url() に変更してください */
+  background-color: #FCF4E5; /* 画像のような上品な薄いベージュ */
+  /* background-image: url('bg-image.jpg'); */
+  background-size: cover;
+  background-position: center;
+
+  /* 中の文字を上下左右の中央に配置する */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto; /* 画面中央に配置したい場合 */
+  box-sizing: border-box;
+}
+
+.message-content {
+  text-align: center; /* 文字を中央揃え */
+  padding: 20px;
+  font-family: "Hiragino Mincho ProN", "Yu Mincho", serif; /* 上品な明朝体 */
+}
+
+.title {
+  /* 「枠の横幅の 7.5% の大きさ」という意味 */
+  font-size: 7.5cqw; 
+  font-weight: bold;
+  color: #5d4625;
+  margin-bottom: 5%; /* マージンも％にすると比率が崩れません */
+}
+
+.text {
+  /* 「枠の横幅の 5.5% の大きさ」という意味 */
+  font-size: 5.5cqw; 
+  color: #5d4625;
+  line-height: 1.6;
 }
     </style>
 </head>
@@ -1115,6 +1158,12 @@
                 <img src="./img/wankosoad11.webp" class="product-img" alt="安心へのQA" width="750" height="2405" loading="lazy" decoding="async">
             </div>
             <div class="relative-box">
+                <div class="message-section">
+  <div class="message-content">
+    <p class="title">最後に</p>
+    <p class="text">私たちのわん酵素への<br>思いだけお伝えさせてください。</p>
+  </div>
+</div>
                 <img src="./img/wankosoad_msg1.webp" class="product-img" alt="フッター記載1" width="750" height="1805" loading="lazy" decoding="async">
                 <img src="./img/wankosoad_msg2.webp" class="product-img" alt="フッター記載2" width="750" height="1812" loading="lazy" decoding="async">
                 <img src="./img/wankosoad_msg3.webp" class="product-img" alt="フッター記載3" width="750" height="1242" loading="lazy" decoding="async">
@@ -1203,7 +1252,7 @@
                     });
                 },
                 {
-                    threshold: 0.25,
+                    threshold: 0.2,
                     rootMargin: '0px 0px -28% 0px'
                 }
             );
