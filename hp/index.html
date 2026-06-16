@@ -1,790 +1,792 @@
 <!DOCTYPE html>
 <html lang="ja">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>わんHug＋ | あなたの宝物をやさしく抱きしめる</title>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;400;700&family=Lato:wght@300;400&display=swap"
-        rel="stylesheet">
-    <style>
-        /* --- 変数設定 --- */
-        :root {
-            --primary-color: #d19a7a;
-            /* 温かみのあるテラコッタ */
-            --accent-color: #8c644d;
-            /* 深みのあるブラウン */
-            --bg-color: #f9f8f6;
-            /* 柔らかなベージュ */
-            --text-color: #444444;
-            --white: #ffffff;
-            --line-color: #06c755;
-            /* LINEのブランドカラー */
-        }
-
-        /* --- 全体レイアウト --- */
-        body {
-            font-family: "Hiragino Mincho ProN", "MS Mincho", "Noto Serif JP", serif;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            margin: 0;
-            line-height: 1.8;
-            -webkit-font-smoothing: antialiased;
-        }
-
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 0 30px;
-        }
-
-        .section {
-            padding: 100px 0;
-        }
-
-        .text-center {
-            text-align: center;
-        }
-
-        /* --- ヘッダー --- */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            padding: 10px 0;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 1px solid #eee;
-        }
-
-        header .container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        h1 {
-            font-weight: 200;
-            letter-spacing: 0.2em;
-            font-size: 1.4rem;
-            color: var(--accent-color);
-        }
-
-        nav ul {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-            margin: 0;
-            padding: 0;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--text-color);
-            font-size: 0.85rem;
-            letter-spacing: 0.1em;
-            transition: 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--primary-color);
-        }
-
-        /* --- ヒーローエリア --- */
-        /* --- ヒーローエリアの修正 --- */
-        .hero {
-            position: relative;
-            height: 85vh;
-            /* 画面の高さの85% */
-            width: 100%;
-            overflow: hidden;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--white);
-            text-align: center;
-        }
-
-        .hero-picture {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: -1;
-            /* 文字の後ろに配置 */
-        }
-
-        .hero-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            /* 枠に合わせて画像を切り抜く */
-            object-position: center;
-            /* 画像の中心を基準にする */
-        }
-
-        /* 画像が明るすぎて文字が見えにくい場合の暗幕（必要に応じて） */
-        .hero::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.1);
-            /* 10%だけ暗くする */
-            z-index: 0;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            /* 暗幕や画像より前に出す */
-        }
-
-        .hero-btn-outline {
-            display: inline-block;
-            color: #fff;
-            text-decoration: none;
-            border: 1px solid #fff;
-            padding: 12px 30px;
-            font-size: 0.8rem;
-            letter-spacing: 0.1em;
-            transition: 0.3s;
-        }
-
-        .hero-btn-outline:hover {
-            background: #fff;
-            color: var(--accent-color);
-        }
-
-        /* スマホ用の高さ調整 */
-        @media (max-width: 768px) {
-            .hero {
-                height: 70vh;
-                /* スマホでは少し高さを抑えるときれいです */
-            }
-        }
-
-        /* --- 温活部の理念 (About) --- */
-        .about-section {
-            background: var(--white);
-            text-align: center;
-        }
-
-        .about-text {
-            max-width: 700px;
-            margin: 0 auto;
-            font-size: 1rem;
-            color: #666;
-        }
-
-        .concept-lead {
-            font-size: 1.5rem;
-            color: var(--primary-color);
-            margin-bottom: 30px;
-            display: block;
-        }
-
-        /* --- 商品グリッド --- */
-        .section-title {
-            font-size: 1.8rem;
-            font-weight: 200;
-            letter-spacing: 0.2em;
-            margin-bottom: 60px;
-            color: var(--accent-color);
-        }
-
-        .section-title span {
-            display: block;
-            font-size: 0.8rem;
-            color: #aaa;
-            margin-top: 10px;
-            font-family: 'Lato', sans-serif;
-        }
-
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-        }
-
-        .product-card {
-            text-align: center;
-            transition: 0.4s;
-        }
-
-        .product-img {
-            aspect-ratio: 1/1;
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: 20px;
-        }
-
-        .product-img img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: 0.6s;
-        }
-
-        .product-card:hover img {
-            transform: scale(1.08);
-        }
-
-        .product-card h3 {
-            font-size: 1.1rem;
-            font-weight: 400;
-            margin-bottom: 10px;
-        }
-
-        .product-card p {
-            font-size: 0.85rem;
-            color: #777;
-            margin-bottom: 20px;
-            padding: 0 10px;
-        }
-
-        .base-link {
-            display: inline-block;
-            font-size: 0.8rem;
-            color: var(--accent-color);
-            text-decoration: none;
-            border-bottom: 1px solid var(--accent-color);
-            padding-bottom: 5px;
-            transition: 0.3s;
-        }
-
-        .base-link:hover {
-            opacity: 0.6;
-        }
-
-        /* --- 施設予約 (Reserve) --- */
-        .reserve-section {
-            background: #f4f0ed;
-            border-radius: 4px;
-            padding: 80px 40px;
-            margin-bottom: 100px;
-        }
-
-        .btn-reserve-large {
-            display: inline-block;
-            background: var(--accent-color);
-            color: var(--white);
-            padding: 18px 50px;
-            text-decoration: none;
-            border-radius: 2px;
-            font-size: 0.9rem;
-            letter-spacing: 0.1em;
-            margin-top: 30px;
-            transition: 0.3s;
-        }
-
-        .btn-reserve-large:hover {
-            background: var(--primary-color);
-        }
-
-        .btn-line {
-            display: inline-block;
-            background: var(--line-color);
-            color: var(--white);
-            padding: 15px 40px;
-            text-decoration: none;
-            border-radius: 30px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            letter-spacing: 0.1em;
-            transition: 0.3s;
-            box-shadow: 0 4px 15px rgba(6, 199, 85, 0.3);
-        }
-
-        .btn-line:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(6, 199, 85, 0.4);
-            opacity: 0.9;
-        }
-
-        /* --- フッター --- */
-        footer {
-            padding: 60px 0;
-            border-top: 1px solid #eee;
-            text-align: center;
-            font-size: 0.7rem;
-            color: #aaa;
-            letter-spacing: 0.1em;
-        }
-
-        /* スマホ対応 */
-        @media (max-width: 768px) {
-            .hero-content h2 {
-                font-size: 1.8rem;
-            }
-
-            .section {
-                padding: 60px 0;
-            }
-        }
-
-        /* スマホ用（768px以下）のヘッダー調整 */
-        @media (max-width: 768px) {
-            header .container {
-                padding: 0 15px;
-                /* コンテナの左右余白を少し詰めて横幅を確保 */
-            }
-
-            h1 {
-                font-size: 1.1rem !important;
-                /* 文字サイズを一段階小さく */
-                white-space: nowrap;
-                /* 絶対に改行させない指示 */
-                letter-spacing: 0.1em;
-                /* 字間を少し詰めて1行に収まりやすくする */
-            }
-
-            nav ul {
-                gap: 12px;
-                /* メニューの間隔も少し詰める */
-            }
-
-            nav a {
-                font-size: 0.7rem;
-                /* メニューの文字も少しだけ小さく */
-            }
-        }
-
-        /* Instagramセクションのスタイル */
-        .insta-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            /* 横に4つ並べる */
-            gap: 15px;
-            margin-top: 40px;
-        }
-
-        .insta-item {
-            aspect-ratio: 1 / 1;
-            overflow: hidden;
-            background-color: #eee;
-            /* 画像がない時のダミー色 */
-        }
-
-        .insta-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: opacity 0.3s;
-        }
-
-        .insta-item img:hover {
-            opacity: 0.8;
-        }
-
-        .insta-follow-btn {
-            display: inline-block;
-            font-size: 0.75rem;
-            letter-spacing: 0.2em;
-            color: var(--accent-color);
-            text-decoration: none;
-            border: 1px solid var(--accent-color);
-            padding: 12px 40px;
-            transition: 0.3s;
-        }
-
-        .insta-follow-btn:hover {
-            background-color: var(--accent-color);
-            color: #fff;
-        }
-
-        /* スマホでは2列にする */
-        @media (max-width: 768px) {
-            .insta-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 10px;
-            }
-        }
-
-        /* --- ボタンのアニメーション強化 --- */
-        .btn-main,
-        .btn-reserve-large,
-        .insta-follow-btn {
-            position: relative;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .btn-main::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-            transition: 0.5s;
-            z-index: -1;
-        }
-
-        .btn-main:hover::before {
-            left: 100%;
-        }
-
-        /* --- フッターのデザイン --- */
-        .site-footer {
-            background-color: #fff;
-            padding: 80px 0 0;
-            margin-top: 100px;
-            border-top: 1px solid #f0eeeb;
-        }
-
-        .footer-content {
-            display: flex;
-            justify-content: space-between;
-            padding-bottom: 60px;
-        }
-
-        .footer-logo {
-            font-size: 1.2rem;
-            margin-bottom: 15px;
-        }
-
-        .footer-copy {
-            font-size: 0.8rem;
-            color: #999;
-        }
-
-        .footer-nav {
-            display: flex;
-            gap: 60px;
-        }
-
-        .footer-link-group h4 {
-            font-size: 0.75rem;
-            letter-spacing: 0.1em;
-            color: var(--primary-color);
-            margin-bottom: 20px;
-            font-family: 'Lato', sans-serif;
-        }
-
-        .footer-link-group ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-        }
-
-        .footer-link-group li {
-            margin-bottom: 10px;
-        }
-
-        .footer-link-group a {
-            text-decoration: none;
-            color: #666;
-            font-size: 0.8rem;
-            transition: 0.3s;
-        }
-
-        .footer-link-group a:hover {
-            color: var(--primary-color);
-        }
-
-        .footer-bottom {
-            background: var(--bg-color);
-            padding: 30px 0;
-            text-align: center;
-            border-top: 1px solid #f0eeeb;
-        }
-
-        .footer-bottom p {
-            font-size: 0.65rem;
-            color: #bbb;
-            margin: 0;
-        }
-
-        /* --- セクションタイトルをさらに美しく --- */
-        .section-title {
-            position: relative;
-            padding-bottom: 20px;
-        }
-
-        .section-title::after {
-            content: "";
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 30px;
-            height: 1px;
-            background-color: var(--primary-color);
-        }
-
-        /* --- スマホ時のフッター調整 --- */
-        @media (max-width: 768px) {
-            .footer-content {
-                flex-direction: column;
-                text-align: center;
-                gap: 40px;
-            }
-
-            .footer-nav {
-                justify-content: center;
-                gap: 40px;
-            }
-        }
-
-        /* 温活アドバイスボックス */
-        .onkatsu-tip-box {
-            background-color: #fdf2e9;
-            /* 優しいオレンジ系 */
-            padding: 40px;
-            border-radius: 12px;
-            text-align: center;
-            border: 1px dashed var(--primary-color);
-            margin-bottom: 60px;
-        }
-
-        .tip-title {
-            color: var(--accent-color);
-            font-size: 1.1rem;
-            margin-bottom: 20px;
-        }
-
-        .size-guide-text {
-            margin: 20px 0;
-            font-weight: bold;
-            color: var(--accent-color);
-            font-family: 'Lato', sans-serif;
-            font-size: 0.9rem;
-        }
-
-        .small-text {
-            font-size: 0.75rem;
-            color: #888;
-        }
-
-        /* オーダーフロー */
-        .order-flow-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 40px;
-        }
-
-        .order-step {
-            padding: 20px;
-            background: #fcfaf8;
-            border-radius: 8px;
-        }
-
-        .order-step h4 {
-            font-size: 1rem;
-            margin: 15px 0;
-            color: var(--accent-color);
-        }
-
-        .step-num {
-            font-family: 'Lato', sans-serif;
-            font-size: 0.7rem;
-            letter-spacing: 0.2em;
-            color: var(--primary-color);
-            border-bottom: 1px solid var(--primary-color);
-        }
-
-        .shipping-info {
-            margin-top: 50px;
-            font-size: 0.85rem;
-            color: #666;
-            border-left: 3px solid #f0eeeb;
-            padding-left: 20px;
-            text-align: left;
-            display: inline-block;
-        }
-
-        @media (max-width: 768px) {
-            .order-flow-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .onkatsu-tip-box {
-                padding: 25px;
-            }
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <title>酵素株式会社 | 発酵から、発幸へ。</title>
+  <meta name="description" content="酵素株式会社は、自然由来の発酵技術で酵素ドリンクの製造・OEMを行う佐賀のものづくり企業です。小ロットから量産まで柔軟対応。" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://kousoinc-ui.github.io/kouso-homepage/" />
+  <link rel="alternate" href="https://kousoinc-ui.github.io/kouso-homepage/" hreflang="ja" />
+  <link rel="alternate" href="https://kousoinc-ui.github.io/kouso-homepage/" hreflang="x-default" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="酵素株式会社 | 発酵から、発幸へ。" />
+  <meta property="og:description" content="自然素材 × 発酵技術 × 安心設計。OEM・ODMで小ロットから大量生産まで、貴社ブランドの酵素ドリンク製造をトータルサポート。" />
+  <meta property="og:url" content="https://kousoinc-ui.github.io/kouso-homepage/" />
+  <meta property="og:image" content="https://kousoinc-ui.github.io/kouso-homepage/img/ogp.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- PWA/Branding -->
+  <meta name="theme-color" content="#004D40" />
+  <!-- GitHub Pages想定：ルート相対ではなく相対パスに変更 -->
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+:root {
+  --bg:#0a0f0d;
+  --bg-soft:#0f1613;
+  --card:#0f1715cc;
+  --white:#f6f7f6;
+  --muted:#b7c0ba;
+  --brand:#004D40;      /* 深緑 */
+  --brand-2:#1aa27a;
+  --gold:#D4AF37;       /* 金色 */
+  --shadow:0 10px 30px rgba(0,0,0,.35);
+  --radius:18px;
+  --text:#F2F5F4;
+  --muted-strong:#CFD6D1;
+  --border: rgba(255,255,255,.18);
+  --border-strong: rgba(255,255,255,.26);
+}
+* { box-sizing:border-box }
+html { scroll-behavior:smooth }
+body {
+  margin:0; color:var(--text);
+  font-family:'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  line-height:1.7;
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(0,77,64,.35), transparent 60%),
+    radial-gradient(900px 500px at -10% 20%, rgba(212,175,55,.18), transparent 60%),
+    linear-gradient(180deg, #0b0e0d 0%, #0a0f0d 60%, #0a0f0d 100%);
+}
+.skip-link { position:absolute; left:-999px; top:auto; width:1px; height:1px; overflow:hidden }
+.skip-link:focus { position:static; width:auto; height:auto; padding:8px 12px; background:#000; color:#fff }
+a {
+  color:var(--brand-2);
+  text-decoration-thickness:.08em;
+  text-underline-offset:2px;
+  /* フォールバック */
+  text-decoration-color: currentColor;
+  /* 対応ブラウザ用 */
+  text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
+}
+a:hover, a:focus-visible { text-decoration:underline }
+img { max-width:100%; display:block }
+.container { width:min(1120px, 94%); margin:0 auto }
+
+/* Header（グローバルだけに適用） */
+body > header {
+  position:sticky;
+  top:0;
+  z-index:50;
+  background:linear-gradient(180deg, rgba(10,15,13,.8), rgba(10,15,13,.35));
+  border-bottom:1px solid rgba(255,255,255,.06);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+.nav { display:flex; align-items:center; justify-content:space-between; padding:14px 0 }
+.logo { display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:.04em }
+.logo-mark { width:36px; height:36px; border-radius:12px; display:grid; place-items:center; background:conic-gradient(from 130deg, var(--gold), var(--brand), #0a0f0d 260deg); border:1px solid rgba(255,255,255,.08); box-shadow:var(--shadow) }
+.logo-mark span { font-weight:900 }
+nav { position:relative }
+nav ul { display:flex; gap:18px; list-style:none; padding:0; margin:0; flex-wrap:nowrap; overflow-x:auto; -webkit-overflow-scrolling:touch }
+nav a { padding:10px 12px; border-radius:12px; color:var(--muted-strong); white-space:nowrap }
+nav a:hover { color:#fff; background:rgba(255,255,255,.08) }
+.cta { background:linear-gradient(135deg, var(--brand), var(--brand-2)); color:#fff; padding:10px 16px; border-radius:12px; font-weight:700; box-shadow:var(--shadow) }
+
+/* モバイルメニューのトグルボタン */
+.menu-toggle { display:none; align-items:center; gap:10px; border:1px solid var(--border-strong); background:rgba(255,255,255,.08); color:#fff; border-radius:12px; padding:10px 12px; font-weight:700 }
+.menu-toggle .bars { width:20px; height:14px; position:relative; display:inline-block }
+.menu-toggle .bars::before, .menu-toggle .bars::after, .menu-toggle .bars span { content:""; position:absolute; left:0; right:0; height:2px; background:#fff; border-radius:2px }
+.menu-toggle .bars::before { top:0 }
+.menu-toggle .bars span { top:6px }
+.menu-toggle .bars::after { bottom:0 }
+
+/* Hero */
+.hero { position:relative; overflow:hidden; min-height:80svh }
+.hero-video { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; z-index:0; filter:brightness(.35) contrast(1.05) saturate(.95) }
+.hero::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,.55) 0%, rgba(0,0,0,.45) 40%, rgba(0,0,0,.35) 100%); z-index:0; pointer-events:none }
+.hero-inner {
+  position:relative;
+  z-index:1;
+  padding:clamp(96px, 16vh, 140px) 0 clamp(48px,8vh,96px);
+}
+.hero-grid { display:grid; grid-template-columns:1fr; max-width:820px; gap:24px }
+.hero h1 {
+  font-weight:900;
+  font-size:clamp(36px, 6.5vw, 72px);
+  line-height:1.05;
+  letter-spacing:-.02em;
+  margin:0 0 14px;
+  text-shadow:0 2px 12px rgba(0,0,0,.6), 0 0 1px rgba(0,0,0,.3);
+}
+.hero h1 .accent {
+  position:relative;
+  display:inline-block;
+}
+.hero h1 .accent::after {
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:-10px;
+  width:72px;
+  height:3px;
+  border-radius:2px;
+  background:linear-gradient(90deg, var(--gold), var(--brand-2));
+}
+.hero-sub{
+  margin:8px 0 10px;
+  font-size:14px;
+  letter-spacing:.18em;
+  text-transform:uppercase;
+  color:var(--gold);
+}
+.hero p.lead { color:var(--muted-strong); font-size:clamp(15px, 2.2vw, 18px); max-width:60ch }
+.hero-actions { display:flex; gap:12px; margin-top:100px; flex-wrap:wrap }
+.btn { display:inline-flex; align-items:center; gap:8px; padding:12px 18px; border-radius:14px; font-weight:700; border:1px solid var(--border-strong); color:#fff; cursor:pointer; text-decoration:none }
+.btn.primary { background:linear-gradient(135deg, var(--brand), var(--brand-2)); box-shadow:var(--shadow) }
+.btn.ghost {
+  background:rgba(255,255,255,.06);
+  border-color:var(--border-strong);
+}
+.btn.ghost:hover{
+  background:rgba(255,255,255,.14);
+}
+.btn.btn-small{
+  font-size:13px;
+  padding:8px 14px;
+}
+.hero-card { display:none }
+.hero-metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; margin-top:12px; max-width:760px }
+.metric { padding:16px; border-radius:16px; background:rgba(255,255,255,.06); border:1px solid var(--border) }
+.metric .kpi { font-size:16px; font-weight:900 }
+
+/* Section */
+section.section {
+  padding:48px 0 80px;
+  border-top:1px solid var(--border);
+}
+.section h2 { font-size:28px; margin:0 0 12px; color:#fff }
+.section .sub { color:var(--muted-strong); margin:0 0 28px }
+
+/* Cards */
+.cards { display:grid; grid-template-columns:repeat(12,1fr); gap:14px }
+.card {
+  grid-column:span 6;
+  padding:22px;
+  border-radius:18px;
+  background:linear-gradient(135deg, rgba(255,255,255,.04), rgba(255,255,255,.01));
+  border:1px solid var(--border-strong);
+  box-shadow:0 18px 40px rgba(0,0,0,.35);
+}
+.card h3 {
+  margin:0 0 6px;
+  font-size:16px;
+}
+.card p {
+  color:var(--muted-strong);
+  font-size:14px;
+}
+.card .tags { display:flex; gap:8px; flex-wrap:wrap; margin-top:10px }
+.tag { font-size:12px; padding:6px 10px; border:1px solid rgba(255,255,255,.22); border-radius:999px; background:rgba(255,255,255,.06); color:#e2eae5 }
+
+/* Products */
+.product-grid { display:grid; grid-template-columns:repeat(12,1fr); gap:14px }
+.product { grid-column:span 6; border-radius:18px; overflow:hidden; border:1px solid var(--border); background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.06)) }
+.product .thumb { height:260px; background:none; overflow:hidden }
+.product .thumb img { width:100%; height:100%; object-fit:cover; display:block }
+.product .inner { padding:18px }
+.product h3 { margin:0 0 6px }
+.product p { margin:0; color:var(--muted-strong) }
+
+/* About */
+.about-grid { display:grid; grid-template-columns:1.1fr .9fr; gap:18px }
+.about-box {
+  border-radius:18px;
+  padding:22px;
+  background:rgba(15,23,21,.92);
+  border:1px solid var(--border);
+}
+.about-box p{
+  line-height:1.9;
+  font-size:15px;
+}
+.about-box p + p{
+  margin-top:10px;
+}
+.kv { height:100%; min-height:260px; border-radius:18px; background: radial-gradient(600px 260px at 70% 10%, rgba(212,175,55,.22), transparent 60%), url("img/saga.jpg") center/cover no-repeat; border:1px solid var(--border) }
+
+/* Contact */
+.contact-wrap { display:grid; grid-template-columns:1.2fr .8fr; gap:18px }
+.contact-box { border-radius:18px; padding:22px; background:rgba(15,23,21,.92); border:1px solid var(--border) }
+.contact-list { margin:0; padding:0; list-style:none }
+.contact-list li { padding:10px 0; border-bottom:1px dashed rgba(255,255,255,.18) }
+
+/* CTA row（OEMステップ下） */
+.cta-row{
+  margin-top:24px;
+  padding:16px 18px;
+  border-radius:16px;
+  border:1px solid var(--border);
+  background:rgba(0,0,0,.35);
+  display:flex;
+  flex-wrap:wrap;
+  gap:12px;
+}
+
+/* Footer */
+footer { padding:36px 0 56px; color:var(--muted-strong); text-align:center }
+
+/* Responsive */
+@media (max-width:980px){
+  .nav { padding:10px 0 }
+  .menu-toggle { display:inline-flex }
+
+  nav ul{
+    position:absolute;
+    right:0; left:0;
+    top:48px;
+    display:none !important;
+    flex-direction:column;
+    gap:0;
+    background:rgba(15,23,21,.96);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:8px;
+    box-shadow:var(--shadow);
+    z-index:9999;
+  }
+  nav ul.open{ display:flex !important } 
+  nav li { border-bottom:1px dashed rgba(255,255,255,.14) }
+  nav li:last-child { border-bottom:none }
+  nav a { display:block; padding:14px 12px }
+
+  .about-grid, .contact-wrap { grid-template-columns:1fr }
+  .cards .card, .product-grid .product { grid-column:span 12 }
+  .hero::after { background:linear-gradient(180deg, rgba(0,0,0,.65) 0%, rgba(0,0,0,.5) 50%, rgba(0,0,0,.4) 100%) }
+  .hero-metrics { grid-template-columns:1fr }
+  .metric { padding:14px }
+  .kv { min-height:220px }
+  .hero-actions .btn { width:100%; justify-content:center }
+  .cta-row .btn{ width:100%; justify-content:center; }
+  section.section{
+    padding:32px 0 48px;
+  }
+}
+
+/* アクセシビリティ */
+a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible { outline:2px solid var(--gold); outline-offset:2px; border-radius:10px }
+
+/* フォーム */
+#contactForm input, #contactForm textarea {
+  width:100%;
+  padding:14px;
+  font-size:16px;
+  background:rgba(255,255,255,.08);
+  border:1px solid var(--border-strong);
+  border-radius:12px;
+  color:var(--text);
+}
+/* フォールバック色 */
+#contactForm input::placeholder,
+#contactForm textarea::placeholder{
+  color:var(--muted-strong);
+  opacity:.8;
+}
+/* 対応ブラウザ用 */
+#contactForm input::placeholder,
+#contactForm textarea::placeholder{
+  color:color-mix(in oklab, var(--muted-strong) 75%, transparent);
+}
+#contactForm input:focus, #contactForm textarea:focus { outline:2px solid var(--brand-2); outline-offset:2px }
+#submitBtn { width:100%; border:1px solid var(--border-strong)!important }
+
+/* Timeline */
+.section--timeline .timeline { position:relative; padding-left:28px; counter-reset:step }
+.section--timeline .timeline::before { content:""; position:absolute; left:10px; top:0; bottom:0; width:2px; background:var(--border) }
+.section--timeline .step {
+  position:relative;
+  margin:0 0 20px;
+  padding:16px;
+  border-radius:16px;
+  background:rgba(15,23,21,.92);
+  border:1px solid var(--border);
+}
+.section--timeline .step::before { content:counter(step); counter-increment:step; position:absolute; left:-28px; top:18px; width:20px; height:20px; border-radius:50%; display:grid; place-items:center; background:linear-gradient(135deg, var(--brand), var(--brand-2)); font-size:12px; font-weight:700; color:#fff }
+.section--timeline .step header { display:flex; align-items:center; gap:10px; margin-bottom:6px }
+.badge-lite { font-size:12px; padding:4px 8px; border-radius:999px; border:1px solid var(--border); background:rgba(255,255,255,.06); color:#e2eae5 }
+.meta { display:flex; gap:8px; flex-wrap:wrap; margin-top:8px }
+.meta .tag { font-size:12px; padding:4px 8px; border-radius:999px; border:1px dashed var(--border); background:transparent; color:#cfe0d9 }
+.step .row { display:grid; grid-template-columns:.9fr 1.1fr; gap:12px }
+.step .row img { width:100%; height:140px; object-fit:cover; border:1px solid var(--border); border-radius:12px }
+
+/* Stepper */
+.section--stepper .stepper { position:relative; display:flex; justify-content:space-between; align-items:flex-start; margin:6px 0 22px; gap:12px }
+.section--stepper .stepper::before { content:""; position:absolute; left:0; right:0; top:13px; height:2px; background:var(--border) }
+.node { position:relative; text-align:center; width:25% }
+.dot { width:26px; height:26px; border-radius:50%; display:inline-grid; place-items:center; font-weight:800; font-size:12px; background:rgba(255,255,255,.06); border:1px solid var(--border); color:#fff }
+.node.active .dot { background:linear-gradient(135deg, var(--brand), var(--brand-2)); border-color:transparent }
+.node .label { margin-top:8px; font-size:12px; color:var(--muted-strong) }
+.step-cards { display:grid; grid-template-columns:repeat(12,1fr); gap:14px; margin-top:8px }
+.step-cards .card { grid-column:span 3 }
+@media (max-width:980px){
+  .step .row { grid-template-columns:1fr }
+  .step-cards .card { grid-column:span 12 }
+}
+  </style>
 </head>
-
 <body>
+  <a href="#top" class="skip-link">メインコンテンツへスキップ</a>
 
-    <header>
-        <div class="container">
-            <h1>わんHug＋</h1>
-            <nav>
-                <ul>
-                    <li><a href="#about">ABOUT</a></li>
-                    <li><a href="#shop">SHOP</a></li>
-                    <li><a href="#reserve">RESERVE</a></li>
-                </ul>
-            </nav>
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="酵素株式会社 ホーム">
+        <div class="logo-mark" aria-hidden="true"><span>酵</span></div>
+        <div>酵素株式会社</div>
+      </a>
+      
+      <!-- モバイル用メニューボタン -->
+      <button class="menu-toggle" aria-label="メニューを開閉" aria-controls="primary-menu" aria-expanded="false">
+        <span class="bars"><span></span></span>
+        メニュー
+      </button>
+
+      <nav aria-label="主要ナビゲーション">
+        <ul id="primary-menu">
+          <li><a href="#service">サービス</a></li>
+          <li><a href="#products">商品紹介</a></li>
+          <li><a href="#process">製造工程</a></li>
+          <li><a href="#about">私たちについて</a></li>
+          <li><a href="blog/">ブログ</a></li>
+          <li><a href="#contact" class="cta">OEMのご相談</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top" role="main">
+    <!-- Hero -->
+    <section class="hero" aria-label="キービジュアル">
+      <video autoplay muted loop playsinline class="hero-video" poster="img/main.jpg">
+        <source src="video/fv.webm" type="video/webm" />
+        <source src="video/fv.mp4" type="video/mp4" />
+      </video>
+      <noscript>
+        <img src="img/main.jpg" alt="自然と発酵を象徴する背景" width="1600" height="900" />
+      </noscript>
+
+      <div class="container hero-inner">
+        <div class="hero-grid">
+          <div>
+            <h1>
+              <span class="accent">発酵から、発幸へ。</span>
+            </h1>
+            <p class="hero-sub">
+              酵素ドリンクのOEM・ODMを専門とする佐賀の小さな発酵工場です。
+            </p>
+            <p class="lead">
+              健康とは、誰かに与えられるものではなく、自らの内に育まれるもの。<br>
+              一人ひとりが自分の心と体に耳を傾け、最適な選択ができる世界を目指します。<br>
+              そして、その輪が家族へ、地域へ、社会へと広がっていく未来を描いています。
+            </p>
+          </div>
         </div>
-    </header>
+      </div>
+    </section>
 
-    <main>
-        <section class="hero">
-            <picture class="hero-picture">
-                <source media="(max-width: 768px)" srcset="img/fv_mobile.png">
-                <img src="img/fv_pc.png" alt="わんHug＋ メインビジュアル" class="hero-img">
-            </picture>
+    <!-- About -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title">私たちについて</h2>
+        <p class="sub">発幸で、笑顔と喜びを循環させる</p>
+        <div class="about-grid">
+          <div class="about-box">
+            <h3>創業の想い</h3>
+            <p>
+              私たちは「発酵＝発幸」という言葉に込めた想いのもと、自然の力で人と社会を幸せにすることを目指して酵素株式会社を立ち上げました。
+            </p>
+            <p>
+              きっかけは、自然や食事療法、発酵、漢方といった「目に見えない力」に触れたことでした。そこには、人間本来の治癒力を支え、心身を整える知恵がありました。一方で、健康をうたう商品の中には、誇張された表現や実態の伴わないものも少なくありません。そんな現実を知る中で、「本当に価値ある商品を、正しい知識とともに届けたい」という想いが強くなりました。
+            </p>
+            <p>
+              「発幸」という言葉には、“幸せを自ら発すること”という願いを込めています。幸せは誰かから与えられるものではなく、自らの中から発酵するように湧き出すもの。それを食や自然の力を通じてサポートしたいという考えから、「発酵」と「発幸」を重ね合わせました。
+            </p>
+            <p style="margin:16px 0;">
+              <a href="#service" class="btn ghost btn-small">酵素ドリンクOEMの特徴を見る</a>
+            </p>
+            <p>
+              酵素株式会社では、無添加・誠実・顧客本位を大切に、発酵技術・健康食品・漢方の知識を融合させた商品づくりを行っています。一人ひとりが正しい知識を持ち、自分に合った健康を選べる社会をつくる。そして、「発幸」という輪を広げていく——それが私たちの使命です。
+            </p>
+            <h3 style="margin-top:18px">会社概要</h3>
+            <ul>
+              <li><strong>会社名：</strong>酵素株式会社</li>
+              <li><strong>所在地：</strong>〒849-0922 佐賀県佐賀市高木瀬東5丁目21-13</li>
+              <li><strong>設立：</strong>2025年7月25日</li>
+              <li><strong>代表取締役：</strong>野尻 将之</li>
+              <li><strong>事業内容：</strong>酵素ドリンク・発酵食品の製造販売、OEM受託、健康支援</li>
+            </ul>
+          </div>
+          <div class="kv" role="img" aria-label="自然と発酵を象徴するイメージ"></div>
+        </div>
+      </div>
+      <!-- 組織スキーマ -->
+      <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "酵素株式会社",
+        "url": "https://kousoinc-ui.github.io/kouso-homepage/",
+        "logo": "https://kousoinc-ui.github.io/kouso-homepage/icon.svg",
+        "image": "https://kousoinc-ui.github.io/kouso-homepage/img/ogp.jpg",
+        "address": {
+          "@type": "PostalAddress",
+          "addressCountry": "JP",
+          "addressRegion": "佐賀県",
+          "addressLocality": "佐賀市",
+          "streetAddress": "高木瀬東5丁目21-13",
+          "postalCode": "849-0922"
+        },
+        "email": "mailto:kouso.inc@gmail.com",
+        "telephone": "+81-90-6982-5502",
+        "sameAs": []
+      }
+      </script>
+    </section>
 
-            <div class="hero-content">
-                <h2>あなたの宝物を<br>やさしく抱きしめる</h2>
-                <p>内側から、ポカポカめぐる毎日へ</p>
-                <div style="margin-top: 30px;">
-                    <a href="#shop" class="hero-btn-outline" style="margin-right: 15px;">BRAND STORY</a>
-                    <a href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" class="btn-line">公式LINEで相談する</a>
-                </div>
+    <!-- Service -->
+    <section id="service" class="section" aria-labelledby="service-title">
+      <div class="container">
+        <h2 id="service-title">酵素ドリンクの製造サービス</h2>
+        <p class="sub">厳選した自然素材と独自の発酵技術で、健康と美味しさを両立。OEM/ODM で企画から量産まで伴走します。</p>
+        <div class="cards">
+          <article class="card">
+            <h3>原材料へのこだわり</h3>
+            <p>佐賀県産をはじめ、全国から厳選した素材を使用。不要な添加物は使わず、自然のままの味わいを大切にします。</p>
+            <div class="tags"><span class="tag">厳選素材</span><span class="tag">無添加設計</span><span class="tag">アレルゲン配慮</span></div>
+          </article>
+          <article class="card">
+            <h3>独自の発酵プロセス</h3>
+            <p>素材の旨味を最大限に引き出し、飲みやすく、安定した品質を実現。長年の発酵ノウハウを活かした製造工程です。</p>
+            <div class="tags"><span class="tag">安定品質</span><span class="tag">風味最適化</span><span class="tag">ロット管理</span></div>
+          </article>
+          <article class="card">
+            <h3>OEM/ODM の柔軟性</h3>
+            <p>味・機能・容量・パッケージまで自由にカスタマイズ。小ロット試作から量産まで対応可能です。</p>
+            <div class="tags"><span class="tag">小ロット</span><span class="tag">スピード試作</span><span class="tag">EC/サロン対応</span></div>
+          </article>
+          <article class="card">
+            <h3>品質保証と法令順守</h3>
+            <p>食品表示や薬機法に沿った表現提案、検査・トレーサビリティの整備までサポートします。</p>
+            <div class="tags"><span class="tag">表示サポート</span><span class="tag">検査手配</span><span class="tag">トレース</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Products -->
+    <section id="products" class="section" aria-labelledby="products-title">
+      <div class="container">
+        <h2 id="products-title">商品紹介</h2>
+        <p class="sub">
+          ベースとなる酵素ドリンクに加え、ターゲットやお悩みに合わせた
+          「機能性を特化させた酵素ドリンク」の設計が可能です。
+        </p>
+        <div class="product-grid">
+          <article class="product">
+            <div class="thumb">
+              <img src="img/standard.png" alt="酵素ドリンク（スタンダードタイプ）" loading="lazy" decoding="async" width="640" height="400">
             </div>
-        </section>
-
-        <section id="about" class="section about-section">
-            <div class="container">
-                <span class="concept-lead">わんHug＋（わんハグプラス）</span>
-                <div class="about-text">
-                    <p>犬の平熱は人間よりも高い38度台。<br>
-                        現代のわんちゃんたちは、冷房や運動不足で意外にも「冷え」を抱えています。</p>
-                    <p>わんHug＋は、食事、マッサージ、温熱ケアを通じて、<br>
-                        愛犬が本来持っている「めぐる力」をサポートし、<br>
-                        あなたの大切な宝物をやさしく抱きしめるようなケアを提案します。</p>
-                </div>
+            <div class="inner">
+              <h3>スタンダード酵素ドリンク</h3>
+              <p>
+                毎日飲み続けやすいフルーツベースの酵素ドリンク。<br>
+                食生活のベースアップや、初めての酵素ドリンクに最適な設計です。
+              </p>
             </div>
-        </section>
+          </article>
 
-        <section id="shop" class="container section text-center">
-            <h2 class="section-title">Brand Lineup<span>わんHug＋の4つの柱</span></h2>
-
-            <div class="product-grid">
-                <div class="product-card">
-                    <div class="product-img"><img src="img/wankoso.png" alt="わん酵素"></div>
-                    <h3>①わん酵素</h3>
-                    <p>〜大切なあなたのワンちゃんに〜<br>「出す」と「温める」を同時に叶える特別レシピ。</p>
-                    <a href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" class="btn-line"
-                        style="padding: 10px 25px; font-size: 0.8rem;">LINEで詳細を見る</a>
-                </div>
-                <div class="product-card">
-                    <div class="product-img"><img src="img/kairo.png" alt="わんぽか"></div>
-                    <h3>②わんぽか / わんぽかcare+</h3>
-                    <p>内臓を優しく包み込み、免疫力の土台を作ります。</p>
-                    <a href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" class="btn-line"
-                        style="padding: 10px 25px; font-size: 0.8rem;">LINEで詳細を見る</a>
-                </div>
-                <div class="product-card">
-                    <div class="product-img"><img src="img/kousoyoku.png" alt="酵素浴"></div>
-                    <h3>③酵素浴</h3>
-                    <p>芯からじっくり温まる、わんちゃん専用の酵素入浴。</p>
-                    <a href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" class="btn-line"
-                        style="padding: 10px 25px; font-size: 0.8rem;">LINEで予約・相談</a>
-                </div>
-                <div class="product-card">
-                    <div class="product-img"><img src="img/corohug.png" alt="CoroHugわん"></div>
-                    <h3>④CoroHugわん</h3>
-                    <p>〜笑顔のための着てらく〜<br>動きやすさと温かさを両立したオリジナルウェア。</p>
-                    <a href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" class="btn-line"
-                        style="padding: 10px 25px; font-size: 0.8rem;">LINEで案内を受け取る</a>
-                </div>
+          <article class="product">
+            <div class="thumb">
+              <img src="img/premium.png" alt="機能性を特化させた酵素ドリンク" loading="lazy" decoding="async" width="640" height="400">
             </div>
-        </section>
-        <section id="how-to-order" class="section about-section" style="background-color: #fff;">
-            <div class="container">
-                <div class="onkatsu-tip-box">
-                    <h3 class="tip-title">♨ わんHug＋からのアドバイス</h3>
-                    <p>わんちゃんの健康や温活について、もっと詳しく知りたい方は公式LINEにて個別相談も承っております。お気軽にご相談ください。</p>
-                    <a href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" class="btn-line">公式LINEで相談する</a>
-                </div>
-
-                <h2 class="section-title" style="margin-top:80px;">How to Order<span>公式LINEでの注文・相談</span></h2>
-
-                <div class="order-flow-grid">
-                    <div class="order-step">
-                        <span class="step-num">STEP 01</span>
-                        <h4>公式LINEを友だち追加</h4>
-                        <p>まずはボタンから公式LINEを友だち追加してください。最新情報やケアのアドバイスも定期的にお届けしています。</p>
-                        <a href="https://line.me/R/ti/p/@YOUR_LINE_ID" target="_blank" class="btn-line"
-                            style="padding: 10px 20px; font-size: 0.7rem; margin-top: 10px;">LINE友だち追加</a>
-                    </div>
-                    <div class="order-step">
-                        <span class="step-num">STEP 02</span>
-                        <h4>メッセージでお問い合わせ</h4>
-                        <p>気になる商品名や、愛犬の「冷え」についてお気軽にご相談ください。専属アドバイザーが丁寧に回答いたします。</p>
-                    </div>
-                    <div class="order-step">
-                        <span class="step-num">STEP 03</span>
-                        <h4>ご注文・お支払い</h4>
-                        <p>LINEチャット内にて決済方法（PayPay・銀行振込等）をご案内します。確認後、心を込めて発送いたします。</p>
-                    </div>
-                </div>
-
-                <div class="shipping-info">
-                    <p>【発送】全種類 クリックポストでお届けします。<br>
-                        【特典】カイロの使用方法をまとめた冊子を同封いたします。はじめての方もご安心ください♥</p>
-                </div>
+            <div class="inner">
+              <h3>特化型酵素ドリンク</h3>
+              <p>
+                腸内環境サポート、美容・エイジングケア、休息サポートなど、<br>
+                目的に合わせて機能性素材をプラスしたカスタムレシピ。<br>
+                EC・サロン・クリニックなど、販売チャネルごとのコンセプト設計にも対応します。
+              </p>
             </div>
-        </section>
-        <section id="instagram" class="container section text-center">
-            <h2 class="section-title">Instagram<span>@onkatsu_club</span></h2>
+          </article>
+        </div>
+      </div>
+    </section>
 
-            <div class="insta-grid">
-                <div class="insta-item"><img src="insta1.jpg" alt="温活部の日常"></div>
-                <div class="insta-item"><img src="insta2.jpg" alt="温活部の日常"></div>
-                <div class="insta-item"><img src="insta3.jpg" alt="温活部の日常"></div>
-                <div class="insta-item"><img src="insta4.jpg" alt="温活部の日常"></div>
+
+    <!-- Process -->
+    <section id="process" class="section section--timeline" aria-labelledby="process-title">
+      <div class="container">
+        <h2 id="process-title">製造工程</h2>
+        <p class="sub">原料受け入れから出荷まで。発酵のちからを最大化しつつ、安定品質を守ります。</p>
+
+        <div class="timeline" aria-label="製造工程の流れ">
+          <article class="step">
+            <header>
+              <h3>原料受け入れ・検査</h3>
+              <span class="badge-lite">目安：当日〜1日</span>
+            </header>
+            <div class="row">
+              <img src="img/process-incoming.jpg" alt="原料受け入れ・検品の様子（イメージ）" loading="lazy" decoding="async" width="640" height="400">
+              <p>産地・規格を確認し、受け入れ検査。洗浄・前処理までを同一ロットで管理します。</p>
             </div>
-
-            <div class="mt-40">
-                <a href="https://www.instagram.com/wanhug_plus/" target="_blank" class="insta-follow-btn">FOLLOW US</a>
+            <div class="meta">
+              <span class="tag">ロット管理</span><span class="tag">受入検査</span><span class="tag">洗浄</span>
             </div>
-        </section>
+          </article>
 
-
-        <section id="reserve" class="container text-center">
-            <div class="reserve-section">
-                <h2 class="section-title" style="margin-bottom:30px;">Physical Care<span>本格的な温熱ケアを施設で</span></h2>
-                <p class="about-text">ご自宅でのケアだけでなく、プロの手による温熱マッサージや<br>酵素浴での入浴予約を承っております。</p>
-                <a href="#" class="btn btn-reserve-large">施設予約・空き状況を確認</a>
+          <article class="step">
+            <header>
+              <h3>仕込み・発酵</h3>
+              <span class="badge-lite">目安：数日〜数週間</span>
+            </header>
+            <div class="row">
+              <img src="img/tank.jpg" alt="発酵タンクの様子（イメージ）" loading="lazy" decoding="async" width="640" height="400">
+              <p>配合比・温度・時間をコントロール。風味と安定性のバランスを最適化します。</p>
             </div>
-        </section>
-    </main>
-
-    <footer class="site-footer">
-        <div class="container footer-content">
-            <div class="footer-brand">
-                <h1 class="footer-logo">わんHug＋</h1>
-                <p class="footer-copy">あなたの宝物をやさしく抱きしめる</p>
+            <div class="meta">
+              <span class="tag">温度管理</span><span class="tag">配合比</span><span class="tag">風味最適化</span>
             </div>
+          </article>
 
-            <div class="footer-nav">
-                <div class="footer-link-group">
-                    <h4>Menu</h4>
-                    <ul>
-                        <li><a href="#about">わんHug＋について</a></li>
-                        <li><a href="#shop">商品を探す</a></li>
-                        <li><a href="#reserve">施設予約</a></li>
-                    </ul>
-                </div>
-                <div class="footer-link-group">
-                    <h4>Support</h4>
-                    <ul>
-                        <li><a href="#">特定商取引法に基づく表記</a></li>
-                        <li><a href="#">プライバシーポリシー</a></li>
-                        <li><a href="#">お問い合わせ</a></li>
-                    </ul>
-                </div>
+          <article class="step">
+            <header>
+              <h3>熟成・調整</h3>
+              <span class="badge-lite">目安：数日</span>
+            </header>
+            <p>味わいの角を取り、飲みやすく整えます。必要に応じて濃度や酸味を微調整。</p>
+            <div class="meta">
+              <span class="tag">官能評価</span><span class="tag">濃度調整</span>
             </div>
+          </article>
+
+          <article class="step">
+            <header>
+              <h3>充填・検査・出荷</h3>
+              <span class="badge-lite">目安：1日</span>
+            </header>
+            <p>衛生基準に沿って充填し、第三者機関の検査や自社基準の検品を経て出荷します。</p>
+            <div class="meta">
+              <span class="tag">充填</span><span class="tag">検査</span><span class="tag">最終検品</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps & Timeline -->
+    <section id="steps" class="section section--stepper" aria-labelledby="steps-title">
+      <div class="container">
+        <h2 id="steps-title">OEMの進め方</h2>
+        <p class="sub">最短1〜3か月で販売開始を目指す、シンプルな4ステップ。</p>
+
+        <div class="stepper" role="list" aria-label="OEM進行ステップ">
+          <div class="node active" role="listitem" aria-current="step">
+            <div class="dot">1</div>
+            <div class="label">相談・要件整理</div>
+          </div>
+          <div class="node" role="listitem">
+            <div class="dot">2</div>
+            <div class="label">試作・見積</div>
+          </div>
+          <div class="node" role="listitem">
+            <div class="dot">3</div>
+            <div class="label">設計確定・製造</div>
+          </div>
+          <div class="node" role="listitem">
+            <div class="dot">4</div>
+            <div class="label">出荷・運用</div>
+          </div>
         </div>
 
-        <div class="footer-bottom">
-            <div class="container">
-                <p>&copy; 2026 わんHug＋ / All Rights Reserved.</p>
-            </div>
+        <div class="step-cards">
+          <article class="card">
+            <h3>STEP 1：相談・要件整理</h3>
+            <p>ターゲット・味・容量・チャネル・納期・ご予算をヒアリング。想定SKUや価格帯も一緒に整理します。</p>
+            <div class="meta"><span class="tag">無料相談</span><span class="tag">ヒアリング</span></div>
+          </article>
+          <article class="card">
+            <h3>STEP 2：試作・見積</h3>
+            <p>小ロットで試作→試飲フィードバック。配合・包材案と合わせて概算見積をご提示します。</p>
+            <div class="meta"><span class="tag">小ロット</span><span class="tag">試飲</span></div>
+          </article>
+          <article class="card">
+            <h3>STEP 3：設計確定・製造</h3>
+            <p>パッケージ・表示確認後に本製造。品質検査の段取りまで含めてスケジュール管理します。</p>
+            <div class="meta"><span class="tag">表示確認</span><span class="tag">品質検査</span></div>
+          </article>
+          <article class="card">
+            <h3>STEP 4：出荷・運用</h3>
+            <p>出荷後は販促素材やFAQ整備を支援。売れ行きに応じた次回ロットの改善提案も行います。</p>
+            <div class="meta"><span class="tag">販促支援</span><span class="tag">継続提案</span></div>
+          </article>
         </div>
-    </footer>
 
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">まずは無料相談</a>
+          <a class="btn ghost" href="#faq">FAQを見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title">よくあるご質問</h2>
+        <p class="sub">初回相談の前に、よくいただくポイントをまとめました。</p>
+        <div class="cards">
+          <article class="card"><h3>最小ロットは？</h3><p>小ロットから段階的に検証可能です。味・容量・包材により変動しますのでご相談ください。</p></article>
+          <article class="card"><h3>納期の目安は？</h3><p>要件確定後、目安1〜3か月。資材や季節要因で前後します。</p></article>
+          <article class="card"><h3>表示・法令対応は？</h3><p>食品表示・薬機法の範囲で表現提案と確認をサポートします。</p></article>
+          <article class="card"><h3>試作費や検査費は？</h3><p>配合・検査項目に応じてお見積り。キャンペーン有無はお問い合わせください。</p></article>
+        </div>
+      </div>
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+        {"@type":"Question","name":"最小ロットは？","acceptedAnswer":{"@type":"Answer","text":"小ロットから段階的に検証可能です。味・容量・包材により変動しますのでご相談ください。"}},
+        {"@type":"Question","name":"納期の目安は？","acceptedAnswer":{"@type":"Answer","text":"要件確定後、目安1〜3か月。資材や季節要因で前後します。"}},
+        {"@type":"Question","name":"表示・法令対応は？","acceptedAnswer":{"@type":"Answer","text":"食品表示・薬機法の範囲で表現提案と確認をサポートします。"}},
+        {"@type":"Question","name":"試作費や検査費は？","acceptedAnswer":{"@type":"Answer","text":"配合・検査項目に応じてお見積り。キャンペーン有無はお問い合わせください。"}}
+      ]}
+      </script>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title">お問い合わせ</h2>
+        <p class="sub">OEM 製造のご相談や試作のご依頼は、こちらからお気軽にどうぞ。</p>
+        <div class="contact-wrap">
+          <div class="contact-box">
+            <h3>ご連絡先</h3>
+            <ul class="contact-list">
+              <li>📧 <a href="mailto:kouso.inc@gmail.com">kouso.inc@gmail.com</a></li>
+              <li>📞 090-6982-5502（代表）</li>
+              <li>📍 〒849-0922 佐賀県佐賀市高木瀬東5丁目21-13</li>
+            </ul>
+            <p style="color:var(--muted-strong); margin-top:10px">※ パッケージやラベルの相談も可能です。先にターゲット・販売チャネルを共有いただけるとスムーズです。</p>
+          </div>
+          <div class="contact-box">
+            <h3>スピード相談フォーム（簡易）</h3>
+            <form
+              id="contactForm"
+              aria-label="お問い合わせフォーム"
+              autocomplete="on"
+              action="https://script.google.com/macros/s/AKfycbw1Mjq-lmDX49VNddIglhw59BVtJT74UDaEMaNVk744y4qQdX4ElxiFKu0C6nQDNPt3/exec"
+              method="post"
+            >
+              <div style="display:none;" aria-hidden="true">
+                <label>会社名（空欄のまま）<input type="text" name="hp" autocomplete="off"></label>
+              </div>
+              <label>お名前<br>
+                <input required type="text" name="name" autocomplete="name"/>
+              </label>
+              <div style="height:10px"></div>
+              <label>メールアドレス（返信用）<br>
+                <input required type="email" name="email" autocomplete="email" inputmode="email"/>
+              </label>
+              <div style="height:10px"></div>
+              <label>ご相談内容<br>
+                <textarea required rows="4" name="message"></textarea>
+              </label>
+              <div style="height:12px"></div>
+              <button class="btn primary" type="submit" id="submitBtn" style="border:none">送信する</button>
+              <div id="formNote" role="status" aria-live="polite" style="margin-top:10px; color:var(--muted-strong)"></div>
+            </form>
+            <script>
+              // フォーム送信（GAS）
+              const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw1Mjq-lmDX49VNddIglhw59BVtJT74UDaEMaNVk744y4qQdX4ElxiFKu0C6nQDNPt3/exec';
+              const form = document.getElementById('contactForm');
+              const note = document.getElementById('formNote');
+              const btn  = document.getElementById('submitBtn');
+              form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                note.textContent = '送信中です…';
+                btn.disabled = true;
+                try {
+                  const fd = new FormData(form);
+                  await fetch(GAS_ENDPOINT, { method: 'POST', body: fd, mode: 'no-cors' });
+                  note.textContent = 'ありがとうございます！内容を送信しました。折り返しご連絡いたします。';
+                  form.reset();
+                } catch (err) {
+                  note.textContent = '通信エラーが発生しました。メール（kouso.inc@gmail.com）またはお電話でご連絡ください。';
+                } finally { btn.disabled = false; }
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <nav aria-label="フッターナビゲーション">
+        <a href="#service">サービス</a> · <a href="#products">商品紹介</a> · <a href="#about">会社情報</a> · <a href="#contact">お問い合わせ</a>
+      </nav>
+      <small>
+        © 2025 酵素株式会社 — 発酵から、発幸へ。<br>
+        酵素ドリンクOEM・ODM / 小ロットからご相談いただけます。
+      </small>
+    </div>
+  </footer>
+
+  <!-- モバイルメニュー開閉スクリプト -->
+  <script>
+    (function(){
+      const toggle = document.querySelector('.menu-toggle');
+      const menu   = document.getElementById('primary-menu');
+      if(!toggle || !menu) return;
+
+      const closeMenu = () => {
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('keydown', onKeydown);
+        document.removeEventListener('click', onClickAway);
+      };
+      const openMenu = () => {
+        menu.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        const firstLink = menu.querySelector('a');
+        if(firstLink) firstLink.focus({ preventScroll:true });
+        document.addEventListener('keydown', onKeydown);
+        setTimeout(() => document.addEventListener('click', onClickAway));
+      };
+      const onKeydown = (e) => {
+        if(e.key === 'Escape') { closeMenu(); toggle.focus(); }
+      };
+      const onClickAway = (e) => {
+        if(!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+      };
+
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        expanded ? closeMenu() : openMenu();
+      });
+
+      menu.addEventListener('click', (e) => {
+        const t = e.target;
+        if (t.closest && t.closest('a')) closeMenu();
+      });
+
+      const mql = window.matchMedia('(min-width: 981px)');
+      mql.addEventListener('change', (ev) => {
+        if(ev.matches) {
+          menu.classList.remove('open');
+          toggle.setAttribute('aria-expanded','false');
+        }
+      });
+    })();
+  </script>
 </body>
-
 </html>
