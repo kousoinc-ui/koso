@@ -194,8 +194,7 @@ a {
 }
 
 .hero-copy p,
-.hero-copy h1,
-.scroll-cue {
+.hero-copy h1 {
   animation: heroRise 1200ms cubic-bezier(0.2, 0.7, 0.2, 1) both;
 }
 
@@ -204,7 +203,7 @@ a {
 }
 
 .scroll-cue {
-  animation-delay: 420ms;
+  animation: cueFade 1200ms cubic-bezier(0.2, 0.7, 0.2, 1) 420ms both;
 }
 
 .hero-copy p {
@@ -841,6 +840,16 @@ a {
   }
 }
 
+@keyframes cueFade {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
 @keyframes cinematicDrift {
   from {
     background: rgba(255, 250, 244, 0.04);
@@ -913,20 +922,341 @@ a {
 }
 
 @media (max-width: 560px) {
-  .section {
-    padding: 86px 22px;
+  body {
+    padding-bottom: 74px;
+  }
+
+  .site-header {
+    padding: 16px 18px;
+  }
+
+  .site-header.is-scrolled {
+    background: transparent;
+    box-shadow: none;
+    padding: 14px 18px;
+  }
+
+  .brand-mark {
+    height: 46px;
+    width: 46px;
+  }
+
+  .site-nav {
+    align-items: center;
+    background: rgba(247, 244, 239, 0.92);
+    backdrop-filter: blur(18px);
+    border: 1px solid rgba(34, 34, 34, 0.08);
+    bottom: 14px;
+    box-shadow: 0 12px 36px rgba(34, 34, 34, 0.12);
+    display: grid;
+    gap: 0;
+    grid-template-columns: repeat(5, 1fr);
+    left: 14px;
+    padding: 12px 8px;
+    position: fixed;
+    right: 14px;
+    z-index: 30;
+  }
+
+  .site-nav a,
+  .site-header.is-scrolled .site-nav a {
+    color: var(--text);
+    font-size: 13px;
+    line-height: 1;
+    text-align: center;
+  }
+
+  .sub-page .site-nav a[aria-current="page"] {
+    color: var(--green);
+  }
+
+  .hero {
+    height: 100svh;
+    min-height: 620px;
+  }
+
+  .hero-media {
+    inset: 0;
+  }
+
+  .hero-slide {
+    background-position: 52% center;
+  }
+
+  .hero-overlay {
+    background: linear-gradient(
+      rgba(22, 20, 17, 0.14),
+      rgba(22, 20, 17, 0.5)
+    );
   }
 
   .hero-copy {
+    bottom: 118px;
+    left: 20px;
+    max-width: calc(100vw - 40px);
     text-align: left;
+    top: auto;
+    transform: none;
   }
 
-  .story-track,
+  .hero-copy p {
+    font-size: 16px;
+    line-height: 1.8;
+    margin-bottom: 18px;
+  }
+
+  .hero-copy h1 {
+    font-size: clamp(42px, 13vw, 58px);
+    line-height: 0.96;
+  }
+
+  .scroll-cue {
+    bottom: 92px;
+    font-size: 14px;
+    left: 20px;
+    transform: none;
+  }
+
+  .scroll-cue::after {
+    height: 34px;
+    margin-left: 0;
+  }
+
+  .section {
+    padding: 76px 20px;
+  }
+
+  .philosophy,
+  .belief {
+    gap: 28px;
+    min-height: auto;
+  }
+
+  .section-label,
+  .section-kicker {
+    font-size: 26px;
+  }
+
+  .philosophy-copy h2 {
+    font-size: clamp(34px, 10vw, 48px);
+    line-height: 1.45;
+  }
+
+  .belief-lines p {
+    font-size: clamp(32px, 10vw, 46px);
+    padding: 14px 0;
+  }
+
+  .catalyst {
+    min-height: auto;
+    padding-bottom: 118px;
+  }
+
+  .ghost-type {
+    bottom: -0.12em;
+    font-size: 92px;
+    left: -0.1em;
+  }
+
+  .catalyst h2 {
+    font-size: clamp(50px, 15vw, 72px);
+    margin-top: 54px;
+  }
+
+  .section-note,
+  .jp-lead,
+  .body-copy {
+    font-size: 15px;
+    line-height: 1.95;
+  }
+
+  .mission {
+    min-height: 82svh;
+    padding: 76px 20px;
+  }
+
+  .mission-bg {
+    inset: 0;
+  }
+
+  .mission-copy p,
+  .future-copy p {
+    font-size: clamp(46px, 16vw, 74px);
+    margin-bottom: 28px;
+  }
+
+  .mission h2,
+  .future h2 {
+    font-size: clamp(30px, 8.4vw, 44px);
+    line-height: 1.42;
+  }
+
+  .areas {
+    gap: 26px;
+  }
+
+  .area-visual {
+    min-height: 300px;
+  }
+
+  .area-grid {
+    gap: 1px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .area-card {
+    min-height: 116px;
+    padding: 20px 16px;
+  }
+
+  .area-card:hover,
+  .area-card.is-active {
+    transform: none;
+  }
+
+  .area-card span {
+    font-size: 34px;
+  }
+
+  .area-card h3 {
+    font-size: 14px;
+    line-height: 1.55;
+    margin-top: 14px;
+  }
+
+  .story {
+    padding-bottom: 88px;
+  }
+
+  .story-title {
+    margin-bottom: 38px;
+  }
+
+  .story-lead {
+    font-size: 15px;
+    line-height: 1.9;
+    margin-top: 20px;
+  }
+
+  .story-track {
+    gap: 34px;
+  }
+
+  .story-step {
+    border-top: 1px solid rgba(34, 34, 34, 0.12);
+    padding-top: 18px;
+  }
+
+  .story-step:hover,
+  .story-step:hover .story-photo,
+  .brand-feature:hover .brand-photo,
+  .area-visual:hover {
+    transform: none;
+  }
+
+  .story-photo {
+    aspect-ratio: 16 / 10;
+    margin-bottom: 16px;
+  }
+
+  .story-step span {
+    font-size: 20px;
+  }
+
+  .story-step h3 {
+    font-size: 34px;
+  }
+
+  .story-step p {
+    font-size: 14px;
+    margin-top: 10px;
+  }
+
+  .brand-layout,
+  .brand-feature {
+    gap: 18px;
+  }
+
+  .brand-feature {
+    padding: 16px;
+  }
+
+  .brand-photo {
+    aspect-ratio: 16 / 11;
+  }
+
+  .brand-feature p,
+  .brand-coming p {
+    font-size: 40px;
+    margin-bottom: 18px;
+  }
+
+  .brand-feature h3,
+  .brand-coming h3 {
+    font-size: 24px;
+    line-height: 1.5;
+    margin-bottom: 18px;
+  }
+
+  .brand-feature span {
+    font-size: 18px;
+  }
+
+  .brand-coming {
+    min-height: 220px;
+    padding: 20px;
+  }
+
+  .future {
+    min-height: 84svh;
+  }
+
   .future-grid {
     grid-template-columns: 1fr;
+    inset: 0;
   }
 
   .future-grid div {
     min-height: 25svh;
+  }
+
+  .future.is-visible .future-grid div:nth-child(n) {
+    transform: none;
+  }
+
+  .contact {
+    padding-bottom: 98px;
+  }
+
+  .contact a {
+    font-size: clamp(24px, 8vw, 34px);
+    overflow-wrap: anywhere;
+  }
+
+  .company-hero {
+    min-height: 58svh;
+    padding: 112px 20px 54px;
+  }
+
+  .company-intro h2,
+  .company-visual h2 {
+    font-size: clamp(30px, 8.8vw, 44px);
+  }
+
+  .profile-list {
+    margin-top: 38px;
+  }
+
+  .profile-list div {
+    gap: 10px;
+    padding: 18px 0;
+  }
+
+  .profile-list dd {
+    font-size: 17px;
+  }
+
+  .parallax-soft {
+    transform: none !important;
   }
 }
