@@ -1011,10 +1011,7 @@ a {
   }
 
   .scroll-cue {
-    bottom: 92px;
-    font-size: 14px;
-    left: 20px;
-    transform: none;
+    display: none;
   }
 
   .scroll-cue::after {

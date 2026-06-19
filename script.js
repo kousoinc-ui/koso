@@ -18,17 +18,24 @@ const areaImages = {
   future: "var(--area-future)",
 };
 
-areaCards.forEach((card) => {
-  card.addEventListener("mouseenter", () => {
-    areaCards.forEach((item) => item.classList.remove("is-active"));
-    card.classList.add("is-active");
-    if (areaVisual) areaVisual.style.backgroundImage = areaImages[card.dataset.area];
-  });
+const activateArea = (card) => {
+  areaCards.forEach((item) => item.classList.remove("is-active"));
+  card.classList.add("is-active");
+  if (areaVisual) areaVisual.style.backgroundImage = areaImages[card.dataset.area];
+};
 
-  card.addEventListener("focusin", () => {
-    areaCards.forEach((item) => item.classList.remove("is-active"));
-    card.classList.add("is-active");
-    if (areaVisual) areaVisual.style.backgroundImage = areaImages[card.dataset.area];
+areaCards.forEach((card) => {
+  card.setAttribute("tabindex", "0");
+  card.setAttribute("role", "button");
+
+  card.addEventListener("mouseenter", () => activateArea(card));
+  card.addEventListener("click", () => activateArea(card));
+  card.addEventListener("focusin", () => activateArea(card));
+  card.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" || event.key === " ") {
+      event.preventDefault();
+      activateArea(card);
+    }
   });
 });
 
