@@ -799,6 +799,591 @@ a {
   border-top: 0;
 }
 
+.enzyme-hero {
+  align-items: center;
+  background:
+    linear-gradient(rgba(31, 28, 22, 0.24), rgba(31, 28, 22, 0.34)),
+    url("https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=2400&q=85")
+      center/cover;
+  color: var(--white);
+  display: grid;
+  gap: clamp(32px, 6vw, 84px);
+  grid-template-columns: minmax(300px, 0.95fr) minmax(280px, 0.75fr);
+  min-height: 86svh;
+  overflow: hidden;
+  padding: 128px clamp(22px, 7vw, 96px) clamp(62px, 8vw, 104px);
+  position: relative;
+}
+
+.enzyme-hero::after {
+  background: linear-gradient(transparent, rgba(247, 244, 239, 0.1));
+  bottom: 0;
+  content: "";
+  height: 28%;
+  left: 0;
+  position: absolute;
+  right: 0;
+}
+
+.enzyme-hero-copy,
+.enzyme-orbit {
+  position: relative;
+  z-index: 2;
+}
+
+.enzyme-hero-copy p {
+  font-family: var(--font-en);
+  font-size: clamp(30px, 4.6vw, 68px);
+  line-height: 1;
+  margin: 0 0 24px;
+}
+
+.enzyme-hero-copy h1 {
+  font-size: clamp(42px, 5.4vw, 78px);
+  font-weight: 400;
+  line-height: 1.2;
+  margin: 0;
+}
+
+.enzyme-hero-copy span {
+  display: block;
+  font-size: clamp(15px, 1.45vw, 19px);
+  line-height: 2.05;
+  margin-top: 28px;
+  max-width: 620px;
+}
+
+.enzyme-orbit {
+  aspect-ratio: 1;
+  border: 1px solid rgba(255, 250, 244, 0.54);
+  border-radius: 50%;
+  display: grid;
+  margin-left: auto;
+  max-width: 420px;
+  place-items: center;
+  width: min(32vw, 420px);
+}
+
+.enzyme-orbit::before,
+.enzyme-orbit::after {
+  border: 1px solid rgba(255, 250, 244, 0.32);
+  border-radius: 50%;
+  content: "";
+  inset: 17%;
+  position: absolute;
+}
+
+.enzyme-orbit::after {
+  animation: orbitRotate 18s linear infinite;
+  border-color: rgba(255, 250, 244, 0.58);
+  border-style: dashed;
+  inset: 31%;
+}
+
+.enzyme-orbit span {
+  animation: enzymePulse 4.8s ease-in-out infinite;
+  background: rgba(255, 250, 244, 0.88);
+  border-radius: 50%;
+  box-shadow: 0 0 38px rgba(255, 250, 244, 0.34);
+  height: clamp(18px, 2.4vw, 34px);
+  position: absolute;
+  width: clamp(18px, 2.4vw, 34px);
+}
+
+.enzyme-orbit span:nth-child(1) {
+  right: 10%;
+  top: 24%;
+}
+
+.enzyme-orbit span:nth-child(2) {
+  animation-delay: 550ms;
+  bottom: 17%;
+  right: 25%;
+}
+
+.enzyme-orbit span:nth-child(3) {
+  animation-delay: 1100ms;
+  left: 17%;
+  top: 38%;
+}
+
+.enzyme-orbit span:nth-child(4) {
+  animation-delay: 1650ms;
+  background: var(--green);
+  left: 44%;
+  top: 44%;
+}
+
+.enzyme-intro,
+.fermentation-link {
+  display: grid;
+  gap: clamp(34px, 6vw, 76px);
+  grid-template-columns: minmax(150px, 0.55fr) minmax(280px, 1.1fr);
+}
+
+.enzyme-intro h2,
+.reaction-copy h2,
+.enzyme-classification h2,
+.fermentation-link h2,
+.enzyme-note h2 {
+  font-size: clamp(31px, 4.1vw, 58px);
+  font-weight: 400;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.enzyme-intro p:not(.section-kicker),
+.reaction-copy p,
+.enzyme-classification p,
+.fermentation-link p,
+.enzyme-note p {
+  color: var(--muted);
+  font-size: clamp(15px, 1.38vw, 18px);
+  line-height: 2.08;
+  margin: 28px 0 0;
+  max-width: 780px;
+}
+
+.section-lead {
+  color: var(--muted);
+  font-size: clamp(15px, 1.38vw, 18px);
+  line-height: 2;
+  margin: 24px 0 0;
+  max-width: 760px;
+}
+
+.enzyme-fact-list {
+  display: grid;
+  gap: 1px;
+  margin: 42px 0 0;
+  max-width: 860px;
+}
+
+.enzyme-fact-list div {
+  background: rgba(255, 250, 244, 0.72);
+  display: grid;
+  gap: 22px;
+  grid-template-columns: minmax(96px, 0.28fr) minmax(220px, 1fr);
+  padding: 22px 24px;
+}
+
+.enzyme-fact-list dt {
+  color: var(--green);
+  font-size: 17px;
+  font-weight: 500;
+}
+
+.enzyme-fact-list dd {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 0;
+}
+
+.enzyme-reaction {
+  align-items: center;
+  background: #eee8df;
+  display: grid;
+  gap: clamp(34px, 7vw, 90px);
+  grid-template-columns: minmax(280px, 0.85fr) minmax(300px, 1fr);
+  overflow: hidden;
+  padding: clamp(88px, 13vw, 170px) clamp(22px, 7vw, 96px);
+}
+
+.reaction-stage {
+  aspect-ratio: 1.22;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(110, 138, 99, 0.16), transparent 28%),
+    rgba(255, 250, 244, 0.66);
+  min-height: 430px;
+  overflow: hidden;
+  position: relative;
+}
+
+.substrate,
+.enzyme-shape,
+.substrate-parts span {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  position: absolute;
+}
+
+.substrate.large {
+  animation: substrateMove 5.8s ease-in-out infinite;
+  background: #d6c7b4;
+  border-radius: 999px;
+  color: var(--text);
+  height: 92px;
+  left: 9%;
+  top: 41%;
+  width: 156px;
+}
+
+.enzyme-shape {
+  background: var(--green);
+  border-radius: 46% 54% 48% 52% / 58% 42% 58% 42%;
+  color: var(--white);
+  font-size: 20px;
+  height: 178px;
+  left: 38%;
+  top: 27%;
+  width: 184px;
+}
+
+.enzyme-shape::after {
+  background: #eee8df;
+  border-radius: 999px;
+  content: "";
+  height: 58px;
+  left: -6px;
+  position: absolute;
+  top: 62px;
+  width: 58px;
+}
+
+.arrow-line {
+  background: rgba(34, 34, 34, 0.34);
+  height: 1px;
+  position: absolute;
+  right: 18%;
+  top: 50%;
+  width: 19%;
+}
+
+.arrow-line::after {
+  border-bottom: 7px solid transparent;
+  border-left: 10px solid rgba(34, 34, 34, 0.34);
+  border-top: 7px solid transparent;
+  content: "";
+  position: absolute;
+  right: -1px;
+  top: -6px;
+}
+
+.substrate-parts span {
+  animation: partFloat 4.6s ease-in-out infinite;
+  background: var(--white);
+  border: 1px solid rgba(34, 34, 34, 0.1);
+  border-radius: 999px;
+  color: var(--green);
+  height: 72px;
+  right: 7%;
+  top: 33%;
+  width: 112px;
+}
+
+.substrate-parts span:nth-child(2) {
+  animation-delay: 700ms;
+  right: 17%;
+  top: 57%;
+}
+
+.enzyme-type-grid,
+.digestion-grid,
+.condition-layout {
+  display: grid;
+  gap: 22px;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: 56px;
+}
+
+.enzyme-type-grid article,
+.digestion-grid article,
+.condition-layout article {
+  background: var(--white);
+  min-height: 270px;
+  padding: clamp(22px, 3vw, 34px);
+}
+
+.enzyme-type-grid span {
+  color: var(--green);
+  font-family: var(--font-en);
+  font-size: clamp(34px, 4vw, 58px);
+}
+
+.enzyme-type-grid h3,
+.digestion-grid b,
+.condition-layout h3 {
+  display: block;
+  font-size: clamp(22px, 2.4vw, 32px);
+  font-weight: 400;
+  line-height: 1.45;
+  margin: 18px 0 0;
+}
+
+.enzyme-type-grid p,
+.digestion-grid p,
+.condition-layout p {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.9;
+  margin: 20px 0 0;
+}
+
+.enzyme-condition {
+  border-top: 1px solid rgba(34, 34, 34, 0.08);
+}
+
+.condition-layout article {
+  min-height: 250px;
+  position: relative;
+}
+
+.condition-layout article::before {
+  background: var(--green);
+  content: "";
+  height: 1px;
+  left: 34px;
+  opacity: 0.5;
+  position: absolute;
+  right: 34px;
+  top: 34px;
+}
+
+.condition-layout h3 {
+  margin-top: 30px;
+}
+
+.enzyme-regulation {
+  align-items: start;
+  background: var(--green);
+  color: var(--white);
+  display: grid;
+  gap: clamp(34px, 7vw, 88px);
+  grid-template-columns: minmax(280px, 0.78fr) minmax(320px, 1fr);
+  padding: clamp(88px, 13vw, 170px) clamp(22px, 7vw, 96px);
+}
+
+.enzyme-regulation .section-kicker,
+.enzyme-regulation p {
+  color: var(--white);
+}
+
+.enzyme-regulation h2 {
+  font-size: clamp(31px, 4.1vw, 58px);
+  font-weight: 400;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.enzyme-regulation > div > p:not(.section-kicker) {
+  font-size: clamp(15px, 1.38vw, 18px);
+  line-height: 2.08;
+  margin: 28px 0 0;
+  opacity: 0.86;
+}
+
+.regulation-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.regulation-grid article {
+  background: rgba(255, 250, 244, 0.12);
+  min-height: 210px;
+  padding: clamp(22px, 3vw, 32px);
+}
+
+.regulation-grid h3 {
+  font-size: clamp(20px, 2.1vw, 28px);
+  font-weight: 400;
+  line-height: 1.45;
+  margin: 0;
+}
+
+.regulation-grid p {
+  font-size: 14px;
+  line-height: 1.95;
+  margin: 20px 0 0;
+  opacity: 0.82;
+}
+
+.digestion-map {
+  background: #eee8df;
+}
+
+.digestion-grid article {
+  position: relative;
+}
+
+.digestion-grid article::after {
+  background: var(--green);
+  content: "";
+  height: 1px;
+  left: 34px;
+  opacity: 0.55;
+  position: absolute;
+  right: 34px;
+  top: 50%;
+}
+
+.digestion-grid span {
+  color: var(--green);
+  display: block;
+  font-family: var(--font-en);
+  font-size: clamp(22px, 2.3vw, 34px);
+  line-height: 1.1;
+  margin-top: 26px;
+}
+
+.food-enzyme {
+  border-top: 1px solid rgba(34, 34, 34, 0.08);
+}
+
+.food-enzyme-layout,
+.microbiome-grid {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 56px;
+}
+
+.food-enzyme-layout article,
+.microbiome-grid article {
+  background: var(--white);
+  min-height: 310px;
+  padding: clamp(22px, 3vw, 32px);
+}
+
+.food-enzyme-layout span {
+  color: var(--green);
+  display: block;
+  font-family: var(--font-en);
+  font-size: clamp(28px, 3.1vw, 44px);
+  line-height: 1;
+}
+
+.food-enzyme-layout h3,
+.microbiome-grid h3 {
+  font-size: clamp(20px, 2.1vw, 28px);
+  font-weight: 400;
+  line-height: 1.45;
+  margin: 28px 0 0;
+}
+
+.food-enzyme-layout p,
+.microbiome-grid p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.95;
+  margin: 18px 0 0;
+}
+
+.enzyme-classification {
+  align-items: center;
+  display: grid;
+  gap: clamp(34px, 7vw, 88px);
+  grid-template-columns: minmax(280px, 0.78fr) minmax(320px, 1fr);
+  padding: clamp(88px, 13vw, 170px) clamp(22px, 7vw, 96px);
+}
+
+.enzyme-classification ol {
+  counter-reset: enzyme-class;
+  display: grid;
+  gap: 1px;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.enzyme-classification li {
+  align-items: center;
+  background: rgba(255, 250, 244, 0.74);
+  counter-increment: enzyme-class;
+  display: grid;
+  font-size: clamp(17px, 1.75vw, 23px);
+  gap: 22px;
+  grid-template-columns: auto minmax(110px, 0.42fr) minmax(210px, 1fr);
+  line-height: 1.5;
+  min-height: 104px;
+  padding: 20px 24px;
+}
+
+.enzyme-classification li::before {
+  color: var(--green);
+  content: "0" counter(enzyme-class);
+  font-family: var(--font-en);
+  font-size: clamp(28px, 3vw, 44px);
+  line-height: 1;
+}
+
+.enzyme-classification li b {
+  font-weight: 400;
+}
+
+.enzyme-classification li span {
+  color: var(--muted);
+  font-size: 15px;
+  line-height: 1.8;
+}
+
+.enzyme-history {
+  background: #eee8df;
+}
+
+.history-track {
+  display: grid;
+  gap: 1px;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  margin-top: 58px;
+}
+
+.history-track article {
+  background: rgba(255, 250, 244, 0.74);
+  min-height: 310px;
+  padding: clamp(22px, 3vw, 34px);
+}
+
+.history-track span {
+  color: var(--green);
+  display: block;
+  font-family: var(--font-en);
+  font-size: clamp(34px, 3.8vw, 56px);
+  line-height: 1;
+}
+
+.history-track h3 {
+  font-size: clamp(19px, 2vw, 26px);
+  font-weight: 400;
+  line-height: 1.55;
+  margin: 36px 0 0;
+}
+
+.history-track p {
+  color: var(--muted);
+  font-size: 14px;
+  line-height: 1.9;
+  margin: 18px 0 0;
+}
+
+.fermentation-photo {
+  background:
+    linear-gradient(rgba(31, 28, 22, 0.08), rgba(31, 28, 22, 0.08)),
+    url("https://images.unsplash.com/photo-1506368249639-73a05d6f6488?auto=format&fit=crop&w=1400&q=85")
+      center/cover;
+  min-height: 560px;
+}
+
+.enzyme-note {
+  background: var(--green);
+  color: var(--white);
+}
+
+.enzyme-note .section-kicker,
+.enzyme-note p {
+  color: var(--white);
+}
+
+.enzyme-note p {
+  opacity: 0.86;
+}
+
+.microbiome-terms {
+  background: #eee8df;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(44px);
@@ -860,6 +1445,45 @@ a {
   }
 }
 
+@keyframes orbitRotate {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes enzymePulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.28);
+  }
+}
+
+@keyframes substrateMove {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+
+  50% {
+    transform: translateX(50px);
+  }
+}
+
+@keyframes partFloat {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-16px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -872,6 +1496,13 @@ a {
   .reveal {
     opacity: 1;
     transform: none;
+  }
+
+  .enzyme-orbit::after,
+  .enzyme-orbit span,
+  .substrate.large,
+  .substrate-parts span {
+    animation: none !important;
   }
 }
 
@@ -899,8 +1530,19 @@ a {
   .brand-layout,
   .brand-feature,
   .company-intro,
-  .profile-list div {
+  .profile-list div,
+  .enzyme-hero,
+  .enzyme-intro,
+  .enzyme-reaction,
+  .enzyme-classification,
+  .enzyme-regulation,
+  .fermentation-link {
     grid-template-columns: 1fr;
+  }
+
+  .enzyme-orbit {
+    margin: 0;
+    width: min(74vw, 360px);
   }
 
   .area-visual {
@@ -918,6 +1560,24 @@ a {
 
   .future-grid {
     grid-template-columns: 1fr 1fr;
+  }
+
+  .enzyme-type-grid,
+  .digestion-grid,
+  .condition-layout,
+  .regulation-grid,
+  .food-enzyme-layout,
+  .microbiome-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .history-track {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .reaction-stage,
+  .fermentation-photo {
+    min-height: 380px;
   }
 }
 
@@ -950,9 +1610,9 @@ a {
     box-shadow: 0 12px 36px rgba(34, 34, 34, 0.12);
     display: grid;
     gap: 0;
-    grid-template-columns: repeat(5, 1fr);
+    grid-template-columns: repeat(6, 1fr);
     left: 14px;
-    padding: 12px 8px;
+    padding: 12px 6px;
     position: fixed;
     right: 14px;
     z-index: 30;
@@ -961,7 +1621,7 @@ a {
   .site-nav a,
   .site-header.is-scrolled .site-nav a {
     color: var(--text);
-    font-size: 13px;
+    font-size: 12px;
     line-height: 1;
     text-align: center;
   }
@@ -1235,8 +1895,109 @@ a {
     padding: 112px 20px 54px;
   }
 
+  .enzyme-hero {
+    min-height: 78svh;
+    padding: 112px 20px 72px;
+  }
+
+  .enzyme-hero-copy span {
+    font-size: 15px;
+    line-height: 1.9;
+  }
+
+  .enzyme-orbit {
+    width: min(78vw, 300px);
+  }
+
+  .enzyme-reaction,
+  .enzyme-classification,
+  .enzyme-regulation {
+    padding: 76px 20px;
+  }
+
+  .reaction-stage {
+    aspect-ratio: auto;
+    min-height: 310px;
+    width: 100%;
+  }
+
+  .substrate.large {
+    height: 68px;
+    left: 4%;
+    top: 43%;
+    width: 112px;
+  }
+
+  .enzyme-shape {
+    font-size: 16px;
+    height: 134px;
+    left: 34%;
+    top: 29%;
+    width: 138px;
+  }
+
+  .enzyme-shape::after {
+    height: 42px;
+    top: 47px;
+    width: 42px;
+  }
+
+  .substrate-parts span {
+    font-size: 13px;
+    height: 58px;
+    width: 86px;
+  }
+
+  .enzyme-type-grid,
+  .digestion-grid,
+  .condition-layout,
+  .food-enzyme-layout,
+  .microbiome-grid {
+    margin-top: 34px;
+  }
+
+  .enzyme-type-grid article,
+  .digestion-grid article,
+  .condition-layout article,
+  .regulation-grid article,
+  .food-enzyme-layout article,
+  .microbiome-grid article {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .enzyme-fact-list div,
+  .enzyme-classification li {
+    grid-template-columns: 1fr;
+  }
+
+  .enzyme-classification li {
+    gap: 12px;
+    min-height: 72px;
+    padding: 18px;
+  }
+
+  .history-track {
+    grid-template-columns: 1fr;
+    margin-top: 34px;
+  }
+
+  .history-track article {
+    min-height: auto;
+    padding: 22px;
+  }
+
+  .fermentation-photo {
+    min-height: 300px;
+  }
+
   .company-intro h2,
-  .company-visual h2 {
+  .company-visual h2,
+  .enzyme-intro h2,
+  .reaction-copy h2,
+  .enzyme-classification h2,
+  .fermentation-link h2,
+  .enzyme-note h2 {
     font-size: clamp(30px, 8.8vw, 44px);
   }
 

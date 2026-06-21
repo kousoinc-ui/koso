@@ -44,7 +44,7 @@ document.body.classList.add("is-locked");
 const header = document.querySelector(".site-header");
 const revealItems = [
   ...document.querySelectorAll(
-    ".section-label, .section-kicker, .philosophy-copy, .belief-lines p, .catalyst-inner > *, .mission-copy > *, .section-head, .area-card, .area-visual, .story-step, .brand-feature, .brand-coming, .future-copy, .recruit > *, .contact > *, .company-hero > *, .company-intro > *, .profile-list div, .company-visual > *",
+    ".section-label, .section-kicker, .philosophy-copy, .belief-lines p, .catalyst-inner > *, .mission-copy > *, .section-head, .area-card, .area-visual, .story-step, .brand-feature, .brand-coming, .future-copy, .recruit > *, .contact > *, .company-hero > *, .company-intro > *, .profile-list div, .company-visual > *, .enzyme-hero-copy > *, .enzyme-orbit, .enzyme-intro > *, .enzyme-fact-list div, .reaction-copy > *, .reaction-stage, .enzyme-type-grid article, .condition-layout article, .enzyme-regulation > *, .regulation-grid article, .digestion-grid article, .food-enzyme-layout article, .enzyme-classification > *, .history-track article, .fermentation-link > *, .microbiome-grid article, .enzyme-note > *",
   ),
 ];
 
@@ -87,6 +87,7 @@ const parallaxTargets = [
   { element: document.querySelector(".mission-bg"), strength: 0.12, axis: "y" },
   { element: document.querySelector(".hero-media"), strength: 0.1, axis: "y" },
   { element: document.querySelector(".future-grid"), strength: -0.08, axis: "y" },
+  { element: document.querySelector(".enzyme-orbit"), strength: -0.05, axis: "y" },
 ].filter((target) => target.element);
 
 parallaxTargets.forEach(({ element }) => element.classList.add("parallax-soft"));
