@@ -928,6 +928,146 @@
   color: #5d4625;
   line-height: 1.6;
 }
+/* ポップアップ全体のオーバーレイ（背景のぼかし） */
+.exit-popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* 背景を少し暗く */
+    backdrop-filter: blur(4px); /* ほんのり背景をぼかして上品に */
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+/* ポップアップがアクティブになった時 */
+.exit-popup-overlay.is-active {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* ポップアップの白い箱（本体） */
+.exit-popup-content {
+    background-color: #fbf9f5; /* ブランドに合わせた優しいアイボリー */
+    width: 90%;
+    max-width: 500px; /* 適切なサイズ感 */
+    border-radius: 16px; /* 丸みを持たせて優しく */
+    overflow: hidden;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    transform: scale(0.9);
+    transition: transform 0.4s ease;
+}
+.exit-popup-overlay.is-active .exit-popup-content {
+    transform: scale(1);
+}
+
+/* 閉じる「×」ボタン */
+.exit-popup-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    background: none;
+    border: none;
+    font-size: 28px;
+    color: #6a5446; /* 深いダークブラウン */
+    cursor: pointer;
+    z-index: 10;
+    line-height: 1;
+    padding: 4px;
+    transition: opacity 0.2s;
+}
+.exit-popup-close:hover {
+    opacity: 0.7;
+}
+
+/* ビジュアルエリア（写真） */
+.popup-visual img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-height: 200px;
+    object-fit: cover; /* 画像の比率を保って切り抜き */
+}
+
+/* テキストコンテンツエリア */
+.popup-body {
+    padding: 24px 20px;
+    text-align: center;
+    font-family: "筑紫A丸ゴシック", "Hiragino Maru Gothic ProN", sans-serif; /* 丸ゴシック指定 */
+}
+
+/* キャッチコピー */
+.popup-title {
+    font-size: 18px;
+    color: #4a3629;
+    margin: 0 0 16px 0;
+    font-weight: bold;
+    line-height: 1.5;
+}
+
+/* 本文 */
+.popup-text {
+    font-size: 13px;
+    color: #5a483c;
+    line-height: 1.7;
+    margin: 0 0 20px 0;
+    text-align: left; /* 読みやすさのために本文は左寄せ */
+}
+
+/* 限定100食の強調表現（ギラギラさせない） */
+.popup-text .highlight {
+    color: #d37c49; /* 温かみのあるテラコッタオレンジ */
+    font-weight: bold;
+    background: linear-gradient(transparent 60%, #f3e3d3 60%); /* 優しいマーカー線 */
+}
+
+/* アクションボタン (CTA) */
+.popup-cta-btn {
+    display: block;
+    background-color: #627b68; /* 優しいアースグリーン。またはオレンジ */
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 15px;
+    padding: 14px 10px;
+    border-radius: 30px;
+    box-shadow: 0 4px 12px rgba(98, 123, 104, 0.3);
+    transition: background-color 0.3s, transform 0.2s;
+    margin-bottom: 16px;
+}
+.popup-cta-btn:hover {
+    background-color: #516756;
+    transform: translateY(-1px);
+}
+
+/* 今回は見送る リンク */
+.popup-skip-link {
+    background: none;
+    border: none;
+    color: #9c8a7f; /* 目立たない薄いブラウン */
+    font-size: 12px;
+    text-decoration: underline;
+    cursor: pointer;
+    padding: 4px;
+}
+.popup-skip-link:hover {
+    color: #6a5446;
+}
+
+/* 改行コントロール */
+@media (min-width: 768px) {
+    .sp-only { display: none; }
+    .popup-body { padding: 28px 32px; }
+    .popup-title { font-size: 20px; }
+    .popup-text { font-size: 14px; }
+}
     </style>
 </head>
 
@@ -1279,6 +1419,79 @@
 
     </a>
 </div>
+<div id="exit-popup" class="exit-popup-overlay">
+    <div class="exit-popup-content">
+        <button type="button" class="exit-popup-close" id="popup-close-btn" aria-label="閉じる">×</button>
+        
+        <div class="popup-visual">
+            <img src="./img/popup_dog.png" alt="スヤスヤ眠るシニア犬" width="100%" height="auto" loading="lazy">
+        </div>
+        
+        <div class="popup-body">
+            <h3 class="popup-title">急がせてしまったら、<br class="sp-only">ごめんなさい。</h3>
+            
+            <p class="popup-text">
+                10年以上の歳月をかけて、職人がじっくりと育てた発酵エキス。大切な愛犬の小さな胃腸に負担をかけないよう、ひとつひとつ丁寧にお作りしているため、どうしても大量生産ができません。<br><br>
+                今回お届けできるのは、<span class="highlight">【限定100食】</span>のみとなります。まだ今の段階でしたら、おひとつ確保させていただくことが可能です。<br><br>
+                「うちの子に合うかしら…」と迷われているなら、ぜひ、お腹がポカポカ温まる変化を、最初の1歩として体験させてあげてください。
+            </p>
+            
+            <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="popup-cta-btn">
+                特別モニターとして、まずは1セット試してみる
+            </a>
+            
+            <button type="button" class="popup-skip-link" id="popup-skip-btn">今回は見送る（ページに戻る）</button>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+    const popup = document.getElementById("exit-popup");
+    const closeBtn = document.getElementById("popup-close-btn");
+    const skipBtn = document.getElementById("popup-skip-btn");
+    
+    // すでにポップアップを表示したか、または購入ボタンを押したかを記録するフラグ
+    let isShown = false;
+
+    // マウスが画面の外（上部：タブや戻るボタンの方）に出た瞬感を検知
+    document.addEventListener("mouseleave", (e) => {
+        if (e.clientY < 0 && !isShown) {
+            showPopup();
+        }
+    });
+
+    // スマホ対応：戻る操作や、一定時間スクロールが上に戻った時などの補助検知（必要に応じて）
+    // 今回は最も確実なPCの離脱検知（mouseleave）をメインにしています
+
+    function showPopup() {
+        popup.classList.add("is-active");
+        isShown = true;
+        // 一度表示したらセッションストレージに保存して何度も出ないようにする
+        sessionStorage.setItem("exit-popup-shown", "true");
+    }
+
+    // 閉じる処理
+    const closePopup = () => {
+        popup.classList.remove("is-active");
+    };
+
+    closeBtn.addEventListener("click", closePopup);
+    skipBtn.addEventListener("click", closePopup);
+    
+    // 背景クリックでも閉じられるようにしてストレスを軽減（押し売り感をなくす）
+    popup.addEventListener("click", (e) => {
+        if (e.target === popup) {
+            closePopup();
+        }
+    });
+
+    // すでにこのセッションで表示済みの場合は、再表示しない
+    if (sessionStorage.getItem("exit-popup-shown") === "true") {
+        isShown = true;
+    }
+});
+</script>
 </body>
 
 </html>
