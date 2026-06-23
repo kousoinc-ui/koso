@@ -1422,24 +1422,19 @@
 <div id="exit-popup" class="exit-popup-overlay">
     <div class="exit-popup-content">
         <button type="button" class="exit-popup-close" id="popup-close-btn" aria-label="閉じる">×</button>
-        
         <div class="popup-visual">
             <img src="./img/popup_dog.png" alt="スヤスヤ眠るシニア犬" width="100%" height="auto" loading="lazy">
         </div>
-        
         <div class="popup-body">
             <h3 class="popup-title">急がせてしまったら、<br class="sp-only">ごめんなさい。</h3>
-            
             <p class="popup-text">
                 10年以上の歳月をかけて、職人がじっくりと育てた発酵エキス。大切な愛犬の小さな胃腸に負担をかけないよう、ひとつひとつ丁寧にお作りしているため、どうしても大量生産ができません。<br><br>
                 今回お届けできるのは、<span class="highlight">【限定100食】</span>のみとなります。まだ今の段階でしたら、おひとつ確保させていただくことが可能です。<br><br>
                 「うちの子に合うかしら…」と迷われているなら、ぜひ、お腹がポカポカ温まる変化を、最初の1歩として体験させてあげてください。
             </p>
-            
             <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="popup-cta-btn">
-                特別モニターとして、まずは1セット試してみる
+                特別モニターとして、まずは1パック試してみる
             </a>
-            
             <button type="button" class="popup-skip-link" id="popup-skip-btn">今回は見送る（ページに戻る）</button>
         </div>
     </div>
@@ -1451,23 +1446,48 @@ document.addEventListener("DOMContentLoaded", () => {
     const closeBtn = document.getElementById("popup-close-btn");
     const skipBtn = document.getElementById("popup-skip-btn");
     
-    // すでにポップアップを表示したか、または購入ボタンを押したかを記録するフラグ
     let isShown = false;
+    let lastScrollTop = 0;
 
-    // マウスが画面の外（上部：タブや戻るボタンの方）に出た瞬感を検知
-    document.addEventListener("mouseleave", (e) => {
-        if (e.clientY < 0 && !isShown) {
-            showPopup();
+    // すでにこのセッションで表示済みの場合はフラグを立てる
+    if (sessionStorage.getItem("exit-popup-shown") === "true") {
+        isShown = true;
+    }
+
+    // スマホのスクロールイベントを監視
+    window.addEventListener("scroll", () => {
+        if (isShown) return;
+
+        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let windowHeight = window.innerHeight;
+        let documentHeight = document.documentElement.scrollHeight;
+
+        // トリガー1：ある程度スクロール（全体の30%以上）した後に、
+        // ユーザーが「あ、やっぱり戻ろう」と少しでも上にスクロール（スクロールアップ）した瞬間
+        if (scrollTop > (documentHeight * 0.4)) {
+            if (scrollTop < lastScrollTop) {
+                // 指を上に動かした＝アプリを閉じようとしたり、上部に戻ろうとした離脱行動
+                showPopup();
+            }
         }
-    });
 
-    // スマホ対応：戻る操作や、一定時間スクロールが上に戻った時などの補助検知（必要に応じて）
-    // 今回は最も確実なPCの離脱検知（mouseleave）をメインにしています
+        // トリガー2：LPの最下部（フッター付近）まで読んだのに、
+        // ボタンを押さずに数秒迷っている、あるいはそこで動きが止まった瞬間
+        if (scrollTop + windowHeight >= documentHeight - 100) {
+            // 最下部に到達してから1.5秒後に、まだページにいれば優しく表示
+            setTimeout(() => {
+                showPopup();
+            }, 1500);
+        }
 
+        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, { passive: true });
+
+    // ポップアップ表示関数
     function showPopup() {
+        if (isShown) return;
         popup.classList.add("is-active");
         isShown = true;
-        // 一度表示したらセッションストレージに保存して何度も出ないようにする
         sessionStorage.setItem("exit-popup-shown", "true");
     }
 
@@ -1479,17 +1499,12 @@ document.addEventListener("DOMContentLoaded", () => {
     closeBtn.addEventListener("click", closePopup);
     skipBtn.addEventListener("click", closePopup);
     
-    // 背景クリックでも閉じられるようにしてストレスを軽減（押し売り感をなくす）
+    // 背景部分（薄暗い部分）をタップしても閉じられる（スマホでのストレス軽減）
     popup.addEventListener("click", (e) => {
         if (e.target === popup) {
             closePopup();
         }
     });
-
-    // すでにこのセッションで表示済みの場合は、再表示しない
-    if (sessionStorage.getItem("exit-popup-shown") === "true") {
-        isShown = true;
-    }
 });
 </script>
 </body>
