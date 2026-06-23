@@ -1427,7 +1427,7 @@
             <img src="./img/popup_dog.webp" alt="スヤスヤ眠るシニア犬" width="100%" height="auto" loading="lazy">
         </div>
         <div class="popup-body">
-            <h3 class="popup-title">お急ぎにさせてしまったら、<br class="sp-only">ごめんなさい。</h3>
+            <h3 class="popup-title">急がせてしまったら、<br class="sp-only">ごめんなさい。</h3>
             <p class="popup-text">
                 10年以上の歳月をかけて、職人がじっくりと育てた発酵エキス。大切な愛犬の小さな胃腸に負担をかけないよう、ひとつひとつ丁寧にお作りしているため、どうしても大量生産ができません。<br><br>
                 今回お届けできるのは、<span class="highlight">【限定100食】</span>のみとなります。まだ今の段階でしたら、おひとつ確保させていただくことが可能です。<br><br>
@@ -1465,7 +1465,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
         // トリガー1：ある程度スクロール（全体の30%以上）した後に、
         // ユーザーが「あ、やっぱり戻ろう」と少しでも上にスクロール（スクロールアップ）した瞬間
-        if (scrollTop > (documentHeight * 0.3)) {
+        if (scrollTop > (documentHeight * 0.4)) {
             if (scrollTop < lastScrollTop) {
                 // 指を上に動かした＝アプリを閉じようとしたり、上部に戻ろうとした離脱行動
                 showPopup();
