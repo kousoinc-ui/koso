@@ -15,9 +15,10 @@
   --hero-5: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2400&q=85");
   --area-pet: url("https://images.unsplash.com/photo-1548199973-03cce0bbc87b?auto=format&fit=crop&w=1800&q=85");
   --area-human: url("https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1800&q=85");
-  --area-oem: url("https://images.unsplash.com/photo-1581093458791-9f3c3d6e37a2?auto=format&fit=crop&w=1800&q=85");
-  --area-future: url("https://images.unsplash.com/photo-1492496913980-501348b61469?auto=format&fit=crop&w=1800&q=85");
+  --area-oem: url("./assets/mtg.jpg");
+  --area-future: url("./assets/media.webp");
 }
+
 
 * {
   box-sizing: border-box;
