@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <title>代謝と酵素の関係 | 酵素株式会社</title>
+    <meta name="description" content="代謝と酵素の関係を、OEM検討中のサロン・EC・クリニック向けにわかりやすく解説。誇張せず、信頼される表現設計での酵素ドリンクOEMをサポートします。" />
+
+    <link rel="canonical" href="https://kousoinc-ui.github.io/kouso-homepage/metabolism-enzymes.html" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="代謝と酵素の関係 | 酵素株式会社" />
+    <meta property="og:description" content="“燃やす力”を支える仕組みを、図解でやさしく。OEM向けの誠実な情報設計。" />
+    <meta property="og:url" content="https://kousoinc-ui.github.io/kouso-homepage/metabolism-enzymes.html" />
+    <meta property="og:image" content="https://kousoinc-ui.github.io/kouso-homepage/img/ogp.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <meta name="theme-color" content="#004D40" />
+    <link rel="icon" href="favicon.ico" sizes="any" />
+    <link rel="icon" href="icon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600;700;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0a0f0d;
+            --bg-soft: #0f1613;
+            --card: #0f1715cc;
+            --white: #f6f7f6;
+            --text: #F2F5F4;
+            --muted: #b7c0ba;
+            --muted-strong: #CFD6D1;
+            --brand: #004D40;
+            --brand-2: #1aa27a;
+            --gold: #D4AF37;
+            --border: rgba(255, 255, 255, .18);
+            --border-strong: rgba(255, 255, 255, .26);
+            --shadow-soft: 0 12px 28px rgba(0, 0, 0, .28);
+            --shadow-strong: 0 18px 48px rgba(0, 0, 0, .45);
+            --radius: 18px;
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            font-family: 'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            line-height: 1.75;
+            background:
+                radial-gradient(1200px 600px at 80% -10%, rgba(0, 77, 64, .35), transparent 60%),
+                radial-gradient(900px 500px at -10% 20%, rgba(212, 175, 55, .18), transparent 60%),
+                linear-gradient(180deg, #0b0e0d 0%, #0a0f0d 60%, #0a0f0d 100%);
+        }
+
+        /* subtle noise */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+            opacity: .18;
+            z-index: 0;
+        }
+
+        a {
+            color: var(--brand-2);
+            text-decoration-thickness: .08em;
+            text-underline-offset: 2px;
+            text-decoration-color: color-mix(in oklab, currentColor 40%, transparent);
+        }
+
+        a:hover,
+        a:focus-visible {
+            text-decoration: underline
+        }
+
+        .container {
+            width: min(1120px, 94%);
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden
+        }
+
+        .skip-link:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: 8px 12px;
+            background: #000;
+            color: #fff
+        }
+
+        /* Header */
+        body>header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: linear-gradient(180deg, rgba(10, 15, 13, .92), rgba(10, 15, 13, .55));
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            gap: 14px;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 900;
+            letter-spacing: .06em;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 42px;
+            height: 42px;
+            object-fit: contain;
+            filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .35));
+        }
+
+        nav {
+            position: relative;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch
+        }
+
+        nav a {
+            padding: 10px 12px;
+            border-radius: 12px;
+            color: var(--muted-strong);
+            white-space: nowrap;
+            text-decoration: none;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, .08)
+        }
+
+        .cta {
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            color: #fff;
+            padding: 10px 16px;
+            border-radius: 12px;
+            font-weight: 800;
+            box-shadow: var(--shadow-soft);
+            position: relative;
+            isolation: isolate;
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(90deg, rgba(212, 175, 55, .25), transparent 40%, rgba(26, 162, 122, .25));
+            z-index: -1;
+            filter: blur(10px);
+            opacity: .9;
+        }
+
+        .menu-toggle {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border-strong);
+            background: rgba(255, 255, 255, .08);
+            color: #fff;
+            border-radius: 12px;
+            padding: 10px 12px;
+            font-weight: 800;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bars {
+            width: 20px;
+            height: 14px;
+            position: relative;
+            display: inline-block
+        }
+
+        .menu-toggle .bars::before,
+        .menu-toggle .bars::after,
+        .menu-toggle .bars span {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px
+        }
+
+        .menu-toggle .bars::before {
+            top: 0
+        }
+
+        .menu-toggle .bars span {
+            top: 6px
+        }
+
+        .menu-toggle .bars::after {
+            bottom: 0
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            padding: clamp(108px, 16vh, 160px) 0 clamp(64px, 10vh, 110px);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            background:
+                radial-gradient(900px 420px at 25% 10%, rgba(26, 162, 122, .22), transparent 60%),
+                radial-gradient(900px 420px at 80% 30%, rgba(212, 175, 55, .18), transparent 60%),
+                linear-gradient(180deg, rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, .25) 45%, rgba(0, 0, 0, .15) 100%);
+            z-index: 0;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            max-width: 880px;
+        }
+
+        .eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 12px;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: rgba(0, 229, 199, .92);
+            margin-bottom: 14px;
+        }
+
+        .eyebrow .dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--gold), var(--brand-2));
+            box-shadow: 0 10px 22px rgba(212, 175, 55, .18);
+        }
+
+        .hero h1 {
+            margin: 0 0 14px;
+            font-weight: 900;
+            font-size: clamp(34px, 5.8vw, 64px);
+            line-height: 1.08;
+            letter-spacing: -.03em;
+            text-shadow: 0 10px 40px rgba(0, 0, 0, .55), 0 0 1px rgba(0, 0, 0, .35);
+        }
+
+        .hero h1 .accent {
+            position: relative;
+            display: inline-block;
+        }
+
+        .hero h1 .accent::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -12px;
+            width: 110px;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--brand-2));
+            box-shadow: 0 8px 22px rgba(212, 175, 55, .18);
+        }
+
+        .lead {
+            color: rgba(242, 245, 244, .86);
+            font-size: clamp(15px, 2vw, 18px);
+            max-width: 70ch;
+            margin: 18px 0 0;
+        }
+
+        .hero-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 26px;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 18px;
+            border-radius: 14px;
+            font-weight: 800;
+            border: 1px solid var(--border-strong);
+            color: #fff;
+            cursor: pointer;
+            text-decoration: none;
+            background: rgba(255, 255, 255, .06);
+            transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px);
+            background: rgba(255, 255, 255, .12);
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn:active {
+            transform: translateY(0) scale(.99);
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            border-color: transparent;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .btn.primary:hover {
+            box-shadow: var(--shadow-strong);
+        }
+
+        .btn .icon {
+            width: 18px;
+            height: 18px;
+            opacity: .95;
+        }
+
+        /* Sections */
+        section.section {
+            padding: 56px 0 92px;
+            border-top: 1px solid var(--border);
+            position: relative;
+        }
+
+        section.section::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -1px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, .22), rgba(26, 162, 122, .22), transparent);
+            opacity: .9;
+        }
+
+        .section h2 {
+            margin: 0 0 10px;
+            font-size: clamp(22px, 2.6vw, 30px);
+            letter-spacing: -.01em;
+            position: relative;
+            padding-top: 18px;
+        }
+
+        .section h2::before {
+            content: attr(data-eyebrow);
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 11px;
+            letter-spacing: .28em;
+            text-transform: uppercase;
+            color: rgba(0, 229, 199, .92);
+            opacity: .95;
+        }
+
+        .section h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 14px;
+            width: 56px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0, 229, 199, 1), rgba(44, 124, 255, 1));
+            border-radius: 2px;
+            opacity: .9;
+        }
+
+        .sub {
+            margin: 0 0 26px;
+            color: var(--muted-strong);
+            max-width: 78ch;
+        }
+
+        /* Cards grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 14px;
+        }
+
+        .card {
+            grid-column: span 6;
+            padding: 26px;
+            border-radius: 18px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, .04), rgba(255, 255, 255, .01));
+            border: 1px solid var(--border-strong);
+            box-shadow: var(--shadow-soft);
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212, 175, 55, .32);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .card h3 {
+            margin: 0 0 8px;
+            font-size: 16px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted-strong);
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 10px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .22);
+            background: rgba(255, 255, 255, .06);
+            color: #e2eae5;
+            font-size: 12px;
+            margin-top: 12px;
+            width: fit-content;
+        }
+
+        .icon-badge {
+            width: 26px;
+            height: 26px;
+            border-radius: 10px;
+            border: 1px solid rgba(255, 255, 255, .18);
+            background: rgba(0, 0, 0, .35);
+            display: grid;
+            place-items: center;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, .25);
+            flex: 0 0 auto;
+        }
+
+        .icon-badge svg {
+            width: 16px;
+            height: 16px;
+            fill: none;
+            stroke: rgba(242, 245, 244, .92);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        /* Infographic blocks */
+        .infobox {
+            grid-column: span 12;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: rgba(15, 23, 21, .92);
+            box-shadow: var(--shadow-soft);
+            padding: 26px;
+            overflow: hidden;
+        }
+
+        .infobox .top {
+            display: flex;
+            align-items: flex-start;
+            justify-content: space-between;
+            gap: 18px;
+            flex-wrap: wrap;
+            margin-bottom: 16px;
+        }
+
+        .infobox .top .left {
+            max-width: 70ch;
+        }
+
+        .kicker {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: rgba(212, 175, 55, .92);
+            letter-spacing: .18em;
+            text-transform: uppercase;
+            font-size: 12px;
+            margin-bottom: 8px;
+        }
+
+        .kicker .line {
+            width: 32px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--brand-2));
+            border-radius: 2px;
+            opacity: .95;
+        }
+
+        .infobox h3 {
+            margin: 0 0 6px;
+            font-size: 18px;
+            font-weight: 900;
+        }
+
+        .infobox p {
+            margin: 0;
+            color: var(--muted-strong);
+            font-size: 14px;
+            line-height: 1.95;
+        }
+
+        .flow {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 12px;
+            margin-top: 18px;
+        }
+
+        .node {
+            grid-column: span 4;
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, .16);
+            background: rgba(255, 255, 255, .04);
+            padding: 16px;
+            position: relative;
+            box-shadow: 0 10px 22px rgba(0, 0, 0, .2);
+        }
+
+        .node .title {
+            font-weight: 900;
+            margin: 0 0 6px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .node .desc {
+            margin: 0;
+            color: var(--muted-strong);
+            font-size: 13px;
+            line-height: 1.85;
+        }
+
+        .arrow {
+            position: absolute;
+            right: -12px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 24px;
+            height: 24px;
+            display: grid;
+            place-items: center;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, .18);
+            background: rgba(0, 0, 0, .35);
+        }
+
+        .arrow svg {
+            width: 14px;
+            height: 14px;
+            fill: none;
+            stroke: rgba(242, 245, 244, .9);
+            stroke-width: 2;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .node:last-child .arrow {
+            display: none;
+        }
+
+        .note {
+            margin-top: 14px;
+            padding: 14px 16px;
+            border-radius: 14px;
+            border: 1px dashed rgba(255, 255, 255, .18);
+            background: rgba(0, 0, 0, .25);
+            color: rgba(242, 245, 244, .82);
+            font-size: 13px;
+            line-height: 1.85;
+        }
+
+        .note strong {
+            color: #fff;
+        }
+
+        /* OEM CTA band */
+        .cta-band {
+            margin-top: 22px;
+            padding: 18px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: linear-gradient(135deg, rgba(0, 77, 64, .35), rgba(26, 162, 122, .18));
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 14px;
+            flex-wrap: wrap;
+            box-shadow: var(--shadow-soft);
+        }
+
+        .cta-band .copy {
+            max-width: 70ch;
+        }
+
+        .cta-band .copy .t {
+            margin: 0 0 4px;
+            font-weight: 900;
+            font-size: 16px;
+        }
+
+        .cta-band .copy .d {
+            margin: 0;
+            color: rgba(242, 245, 244, .82);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        /* Footer */
+        footer {
+            padding: 44px 0 56px;
+            color: var(--muted-strong);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, .06);
+        }
+
+        footer a {
+            color: var(--muted-strong);
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            color: #fff;
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width:980px) {
+            .nav {
+                padding: 10px 0;
+            }
+
+            .menu-toggle {
+                display: inline-flex
+            }
+
+            nav ul {
+                position: absolute;
+                right: 0;
+                left: 0;
+                top: 48px;
+                display: none !important;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(15, 23, 21, .96);
+                border: 1px solid var(--border);
+                border-radius: 14px;
+                padding: 8px;
+                box-shadow: var(--shadow-strong);
+                z-index: 9999;
+            }
+
+            nav ul.open {
+                display: flex !important
+            }
+
+            nav li {
+                border-bottom: 1px dashed rgba(255, 255, 255, .14)
+            }
+
+            nav li:last-child {
+                border-bottom: none
+            }
+
+            nav a {
+                display: block;
+                padding: 14px 12px
+            }
+
+            section.section {
+                padding: 42px 0 62px;
+            }
+
+            .card {
+                grid-column: span 12;
+                padding: 22px;
+            }
+
+            .infobox {
+                padding: 22px;
+            }
+
+            .node {
+                grid-column: span 12;
+            }
+
+            .arrow {
+                right: 50%;
+                top: auto;
+                bottom: -12px;
+                transform: translateX(50%);
+            }
+
+            .node:last-child .arrow {
+                display: none;
+            }
+        }
+
+        /* Focus */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+            border-radius: 10px
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#main" class="skip-link">メインコンテンツへスキップ</a>
+
+    <header>
+        <div class="container nav">
+            <a class="logo" href="index.html#top" aria-label="酵素株式会社 ホームへ">
+                <img src="img/logo.png" alt="" class="logo-mark" aria-hidden="true">
+                <div>酵素株式会社</div>
+            </a>
+
+            <button class="menu-toggle" aria-label="メニューを開閉" aria-controls="primary-menu" aria-expanded="false">
+                <span class="bars"><span></span></span>
+                メニュー
+            </button>
+
+            <nav aria-label="主要ナビゲーション">
+                <ul id="primary-menu">
+                    <li><a href="#metabolism">代謝の基本</a></li>
+                    <li><a href="#food">食生活と設計</a></li>
+                    <li><a href="#oem">OEM視点</a></li>
+                    <li><a href="index.html#contact" class="cta">OEMのご相談</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="main" role="main">
+        <!-- Hero -->
+        <section class="hero" aria-label="キービジュアル">
+            <div class="hero-bg" aria-hidden="true"></div>
+            <div class="container hero-inner">
+                <div class="eyebrow"><span class="dot" aria-hidden="true"></span>METABOLISM × ENZYMES</div>
+                <h1><span class="accent">代謝</span>と<span class="accent">酵素</span>の関係</h1>
+                <p class="lead">
+                    ダイエット文脈で語られやすい「酵素」ですが、OEMページでは誇張せず、仕組みをわかりやすく整理することが信頼につながります。<br>
+                    このページでは、代謝に酵素がどう関わるかを“図解”でやさしくまとめます（医療効果の断定は行いません）。
+                </p>
+                <div class="hero-actions">
+                    <a class="btn primary" href="index.html#contact">
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M21 8V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v1" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M3 8l9 6 9-6" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M21 8v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        OEMの相談をする
+                    </a>
+                    <a class="btn" href="#metabolism">
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M12 5v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                stroke-linejoin="round"></path>
+                            <path d="M19 12l-7 7-7-7" fill="none" stroke="currentColor" stroke-width="2"
+                                stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        図解を見る
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: metabolism -->
+        <section id="metabolism" class="section" aria-labelledby="metabolism-title">
+            <div class="container">
+                <h2 id="metabolism-title" data-eyebrow="BASICS">代謝の基本：エネルギーは“反応の連鎖”で生まれる</h2>
+                <p class="sub">
+                    三大栄養素（糖質・脂質・たんぱく質）は、摂取した瞬間にそのままエネルギーになるわけではありません。体内で起きる多数の“代謝反応”を経て、はじめて利用可能な形に変換されます。
+                    その反応の多くで、酵素が“進行を助ける役割”として関与します。
+                </p>
+
+                <div class="infobox" role="region" aria-label="代謝の流れ 図解">
+                    <div class="top">
+                        <div class="left">
+                            <div class="kicker"><span class="line" aria-hidden="true"></span>INFOGRAPHIC</div>
+                            <h3>栄養素 → 分解/変換 → 活用（この“変換”に多くの酵素が関与）</h3>
+                            <p>※ここでの表現は「関与」「助ける」に留め、効果の断定は行いません。</p>
+                        </div>
+                        <div class="pill" aria-label="ポイント">
+                            <span aria-hidden="true">✨</span>OEM向け：誇張しない説明が信頼をつくる
+                        </div>
+                    </div>
+
+                    <div class="flow" aria-label="代謝の流れ">
+                        <div class="node">
+                            <div class="title">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M4 12h16"></path>
+                                        <path d="M7 9l-3 3 3 3"></path>
+                                        <path d="M17 9l3 3-3 3"></path>
+                                    </svg>
+                                </span>
+                                摂取（食事）
+                            </div>
+                            <p class="desc">糖質・脂質・たんぱく質を取り入れる。</p>
+                            <div class="arrow" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5l8 7-8 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="node">
+                            <div class="title">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 3v4"></path>
+                                        <path d="M7 5l2 3"></path>
+                                        <path d="M17 5l-2 3"></path>
+                                        <path d="M6 21h12"></path>
+                                        <path d="M8 21v-5a4 4 0 0 1 8 0v5"></path>
+                                    </svg>
+                                </span>
+                                分解・変換（代謝反応）
+                            </div>
+                            <p class="desc">体内で起きる反応が連鎖し、利用可能な形へ。</p>
+                            <div class="arrow" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M8 5l8 7-8 7"></path>
+                                </svg>
+                            </div>
+                        </div>
+
+                        <div class="node">
+                            <div class="title">
+                                <span class="icon-badge" aria-hidden="true">
+                                    <svg viewBox="0 0 24 24">
+                                        <path d="M12 2v6"></path>
+                                        <path d="M8 8h8"></path>
+                                        <path d="M7 22h10"></path>
+                                        <path d="M9 22v-4a3 3 0 0 1 6 0v4"></path>
+                                        <path d="M6 12c2-2 10-2 12 0"></path>
+                                    </svg>
+                                </span>
+                                活用
+                            </div>
+                            <p class="desc">エネルギー・体温維持・組織構成などに利用。</p>
+                        </div>
+                    </div>
+
+                    <div class="note">
+                        <strong>OEM向けの言い方：</strong>
+                        「代謝に酵素が関与している」までは説明できますが、
+                        「酵素を摂れば脂肪が燃える」などの断定は避け、生活習慣・栄養バランスを含む全体設計として伝えるのが安全です。
+                    </div>
+                </div>
+
+                <div class="grid" style="margin-top:14px;">
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 19c4-10 12-10 16 0"></path>
+                                    <path d="M6 19h12"></path>
+                                    <path d="M12 5c1.5 2 .5 4-1 5"></path>
+                                    <path d="M14 8c.5 1.5 0 3-1.5 4"></path>
+                                </svg>
+                            </span>
+                            糖質の利用
+                        </h3>
+                        <p>糖質は分解・変換の過程を経て、活動のエネルギーとして利用されます（この過程に複数の酵素が関与）。</p>
+                        <div class="pill"><span aria-hidden="true">🍚</span>「反応の連鎖」を図解で</div>
+                    </article>
+
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2l3 7 7 3-7 3-3 7-3-7-7-3 7-3 3-7"></path>
+                                </svg>
+                            </span>
+                            脂質の利用
+                        </h3>
+                        <p>脂質代謝にも複数の酵素が関与します。例として、脂質の分解に関わる酵素（リパーゼなど）が知られています。</p>
+                        <div class="pill"><span aria-hidden="true">🥑</span>「関与」の表現で誠実に</div>
+                    </article>
+
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 20c4-12 12-12 16 0"></path>
+                                    <path d="M8 14c2-2 6-2 8 0"></path>
+                                    <path d="M12 2v4"></path>
+                                </svg>
+                            </span>
+                            たんぱく質の利用
+                        </h3>
+                        <p>たんぱく質は体づくりに重要で、分解・合成を含む多様な代謝反応が関与します（酵素もその一部）。</p>
+                        <div class="pill"><span aria-hidden="true">🥚</span>“体験価値”設計に接続</div>
+                    </article>
+
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M3 12h6l3-8 3 16 3-8h6"></path>
+                                </svg>
+                            </span>
+                            余剰エネルギーの行き先
+                        </h3>
+                        <p>消費されなかったエネルギーは体内に蓄えられます。体重管理は「摂取・消費・生活習慣」全体で捉えることが重要です。</p>
+                        <div class="pill"><span aria-hidden="true">📌</span>断定より“全体像”</div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: food -->
+        <section id="food" class="section" aria-labelledby="food-title">
+            <div class="container">
+                <h2 id="food-title" data-eyebrow="FOOD CONTEXT">食生活と情報設計：誇張しない“ダイエット文脈”</h2>
+                <p class="sub">
+                    「酵素＝ダイエットに効く」と短絡的に見せるのではなく、
+                    <strong>代謝を支える要素の一つ</strong>として丁寧に整理すると、OEMの信用が上がります。
+                    加熱・加工、食習慣、生活リズムなども含めた「整える提案」が現実的です。
+                </p>
+
+                <div class="grid">
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 3h12"></path>
+                                    <path d="M8 3v6a4 4 0 0 0 8 0V3"></path>
+                                    <path d="M12 13v8"></path>
+                                    <path d="M8 21h8"></path>
+                                </svg>
+                            </span>
+                            加熱・加工と“食品中の酵素”
+                        </h3>
+                        <p>
+                            一般に、酵素は熱で失活しやすい特性があります。<br>
+                            ただし、体内で働く酵素は主に体内で合成されるため、食品中の酵素の扱いは“断定しない説明”が安全です。
+                        </p>
+                        <div class="pill"><span aria-hidden="true">🧪</span>特性は言う／結論は盛らない</div>
+                    </article>
+
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 7h16"></path>
+                                    <path d="M6 7v12"></path>
+                                    <path d="M18 7v12"></path>
+                                    <path d="M9 11h6"></path>
+                                    <path d="M9 15h6"></path>
+                                </svg>
+                            </span>
+                            高カロリー食品と生活習慣
+                        </h3>
+                        <p>
+                            体重管理は「摂取量・消費量・睡眠・ストレス」など複数要因で決まります。<br>
+                            OEMでは“単一成分で解決”を避け、生活提案とセットで説明できる設計が強みになります。
+                        </p>
+                        <div class="pill"><span aria-hidden="true">🌿</span>“整える”が信頼</div>
+                    </article>
+
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 22s7-4 7-10a4 4 0 0 0-7-2 4 4 0 0 0-7 2c0 6 7 10 7 10"></path>
+                                </svg>
+                            </span>
+                            体感として語るポイント
+                        </h3>
+                        <p>
+                            「続けやすい味」「飲用シーン」「食習慣のサポート」など、体感に関わる言語化が重要です。<br>
+                            効果の断定ではなく、“習慣化”を後押しする表現がBtoBでも好まれます。
+                        </p>
+                        <div class="pill"><span aria-hidden="true">📝</span>体験価値 → 継続</div>
+                    </article>
+
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z"></path>
+                                    <path d="M9 12l2 2 4-5"></path>
+                                </svg>
+                            </span>
+                            表現の安全ライン
+                        </h3>
+                        <p>
+                            OK：代謝に酵素が関与している／生活習慣を整える提案<br>
+                            NG：脂肪が燃える・肥満が治る・成人病を予防する などの断定
+                        </p>
+                        <div class="pill"><span aria-hidden="true">🛡️</span>法令順守＝ブランド防衛</div>
+                    </article>
+                </div>
+
+                <div class="cta-band" style="margin-top:18px;">
+                    <div class="copy">
+                        <p class="t">“ダイエット文脈”を、信頼される説明に整えます。</p>
+                        <p class="d">訴求は強く、表現は安全に。ターゲット（サロン/EC/クリニック）に合わせて、言い回し・FAQ・表示文まで一緒に整理できます。</p>
+                    </div>
+                    <a class="btn primary" href="index.html#contact">
+                        <svg class="icon" viewBox="0 0 24 24" aria-hidden="true">
+                            <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                            <path d="M12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8z" fill="none" stroke="currentColor"
+                                stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                        無料相談へ
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section: OEM -->
+        <section id="oem" class="section" aria-labelledby="oem-title">
+            <div class="container">
+                <h2 id="oem-title" data-eyebrow="OEM VIEW">OEM視点：商品設計で大事な3つ</h2>
+                <p class="sub">
+                    “酵素×ダイエット”は、言い方次第でブランドの信頼を大きく左右します。<br>
+                    酵素株式会社では、企画段階から<strong>設計・品質・表現</strong>をセットで整えます。
+                </p>
+
+                <div class="grid">
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M4 19c4-10 12-10 16 0"></path>
+                                    <path d="M7 14c2-2 8-2 10 0"></path>
+                                    <path d="M12 2v4"></path>
+                                </svg>
+                            </span>
+                            設計（味・濃度・飲みやすさ）
+                        </h3>
+                        <p>継続の起点は“体験価値”。味の角、濃度、飲用シーン、容量設計まで一緒に詰めます。</p>
+                        <div class="pill"><span aria-hidden="true">🎯</span>サロン/EC/院 で最適化</div>
+                    </article>
+
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M12 2l7 4v6c0 5-3 9-7 10-4-1-7-5-7-10V6l7-4z"></path>
+                                    <path d="M9 12l2 2 4-5"></path>
+                                </svg>
+                            </span>
+                            品質（ロット安定・工程管理）
+                        </h3>
+                        <p>味のブレ・粘度・香りの差分が“継続”を止めます。安定品質を前提にスケジュール管理まで支援します。</p>
+                        <div class="pill"><span aria-hidden="true">✅</span>安心の土台づくり</div>
+                    </article>
+
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M6 2h9l3 3v17H6z"></path>
+                                    <path d="M9 11h6"></path>
+                                    <path d="M9 15h6"></path>
+                                </svg>
+                            </span>
+                            表現（表示・コピー・FAQ）
+                        </h3>
+                        <p>誇張を避けつつ、伝わる言葉に整える。薬機法・景表法の観点で“言い回し”を提案します。</p>
+                        <div class="pill"><span aria-hidden="true">🧩</span>売るための“整理”</div>
+                    </article>
+
+                    <article class="card">
+                        <h3>
+                            <span class="icon-badge" aria-hidden="true">
+                                <svg viewBox="0 0 24 24">
+                                    <path d="M21 8V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v1"></path>
+                                    <path d="M3 8l9 6 9-6"></path>
+                                    <path d="M21 8v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8"></path>
+                                </svg>
+                            </span>
+                            まずは要件整理から
+                        </h3>
+                        <p>
+                            ターゲット・販売チャネル・想定価格・味の方向性を共有いただければ、最短で試作と見積の道筋を作ります。
+                        </p>
+                        <div class="pill"><span aria-hidden="true">⚡</span>小ロットから相談OK</div>
+                    </article>
+                </div>
+
+                <div class="cta-band" style="margin-top:18px;">
+                    <div class="copy">
+                        <p class="t">“代謝”を語るほど、誠実さが強みになります。</p>
+                        <p class="d">攻めるポイントと守るポイントを分けて、OEMの勝ち筋（設計×品質×表現）を一緒に作りましょう。</p>
+                    </div>
+                    <a class="btn primary" href="index.html#contact">OEMのご相談</a>
+                    <a class="btn" href="index.html">トップへ戻る</a>
+                </div>
+
+                <p class="note" style="margin-top:16px;">
+                    <strong>免責（掲載表現について）</strong><br>
+                    本ページは一般的な情報提供を目的としたもので、特定の疾病の治療・予防や効果を保証するものではありません。製品の訴求表現は、販売形態・媒体・表示設計により適切な表現範囲が異なります。
+                </p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <nav aria-label="フッターナビゲーション">
+                <a href="#metabolism">代謝の基本</a> · <a href="#food">食生活と設計</a> · <a href="#oem">OEM視点</a> · <a
+                    href="index.html#contact">お問い合わせ</a>
+            </nav>
+            <small>
+                © 2025 酵素株式会社 — 発酵から、発幸へ。<br>
+                酵素ドリンクOEM・ODM / 小ロットからご相談いただけます。
+            </small>
+        </div>
+    </footer>
+
+    <script>
+        // mobile menu
+        (function () {
+            const toggle = document.querySelector('.menu-toggle');
+            const menu = document.getElementById('primary-menu');
+            if (!toggle || !menu) return;
+
+            const closeMenu = () => {
+                menu.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                document.removeEventListener('keydown', onKeydown);
+                document.removeEventListener('click', onClickAway);
+            };
+            const openMenu = () => {
+                menu.classList.add('open');
+                toggle.setAttribute('aria-expanded', 'true');
+                const firstLink = menu.querySelector('a');
+                if (firstLink) firstLink.focus({ preventScroll: true });
+                document.addEventListener('keydown', onKeydown);
+                setTimeout(() => document.addEventListener('click', onClickAway));
+            };
+            const onKeydown = (e) => {
+                if (e.key === 'Escape') { closeMenu(); toggle.focus(); }
+            };
+            const onClickAway = (e) => {
+                if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu();
+            };
+
+            toggle.addEventListener('click', () => {
+                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                expanded ? closeMenu() : openMenu();
+            });
+
+            menu.addEventListener('click', (e) => {
+                const t = e.target;
+                if (t.closest && t.closest('a')) closeMenu();
+            });
+
+            const mql = window.matchMedia('(min-width: 981px)');
+            mql.addEventListener('change', (ev) => {
+                if (ev.matches) {
+                    menu.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+
+        // scroll reveal
+        (function () {
+            const targets = document.querySelectorAll('.card, .infobox, .cta-band');
+            targets.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(10px)'; });
+
+            const io = new IntersectionObserver((entries) => {
+                entries.forEach(e => {
+                    if (!e.isIntersecting) return;
+                    e.target.style.transition = 'opacity .55s ease, transform .55s ease';
+                    e.target.style.opacity = '1';
+                    e.target.style.transform = 'translateY(0px)';
+                    io.unobserve(e.target);
+                });
+            }, { threshold: .12 });
+
+            targets.forEach(el => io.observe(el));
+        })();
+    </script>
+</body>
+
+</html>

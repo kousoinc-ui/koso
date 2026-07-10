@@ -1,0 +1,1183 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="robots" content="index,follow,max-image-preview:large" />
+    <title>酵素とは？（OEM向け）| 酵素株式会社</title>
+    <meta name="description" content="酵素の基礎、発酵との違い、酵素ドリンク設計の考え方をOEM向けに整理。誠実な表現設計と品質安定を重視したものづくりをご紹介します。" />
+    <link rel="canonical" href="https://kousoinc-ui.github.io/kouso-homepage/enzyme-oem.html" />
+    <meta name="theme-color" content="#004D40" />
+
+    <!-- OGP -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="酵素とは？（OEM向け）| 酵素株式会社" />
+    <meta property="og:description" content="酵素の基礎と、酵素ドリンクOEMで重要な“設計・品質・表現”の考え方を整理。" />
+    <meta property="og:url" content="https://kousoinc-ui.github.io/kouso-homepage/enzyme-oem.html" />
+    <meta property="og:image" content="https://kousoinc-ui.github.io/kouso-homepage/img/ogp.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <!-- Fonts（軽量：必要最低限） -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600;800;900&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --bg: #0a0f0d;
+            --bg-soft: #0f1613;
+            --text: #F2F5F4;
+            --muted: #CFD6D1;
+            --brand: #004D40;
+            --brand-2: #1aa27a;
+            --gold: #D4AF37;
+            --border: rgba(255, 255, 255, .18);
+            --border-strong: rgba(255, 255, 255, .26);
+            --shadow-soft: 0 14px 34px rgba(0, 0, 0, .28);
+            --shadow-strong: 0 22px 60px rgba(0, 0, 0, .45);
+            --radius: 22px;
+
+            /* 余白チューニング（ここだけ触れば全体がゆったり） */
+            --space-1: 10px;
+            --space-2: 16px;
+            --space-3: 24px;
+            --space-4: 34px;
+            --space-5: 48px;
+            --space-6: 68px;
+
+            --container: 1180px;
+            /* 少し広げて余裕 */
+        }
+
+        * {
+            box-sizing: border-box
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            margin: 0;
+            color: var(--text);
+            font-family: 'Noto Sans JP', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+            line-height: 1.85;
+            /* ゆったり */
+            letter-spacing: .01em;
+            background:
+                radial-gradient(1200px 600px at 80% -10%, rgba(0, 77, 64, .34), transparent 60%),
+                radial-gradient(900px 500px at -10% 20%, rgba(212, 175, 55, .16), transparent 60%),
+                linear-gradient(180deg, #0b0e0d 0%, #0a0f0d 60%, #0a0f0d 100%);
+        }
+
+        /* ほんのりノイズ（軽量） */
+        body::before {
+            content: "";
+            position: fixed;
+            inset: 0;
+            pointer-events: none;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='180' height='180' filter='url(%23n)' opacity='.12'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+            opacity: .16;
+            z-index: 0;
+        }
+
+        a {
+            color: var(--brand-2);
+            text-decoration-thickness: .08em;
+            text-underline-offset: 3px;
+        }
+
+        a:hover,
+        a:focus-visible {
+            text-decoration: underline
+        }
+
+        .container {
+            width: min(var(--container), 92%);
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: auto;
+            width: 1px;
+            height: 1px;
+            overflow: hidden
+        }
+
+        .skip-link:focus {
+            position: static;
+            width: auto;
+            height: auto;
+            padding: 10px 14px;
+            background: #000;
+            color: #fff;
+            border-radius: 12px;
+        }
+
+        /* Header */
+        body>header {
+            position: sticky;
+            top: 0;
+            z-index: 50;
+            background: linear-gradient(180deg, rgba(10, 15, 13, .92), rgba(10, 15, 13, .52));
+            border-bottom: 1px solid rgba(255, 255, 255, .08);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+
+        .nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 14px 0;
+            /* 少し増 */
+            gap: var(--space-2);
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            font-weight: 900;
+            letter-spacing: .06em;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .logo-mark {
+            width: 44px;
+            height: 44px;
+            object-fit: contain;
+            filter: drop-shadow(0 8px 22px rgba(0, 0, 0, .35));
+        }
+
+        nav {
+            position: relative;
+        }
+
+        nav ul {
+            display: flex;
+            gap: 18px;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        nav a {
+            padding: 12px 14px;
+            /* ゆったり */
+            border-radius: 14px;
+            color: var(--muted);
+            white-space: nowrap;
+            text-decoration: none;
+            transition: background .2s ease, color .2s ease, transform .2s ease;
+        }
+
+        nav a:hover {
+            color: #fff;
+            background: rgba(255, 255, 255, .08)
+        }
+
+        .cta {
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            color: #fff !important;
+            font-weight: 900;
+            box-shadow: var(--shadow-soft);
+            border-color: transparent !important;
+            position: relative;
+            isolation: isolate;
+        }
+
+        .cta::before {
+            content: "";
+            position: absolute;
+            inset: -1px;
+            border-radius: inherit;
+            background: linear-gradient(90deg, rgba(212, 175, 55, .22), transparent 42%, rgba(26, 162, 122, .22));
+            z-index: -1;
+            filter: blur(10px);
+            opacity: .9;
+        }
+
+        /* Mobile menu */
+        .menu-toggle {
+            display: none;
+            align-items: center;
+            gap: 10px;
+            border: 1px solid var(--border-strong);
+            background: rgba(255, 255, 255, .08);
+            color: #fff;
+            border-radius: 14px;
+            padding: 12px 14px;
+            font-weight: 900;
+            cursor: pointer;
+        }
+
+        .menu-toggle .bars {
+            width: 20px;
+            height: 14px;
+            position: relative;
+            display: inline-block
+        }
+
+        .menu-toggle .bars::before,
+        .menu-toggle .bars::after,
+        .menu-toggle .bars span {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #fff;
+            border-radius: 2px;
+        }
+
+        .menu-toggle .bars::before {
+            top: 0
+        }
+
+        .menu-toggle .bars span {
+            top: 6px
+        }
+
+        .menu-toggle .bars::after {
+            bottom: 0
+        }
+
+        /* Hero */
+        .hero {
+            position: relative;
+            overflow: hidden;
+            min-height: 78svh;
+            /* 余裕 */
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: brightness(.35) contrast(1.05) saturate(.95);
+            z-index: 0;
+        }
+
+        .hero::after {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(180deg, rgba(0, 0, 0, .62) 0%, rgba(0, 0, 0, .48) 45%, rgba(0, 0, 0, .32) 100%);
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        .hero-inner {
+            position: relative;
+            z-index: 1;
+            padding: clamp(118px, 18vh, 170px) 0 clamp(44px, 9vh, 108px);
+            /* 余裕 */
+        }
+
+        .hero-grid {
+            max-width: 900px;
+            display: grid;
+            gap: var(--space-3);
+        }
+
+        .hero h1 {
+            margin: 0 0 var(--space-2);
+            font-weight: 900;
+            font-size: clamp(36px, 6.2vw, 68px);
+            line-height: 1.08;
+            letter-spacing: -.03em;
+            text-shadow: 0 10px 44px rgba(0, 0, 0, .55), 0 0 1px rgba(0, 0, 0, .35);
+        }
+
+        .accent {
+            position: relative;
+            display: inline-block;
+        }
+
+        .accent::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom: -14px;
+            width: 104px;
+            height: 4px;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--gold), var(--brand-2));
+            box-shadow: 0 10px 26px rgba(212, 175, 55, .16);
+        }
+
+        .hero-sub {
+            margin: 6px 0 12px;
+            font-size: 12px;
+            letter-spacing: .26em;
+            text-transform: uppercase;
+            color: var(--gold);
+        }
+
+        .lead {
+            margin: 0;
+            color: rgba(242, 245, 244, .9);
+            max-width: 64ch;
+            font-size: 16px;
+            /* 少し大きく */
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: var(--space-2);
+            flex-wrap: wrap;
+            margin-top: var(--space-3);
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 14px 20px;
+            /* ゆったり */
+            border-radius: 16px;
+            font-weight: 900;
+            border: 1px solid var(--border-strong);
+            color: #fff;
+            background: rgba(255, 255, 255, .06);
+            text-decoration: none;
+            cursor: pointer;
+            transition: transform .18s ease, box-shadow .18s ease, background .18s ease;
+        }
+
+        .btn:hover {
+            transform: translateY(-1px)
+        }
+
+        .btn:active {
+            transform: translateY(0) scale(.99)
+        }
+
+        .btn.primary {
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            box-shadow: var(--shadow-soft);
+            border-color: transparent;
+        }
+
+        .btn.primary:hover {
+            box-shadow: var(--shadow-strong)
+        }
+
+        /* Icon title + icon */
+        .icon-title {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .ico {
+            width: 22px;
+            height: 22px;
+            flex: 0 0 22px;
+            color: var(--gold);
+            filter: drop-shadow(0 6px 18px rgba(0, 0, 0, .25));
+        }
+
+        .ico.small {
+            width: 18px;
+            height: 18px;
+            flex-basis: 18px;
+        }
+
+        /* Metrics row */
+        .hero-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: var(--space-2);
+            margin-top: var(--space-3);
+            max-width: 920px;
+        }
+
+        .metric {
+            padding: 18px 18px;
+            /* ゆったり */
+            border-radius: 18px;
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+        }
+
+        .metric:hover {
+            transform: translateY(-2px);
+            border-color: rgba(212, 175, 55, .26);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .metric .kpi {
+            font-size: 15px;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .metric .muted {
+            color: var(--muted);
+            font-size: 13px;
+            margin-top: 6px;
+        }
+
+        /* Sections */
+        section.section {
+            padding: var(--space-6) 0 calc(var(--space-6) + 18px);
+            /* 全体的に増 */
+            border-top: 1px solid var(--border);
+            position: relative;
+        }
+
+        section.section::before {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: -1px;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, rgba(212, 175, 55, .2), rgba(26, 162, 122, .2), transparent);
+            opacity: .9;
+        }
+
+        .section h2 {
+            margin: 0 0 var(--space-2);
+            font-size: clamp(24px, 2.8vw, 32px);
+            letter-spacing: -.01em;
+            padding-top: 22px;
+            position: relative;
+        }
+
+        .section h2::before {
+            content: attr(data-eyebrow);
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-size: 11px;
+            letter-spacing: .30em;
+            text-transform: uppercase;
+            color: rgba(0, 229, 199, .92);
+            opacity: .95;
+        }
+
+        .section h2::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 16px;
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, rgba(0, 229, 199, 1), rgba(44, 124, 255, 1));
+            border-radius: 2px;
+            opacity: .9;
+        }
+
+        .sub {
+            margin: 0 0 var(--space-4);
+            color: var(--muted);
+            max-width: 78ch;
+            font-size: 15px;
+        }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: var(--space-3);
+            /* ギャップ増 */
+        }
+
+        .card {
+            grid-column: span 6;
+            padding: 26px;
+            /* ゆったり */
+            border-radius: var(--radius);
+            background: linear-gradient(135deg, rgba(255, 255, 255, .05), rgba(255, 255, 255, .012));
+            border: 1px solid var(--border-strong);
+            box-shadow: var(--shadow-soft);
+            transition: transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-3px);
+            border-color: rgba(212, 175, 55, .30);
+            box-shadow: var(--shadow-strong);
+        }
+
+        .card h3 {
+            margin: 0 0 10px;
+            font-size: 17px;
+            font-weight: 900;
+        }
+
+        .card p {
+            margin: 0;
+            color: var(--muted);
+            font-size: 14px;
+        }
+
+        .tags {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-top: 14px
+        }
+
+        .tag {
+            font-size: 12px;
+            padding: 7px 12px;
+            border: 1px solid rgba(255, 255, 255, .22);
+            border-radius: 999px;
+            background: rgba(255, 255, 255, .06);
+            color: #e2eae5;
+        }
+
+        /* Infobar */
+        .infobar {
+            display: grid;
+            grid-template-columns: 1fr auto 1fr;
+            gap: var(--space-3);
+            align-items: center;
+            padding: 22px;
+            border-radius: var(--radius);
+            background: rgba(255, 255, 255, .06);
+            border: 1px solid var(--border);
+            box-shadow: var(--shadow-soft);
+            margin: var(--space-3) 0 var(--space-4);
+        }
+
+        .pill {
+            padding: 12px 14px;
+            border-radius: 999px;
+            border: 1px solid var(--border-strong);
+            background: rgba(0, 0, 0, .22);
+            font-weight: 900;
+            text-align: center;
+        }
+
+        .arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 14px;
+            display: grid;
+            place-items: center;
+            background: linear-gradient(135deg, var(--brand), var(--brand-2));
+            box-shadow: var(--shadow-soft);
+        }
+
+        .arrow svg {
+            width: 20px;
+            height: 20px;
+            color: #fff
+        }
+
+        .note {
+            color: var(--muted);
+            font-size: 14px;
+            margin: 12px 0 0;
+        }
+
+        /* CTA row */
+        .cta-row {
+            margin-top: var(--space-4);
+            padding: 18px 20px;
+            border-radius: 18px;
+            border: 1px solid var(--border);
+            background: rgba(0, 0, 0, .35);
+            display: flex;
+            flex-wrap: wrap;
+            gap: var(--space-2);
+        }
+
+        /* Figure card */
+        figure.card {
+            margin: var(--space-4) 0 0;
+            padding: 0;
+            overflow: hidden
+        }
+
+        figure.card img {
+            display: block;
+            width: 100%;
+            height: auto;
+        }
+
+        footer {
+            padding: var(--space-5) 0 calc(var(--space-5) + 18px);
+            color: var(--muted);
+            text-align: center;
+            border-top: 1px solid rgba(255, 255, 255, .08);
+        }
+
+        footer nav {
+            margin-bottom: 10px;
+        }
+
+        footer nav a {
+            color: var(--muted);
+            text-decoration: none;
+        }
+
+        footer nav a:hover {
+            color: #fff;
+            text-decoration: underline
+        }
+
+        /* Responsive */
+        @media (max-width:980px) {
+            .container {
+                width: min(var(--container), 94%);
+            }
+
+            .menu-toggle {
+                display: inline-flex
+            }
+
+            nav ul {
+                position: absolute;
+                right: 0;
+                left: 0;
+                top: 56px;
+                display: none !important;
+                flex-direction: column;
+                gap: 0;
+                background: rgba(15, 23, 21, .96);
+                border: 1px solid var(--border);
+                border-radius: 16px;
+                padding: 10px;
+                box-shadow: var(--shadow-strong);
+                z-index: 9999;
+            }
+
+            nav ul.open {
+                display: flex !important
+            }
+
+            nav li {
+                border-bottom: 1px dashed rgba(255, 255, 255, .14)
+            }
+
+            nav li:last-child {
+                border-bottom: none
+            }
+
+            nav a {
+                display: block;
+                padding: 16px 14px
+            }
+
+            .cards .card {
+                grid-column: span 12
+            }
+
+            .hero-metrics {
+                grid-template-columns: 1fr
+            }
+
+            .hero-actions .btn {
+                width: 100%;
+                justify-content: center
+            }
+
+            .cta-row .btn {
+                width: 100%;
+                justify-content: center
+            }
+
+            section.section {
+                padding: calc(var(--space-6) - 18px) 0 calc(var(--space-6) - 10px)
+            }
+
+            .infobar {
+                grid-template-columns: 1fr
+            }
+
+            .arrow {
+                display: none
+            }
+
+            .lead {
+                font-size: 15px
+            }
+        }
+
+        /* Focus */
+        a:focus-visible,
+        button:focus-visible {
+            outline: 2px solid var(--gold);
+            outline-offset: 2px;
+            border-radius: 12px;
+        }
+
+        /* Reduce motion */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                transition: none !important;
+                scroll-behavior: auto !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <a href="#top" class="skip-link">メインコンテンツへスキップ</a>
+
+    <header>
+        <div class="container nav">
+            <a class="logo" href="index.html#top" aria-label="酵素株式会社 ホーム">
+                <img src="img/logo.png" alt="" class="logo-mark" aria-hidden="true">
+                <div>酵素株式会社</div>
+            </a>
+
+            <button class="menu-toggle" aria-label="メニューを開閉" aria-controls="primary-menu" aria-expanded="false">
+                <span class="bars"><span></span></span>
+                メニュー
+            </button>
+
+            <nav aria-label="主要ナビゲーション">
+                <ul id="primary-menu">
+                    <li><a href="index.html#service">サービス</a></li>
+                    <li><a href="index.html#products">商品紹介</a></li>
+                    <li><a href="index.html#process">製造工程</a></li>
+                    <li><a href="index.html#about">私たちについて</a></li>
+                    <li><a href="blog/">ブログ</a></li>
+                    <li><a href="index.html#contact" class="cta">OEMのご相談</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main id="top" role="main">
+        <!-- Hero -->
+        <section class="hero" aria-label="酵素とは（OEM向け）キービジュアル">
+            <img class="hero-bg" src="img/main.jpg" alt="" aria-hidden="true" decoding="async" fetchpriority="high">
+            <div class="container hero-inner">
+                <div class="hero-grid">
+                    <div>
+                        <h1><span class="accent">酵素とは？（OEM向け）</span></h1>
+                        <p class="hero-sub">ENZYME / BRAND-SAFE EXPLANATION</p>
+                        <p class="lead">
+                            酵素は“体内の反応を支える触媒”として重要な存在です。<br>
+                            一方で、言葉が一人歩きしやすい領域でもあります。<br>
+                            本ページでは、OEMで必要になる「正しい整理」と「誠実な伝え方」を、わかりやすくまとめました。
+                        </p>
+
+                        <div class="hero-actions">
+                            <a class="btn primary" href="index.html#contact">
+                                <svg class="ico small" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill="currentColor"
+                                        d="M20 8V7a2 2 0 0 0-2-2h-2.2a2.5 2.5 0 0 0-4.9 0H8a2 2 0 0 0-2 2v1H4v12h16V8Zm-9.8-3a1.5 1.5 0 0 1 2.6 0H10.2ZM6 10h12v8H6v-8Z" />
+                                </svg>
+                                OEMの相談をする
+                            </a>
+                            <a class="btn" href="#oem-point">
+                                <svg class="ico small" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill="currentColor"
+                                        d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 14.6V17h-2v-2h2v1.6Zm1.7-6.8-.9.9A2.6 2.6 0 0 0 13 13h-2v-.5a3.8 3.8 0 0 1 1.1-2.7l1.2-1.2a1.6 1.6 0 1 0-2.7-1.1H8.6A3.6 3.6 0 1 1 14.7 9.8Z" />
+                                </svg>
+                                OEMで大事なポイント
+                            </a>
+                        </div>
+
+                        <div class="hero-metrics" aria-label="OEMで重視する3つの観点">
+                            <div class="metric">
+                                <div class="kpi">
+                                    <svg class="ico small" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path fill="currentColor"
+                                            d="M9 2h6v2h-1v3.1c2.3.7 4 2.9 4 5.4V20H6v-7.5c0-2.5 1.7-4.7 4-5.4V4H9V2Zm3 7c-2.2 0-4 1.8-4 4V18h8v-5c0-2.2-1.8-4-4-4Z" />
+                                    </svg>
+                                    設計
+                                </div>
+                                <div class="muted">味・濃度・飲みやすさ</div>
+                            </div>
+                            <div class="metric">
+                                <div class="kpi">
+                                    <svg class="ico small" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path fill="currentColor"
+                                            d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm0 18c-3.2-1.1-6-4.9-6-9V6.3l6-2.2 6 2.2V11c0 4.1-2.8 7.9-6 9Z" />
+                                    </svg>
+                                    品質
+                                </div>
+                                <div class="muted">工程管理・ロット安定</div>
+                            </div>
+                            <div class="metric">
+                                <div class="kpi">
+                                    <svg class="ico small" viewBox="0 0 24 24" aria-hidden="true">
+                                        <path fill="currentColor"
+                                            d="M3 4h18v2H3V4Zm0 4h18v2H3V8Zm0 4h10v2H3v-2Zm0 4h10v2H3v-2Zm14-4 4 4-4 4-1.4-1.4 2.6-2.6-2.6-2.6L17 12Z" />
+                                    </svg>
+                                    表現
+                                </div>
+                                <div class="muted">表示/薬機法の配慮</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 1) Basics -->
+        <section class="section" aria-labelledby="basics">
+            <div class="container">
+                <h2 id="basics" data-eyebrow="BASICS">酵素の定義（まずここだけ押さえる）</h2>
+                <p class="sub">
+                    酵素は、生体内で起こるさまざまな化学反応を進める「触媒（サポーター）」として働くタンパク質です。
+                    OEMでは“言葉の強さ”よりも、正確で誠実な整理が信頼につながります。
+                </p>
+
+                <div class="cards">
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M12 2c3.3 0 6 2.7 6 6c0 3.9-4.4 7.1-6 14c-1.6-6.9-6-10.1-6-14c0-3.3 2.7-6 6-6Zm0 3.2A2.8 2.8 0 0 0 9.2 8A2.8 2.8 0 0 0 12 10.8A2.8 2.8 0 0 0 14.8 8A2.8 2.8 0 0 0 12 5.2Z" />
+                            </svg>
+                            酵素＝反応を進める“触媒”
+                        </h3>
+                        <p>酵素は、分解や合成などの反応をスムーズに進めます。例えるなら、材料（栄養）を使いやすくする「働き手」です。</p>
+                        <div class="tags"><span class="tag">触媒</span><span class="tag">タンパク質</span><span
+                                class="tag">体内反応</span></div>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M12 2a7 7 0 0 1 7 7c0 4.4-3.6 8-8 8H9v5H7v-7h4a6 6 0 0 0 0-12h-1V2h2Zm-1 4h-1a3 3 0 0 0 0 6h1a3 3 0 0 0 0-6Z" />
+                            </svg>
+                            主酵素と補助因子（ビタミン等）
+                        </h3>
+                        <p>多くの酵素は、ビタミンやミネラルなどの補助因子と関係しながら働きます。OEMでは用語を盛らず、要点だけを丁寧に伝えるのが安全です。</p>
+                        <div class="tags"><span class="tag">補助因子</span><span class="tag">栄養との関係</span></div>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M3 12h18v2H3v-2Zm0-6h12v2H3V6Zm0 12h12v2H3v-2Zm14-9 4 4-4 4-1.4-1.4 2.6-2.6-2.6-2.6L17 9Z" />
+                            </svg>
+                            “働き方”は環境の影響を受けやすい
+                        </h3>
+                        <p>酵素は環境の影響を受けやすい特性があります。だからこそ「何をどう作り、どう伝えるか」の設計が重要です。</p>
+                        <div class="tags"><span class="tag">誠実な表現</span><span class="tag">設計重視</span></div>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M4 4h16v16H4V4Zm2 2v12h12V6H6Zm2 2h8v2H8V8Zm0 4h6v2H8v-2Z" />
+                            </svg>
+                            OEMに必要なのは“体験価値”の設計
+                        </h3>
+                        <p>続けやすい味、飲み方、品質の安定、サポート導線。これらが揃って初めて、ブランドの信頼につながります。</p>
+                        <div class="tags"><span class="tag">飲みやすさ</span><span class="tag">品質安定</span><span
+                                class="tag">継続設計</span></div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2) Difference -->
+        <section class="section" aria-labelledby="diff">
+            <div class="container">
+                <h2 id="diff" data-eyebrow="FERMENTATION">発酵と酵素の違い（誤解が起きやすい所）</h2>
+                <p class="sub">
+                    「発酵＝酵素」と誤解されやすいですが、発酵は“プロセス”、酵素は“反応を進める要素”です。
+                    OEMページでは、この整理を入れるだけで信頼感が上がります。
+                </p>
+
+                <div class="infobar" role="group" aria-label="発酵と酵素の違いを図で説明">
+                    <div>
+                        <div class="pill">
+                            <span class="icon-title" style="justify-content:center; gap:10px;">
+                                <svg class="ico small" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill="currentColor"
+                                        d="M8 3h2v2h4V3h2v2h2v2h-2v2a6 6 0 0 1-5 5.9V19h3v2H8v-2h3v-2.1A6 6 0 0 1 6 9V7H4V5h2V3h2v2Zm0 4v2a4 4 0 1 0 8 0V7H8Z" />
+                                </svg>
+                                発酵：微生物の働きによる“変化のプロセス”
+                            </span>
+                        </div>
+                        <p class="note">温度・時間・素材条件で、風味や成分バランスが変化します。</p>
+                    </div>
+
+                    <div class="arrow" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path fill="currentColor" d="M13 5l7 7-7 7v-4H4v-6h9V5z" />
+                        </svg>
+                    </div>
+
+                    <div>
+                        <div class="pill">
+                            <span class="icon-title" style="justify-content:center; gap:10px;">
+                                <svg class="ico small" viewBox="0 0 24 24" aria-hidden="true">
+                                    <path fill="currentColor"
+                                        d="M12 2c3.3 0 6 2.7 6 6c0 3.9-4.4 7.1-6 14c-1.6-6.9-6-10.1-6-14c0-3.3 2.7-6 6-6Z" />
+                                </svg>
+                                酵素：反応を進める“触媒（サポーター）”
+                            </span>
+                        </div>
+                        <p class="note">OEMでは「工程管理×品質安定×表現設計」とセットで語るのが安全です。</p>
+                    </div>
+                </div>
+
+                <div class="cards">
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M7 2h10v2H7V2Zm-2 4h14v3a7 7 0 0 1-14 0V6Zm2 3a5 5 0 0 0 10 0H7Zm-2 7h14v6H5v-6Z" />
+                            </svg>
+                            発酵は“微生物の働き”による変化
+                        </h3>
+                        <p>温度・時間・素材の条件によって、風味や成分バランスが変化します。</p>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M10 2h4v2h-1v3.1c2.3.7 4 2.9 4 5.4V20H7v-7.5c0-2.5 1.7-4.7 4-5.4V4h-1V2Zm2 7c-2.2 0-4 1.8-4 4V18h8v-5c0-2.2-1.8-4-4-4Z" />
+                            </svg>
+                            酵素は“反応を助ける触媒”
+                        </h3>
+                        <p>発酵の中で関わることはあっても、同じ意味ではありません。</p>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M4 4h16v16H4V4Zm2 2v12h12V6H6Zm2 2h8v2H8V8Zm0 4h8v2H8v-2Z" />
+                            </svg>
+                            OEMでは「工程管理」とセットで語る
+                        </h3>
+                        <p>温度・配合比・熟成・濃度調整など、品質の再現性が重要です。</p>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M12 2 1 7l11 5 9-4.1V17h2V7L12 2Zm-7 9.2V17l7 3 7-3v-5.8l-7 3-7-3Z" />
+                            </svg>
+                            伝え方は“盛る”より“整える”
+                        </h3>
+                        <p>誤解を招く断定表現を避け、製造の誠実さと品質の根拠を伝えます。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3) OEM points -->
+        <section id="oem-point" class="section" aria-labelledby="oem">
+            <div class="container">
+                <h2 id="oem" data-eyebrow="OEM POINTS">酵素ドリンクOEMで大切にしていること</h2>
+                <p class="sub">
+                    酵素というテーマは、期待値が先行しやすい分、ブランド側の“設計”が差になります。
+                    私たちは「味」「品質」「表現」をセットで整え、長く売れる設計を支援します。
+                </p>
+
+                <div class="cards">
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M6 2h12v2H6V2Zm1 4h10l-1 10a4 4 0 0 1-8 0L7 6Zm2.2 2 0.7 7.3a2 2 0 0 0 4 0L14.8 8H9.2Z" />
+                            </svg>
+                            1) 飲みやすさ（継続の起点）
+                        </h3>
+                        <p>初回で「続けられそう」と思える味・香り・後味。ここが最重要です。</p>
+                        <div class="tags"><span class="tag">官能設計</span><span class="tag">風味最適化</span></div>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M12 2 4 5v6c0 5 3.4 9.7 8 11 4.6-1.3 8-6 8-11V5l-8-3Zm0 18c-3.2-1.1-6-4.9-6-9V6.3l6-2.2 6 2.2V11c0 4.1-2.8 7.9-6 9Z" />
+                            </svg>
+                            2) 安定品質（ロットのブレを抑える）
+                        </h3>
+                        <p>原料規格・温度・時間・濃度。工程の管理で再現性を担保します。</p>
+                        <div class="tags"><span class="tag">ロット管理</span><span class="tag">工程設計</span></div>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor" d="M4 20h16v2H4v-2Zm2-3h4V3H6v14Zm8 0h4V7h-4v10Z" />
+                            </svg>
+                            3) 小ロット検証→改善→量産
+                        </h3>
+                        <p>試作→試飲→調整で確度を上げてから進めることで、無駄を減らします。</p>
+                        <div class="tags"><span class="tag">小ロット</span><span class="tag">スピード試作</span></div>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M3 4h18v2H3V4Zm0 4h18v2H3V8Zm0 4h10v2H3v-2Zm0 4h10v2H3v-2Zm14-4 4 4-4 4-1.4-1.4 2.6-2.6-2.6-2.6L17 12Z" />
+                            </svg>
+                            4) 表現設計（表示・ルールの範囲で）
+                        </h3>
+                        <p>食品表示・広告表現の観点から、誤解を招きにくい言い方を一緒に整理します。</p>
+                        <div class="tags"><span class="tag">表示サポート</span><span class="tag">表現チェック</span></div>
+                    </article>
+                </div>
+
+                <figure class="card">
+                    <img src="img/koso_1.png" alt="製造工程のイメージ" loading="lazy" decoding="async" width="1180" height="664">
+                    <figcaption style="padding:18px 20px; color:var(--muted); font-size:14px">
+                        OEMでは「再現性（ロット安定）」が信頼になります。温度・配合比・濃度などを工程で管理します。
+                    </figcaption>
+                </figure>
+
+                <div class="cta-row">
+                    <a class="btn primary" href="index.html#contact">無料で相談する</a>
+                    <a class="btn" href="index.html#steps">OEMの進め方を見る</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4) FAQ -->
+        <section class="section" aria-labelledby="faq">
+            <div class="container">
+                <h2 id="faq" data-eyebrow="FAQ">よくあるご質問（OEM向け）</h2>
+                <p class="sub">初回相談の前に多い論点をまとめました。</p>
+
+                <div class="cards">
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2Zm1 14.6V17h-2v-2h2v1.6Zm1.7-6.8-.9.9A2.6 2.6 0 0 0 13 13h-2v-.5a3.8 3.8 0 0 1 1.1-2.7l1.2-1.2a1.6 1.6 0 1 0-2.7-1.1H8.6A3.6 3.6 0 1 1 14.7 9.8Z" />
+                            </svg>
+                            酵素の説明はどう書けばいい？
+                        </h3>
+                        <p>「触媒として働く」「発酵との違い」「味・品質・工程管理」といった事実ベースで整理すると、誇張になりにくく信頼されやすいです。</p>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor" d="M4 4h16v12H5.2L4 17.2V4Zm2 2v7h12V6H6Zm1 11h11v2H7v-2Z" />
+                            </svg>
+                            “酵素感”を出しつつ怪しくならないコツは？
+                        </h3>
+                        <p>強い効能表現よりも、原料・工程・品質の一貫性や、続けやすい設計を語る方が安全です。必要に応じて表現の整え方もご提案します。</p>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M12 3c4.4 0 8 3.6 8 8v1h2v2h-2v1c0 4.4-3.6 8-8 8s-8-3.6-8-8v-1H2v-2h2v-1c0-4.4 3.6-8 8-8Zm0 2a6 6 0 0 0-6 6v4a6 6 0 0 0 12 0v-4a6 6 0 0 0-6-6Z" />
+                            </svg>
+                            乳酸菌などと組み合わせた企画は可能？
+                        </h3>
+                        <p>可能です。ターゲット・チャネル・味設計・表示表現まで含めて全体設計として検討します。</p>
+                    </article>
+
+                    <article class="card">
+                        <h3 class="icon-title">
+                            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                                <path fill="currentColor"
+                                    d="M7 2h10v2H7V2Zm-2 4h14v16H5V6Zm2 2v12h10V8H7Zm2 2h6v2H9v-2Z" />
+                            </svg>
+                            小ロットから始められますか？
+                        </h3>
+                        <p>可能です。試作→試飲→調整を経て、量産時のブレを減らす進め方がおすすめです。</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- Last CTA -->
+        <section class="section" aria-labelledby="next">
+            <div class="container">
+                <h2 id="next" data-eyebrow="NEXT">“酵素”を、信頼される言葉に。</h2>
+                <p class="sub">
+                    私たちは、誠実な設計とものづくりで、貴社ブランドが長く選ばれる土台づくりを支援します。
+                    まずはターゲットと販売チャネルだけでも共有ください。
+                </p>
+                <div class="cta-row">
+                    <a class="btn primary" href="index.html#contact">OEMの無料相談</a>
+                    <a class="btn" href="index.html#service">サービス一覧を見る</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <nav aria-label="フッターナビゲーション">
+                <a href="index.html#service">サービス</a> · <a href="index.html#products">商品紹介</a> ·
+                <a href="index.html#about">会社情報</a> · <a href="index.html#contact">お問い合わせ</a>
+            </nav>
+            <small>© 2025 酵素株式会社 — 発酵から、発幸へ。</small>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            const toggle = document.querySelector('.menu-toggle');
+            const menu = document.getElementById('primary-menu');
+            if (!toggle || !menu) return;
+
+            const closeMenu = () => {
+                menu.classList.remove('open');
+                toggle.setAttribute('aria-expanded', 'false');
+                document.removeEventListener('keydown', onKeydown);
+                document.removeEventListener('click', onClickAway);
+            };
+            const openMenu = () => {
+                menu.classList.add('open');
+                toggle.setAttribute('aria-expanded', 'true');
+                const firstLink = menu.querySelector('a');
+                if (firstLink) firstLink.focus({ preventScroll: true });
+                document.addEventListener('keydown', onKeydown);
+                setTimeout(() => document.addEventListener('click', onClickAway));
+            };
+            const onKeydown = (e) => { if (e.key === 'Escape') { closeMenu(); toggle.focus(); } };
+            const onClickAway = (e) => { if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu(); };
+
+            toggle.addEventListener('click', () => {
+                const expanded = toggle.getAttribute('aria-expanded') === 'true';
+                expanded ? closeMenu() : openMenu();
+            });
+            menu.addEventListener('click', (e) => {
+                const t = e.target;
+                if (t.closest && t.closest('a')) closeMenu();
+            });
+            const mql = window.matchMedia('(min-width: 981px)');
+            mql.addEventListener('change', (ev) => {
+                if (ev.matches) {
+                    menu.classList.remove('open');
+                    toggle.setAttribute('aria-expanded', 'false');
+                }
+            });
+        })();
+    </script>
+</body>
+
+</html>

@@ -1,207 +1,526 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="ja">
 
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>酵素株式会社 | ペット向け健康食品OEM・酵素商品の受託開発</title>
-  <meta name="description"
-    content="酵素株式会社は、ペット向け健康食品OEM、酵素・発酵素材を活かした商品開発支援を行う会社です。犬の健康食品、サプリメント、酵素商品の企画から開発までご相談ください。" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@300;400;500;600&display=swap"
-    rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <title>酵素株式会社 | 発酵から、発幸へ。</title>
+  <meta name="description" content="酵素株式会社は、自然由来の発酵技術で酵素ドリンクの製造・OEMを行う佐賀のものづくり企業です。小ロットから量産まで柔軟対応。" />
+
+  <!-- Canonical & hreflang -->
+  <link rel="canonical" href="https://kousoinc-ui.github.io/kouso-homepage/" />
+  <link rel="alternate" href="https://kousoinc-ui.github.io/kouso-homepage/" hreflang="ja" />
+  <link rel="alternate" href="https://kousoinc-ui.github.io/kouso-homepage/" hreflang="x-default" />
+
+  <!-- Open Graph / Twitter -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="酵素株式会社 | 発酵から、発幸へ。" />
+  <meta property="og:description" content="自然素材 × 発酵技術 × 安心設計。OEM・ODMで小ロットから大量生産まで、貴社ブランドの酵素ドリンク製造をトータルサポート。" />
+  <meta property="og:url" content="https://kousoinc-ui.github.io/kouso-homepage/" />
+  <meta property="og:image" content="https://kousoinc-ui.github.io/kouso-homepage/img/ogp.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- PWA/Branding -->
+  <meta name="theme-color" content="#004D40" />
+  <link rel="icon" href="favicon.ico" sizes="any" />
+  <link rel="icon" href="icon.svg" type="image/svg+xml" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;600;700;900&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+
 </head>
 
 <body>
-  <header class="site-header" aria-label="サイトヘッダー">
-    <a class="brand-mark" href="#top" aria-label="酵素株式会社 トップへ">
-      <img src="assets/logo.png" alt="酵素株式会社" />
-    </a>
-    <nav class="site-nav" aria-label="グローバルナビゲーション">
-      <a href="#philosophy">Philosophy</a>
-      <a href="#areas">Areas</a>
-      <a href="#story">About</a>
-      <a href="enzyme.html">Enzyme</a>
-      <a href="company.html">Company</a>
-      <a href="#contact">Contact</a>
-    </nav>
+  <a href="#top" class="skip-link">メインコンテンツへスキップ</a>
+
+  <header>
+    <div class="container nav">
+      <a class="logo" href="#top" aria-label="酵素株式会社 ホーム">
+        <img src="img/logo.png" alt="" class="logo-mark" aria-hidden="true">
+        <div>酵素株式会社</div>
+      </a>
+
+      <button class="menu-toggle" aria-label="メニューを開閉" aria-controls="primary-menu" aria-expanded="false">
+        <span class="bars"><span></span></span>
+        メニュー
+      </button>
+
+      <nav aria-label="主要ナビゲーション">
+        <ul id="primary-menu">
+          <li><a href="#service">サービス</a></li>
+          <li><a href="#products">商品紹介</a></li>
+          <li><a href="#process">製造工程</a></li>
+          <li><a href="#about">私たちについて</a></li>
+          <li><a href="blog/">ブログ</a></li>
+          <li><a href="#contact" class="cta">OEMのご相談</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main id="top">
-    <section class="hero" aria-label="酵素株式会社トップ">
-      <div class="hero-media" aria-hidden="true">
-        <div class="hero-slide is-active"></div>
-        <div class="hero-slide"></div>
-        <div class="hero-slide"></div>
-        <div class="hero-slide"></div>
-        <div class="hero-slide"></div>
-      </div>
-      <div class="hero-overlay"></div>
-      <div class="hero-copy">
-        <p>本来持つ力を信じ、その可能性を支える。</p>
-        <h1>Enabling the power that already exists.</h1>
-      </div>
-      <a class="scroll-cue" href="#philosophy">Scroll</a>
-    </section>
+  <main id="top" role="main">
+    <section class="hero" aria-label="キービジュアル">
+      <video autoplay muted loop playsinline class="hero-video" poster="img/main.jpg">
+        <source src="video/fv.webm" type="video/webm" />
+        <source src="video/fv.mp4" type="video/mp4" />
+      </video>
+      <noscript>
+        <img src="img/main.jpg" alt="自然と発酵を象徴する背景" width="1600" height="900" />
+      </noscript>
 
-    <section class="section philosophy" id="philosophy">
-      <div class="section-label">PHILOSOPHY</div>
-      <div class="philosophy-copy">
-        <h2>健康は、<br />足すことではなく、<br />整えること。</h2>
-      </div>
-    </section>
-
-    <section class="section belief" id="belief">
-      <div class="section-label">OUR BELIEF</div>
-      <div class="belief-lines">
-        <p>人にも</p>
-        <p>動物にも</p>
-        <p>自然にも</p>
-        <p>本来の力がある。</p>
-      </div>
-    </section>
-
-    <section class="section catalyst" id="catalyst">
-      <p class="ghost-type" aria-hidden="true">CATALYST</p>
-      <div class="catalyst-inner">
-        <p class="section-kicker">Catalyst</p>
-        <p class="section-note">酵素株式会社の考え方</p>
-        <h2>We are not the hero.</h2>
-        <p class="jp-lead">私たちは主役ではありません。</p>
-        <p class="body-copy">
-          酵素のように、本来の力が発揮されるきっかけをつくる存在。
-        </p>
-      </div>
-    </section>
-
-    <section class="mission" id="mission">
-      <div class="mission-bg" aria-hidden="true"></div>
-      <div class="mission-copy">
-        <p>MISSION</p>
-        <h2>本来持つ力を信じ、<br />その可能性を支える</h2>
-      </div>
-    </section>
-
-    <section class="section areas" id="areas">
-      <div class="section-head">
-        <p class="section-kicker">Areas</p>
-        <h2>事業領域</h2>
-      </div>
-      <div class="area-grid">
-        <article class="area-card is-active" data-area="pet">
-          <span>PET</span>
-          <h3>ペットウェルネス</h3>
-        </article>
-        <article class="area-card" data-area="human">
-          <span>HUMAN</span>
-          <h3>健康食品</h3>
-        </article>
-        <article class="area-card" data-area="oem">
-          <span>OEM</span>
-          <h3>ペット向け健康食品OEM</h3>
-        </article>
-        <article class="area-card" data-area="future">
-          <span>MEDIA</span>
-          <h3>ペットヘルスケアジャーナルの運営</h3>
-        </article>
-      </div>
-      <div class="area-visual" aria-hidden="true"></div>
-    </section>
-
-    <section class="section story" id="story">
-      <div class="story-title">
-        <p class="section-kicker">About</p>
-        <h2>酵素株式会社について</h2>
-        <p class="story-lead">
-          発酵の知恵を、ペットウェルネスと商品開発へ。
-        </p>
-      </div>
-      <div class="story-track">
-        <article class="story-step">
-          <div class="story-photo trust"></div>
-          <span>01</span>
-          <h3>Pet Wellness</h3>
-          <p>犬の毎日を、内側から整える。</p>
-        </article>
-        <article class="story-step">
-          <div class="story-photo succession"></div>
-          <span>02</span>
-          <h3>Fermentation</h3>
-          <p>酵素と発酵素材の可能性を、日々の習慣へ。</p>
-        </article>
-        <article class="story-step">
-          <div class="story-photo fermentation"></div>
-          <span>03</span>
-          <h3>OEM</h3>
-          <p>ペット向け健康食品の受託開発に対応。</p>
-        </article>
-        <article class="story-step">
-          <div class="story-photo founding"></div>
-          <span>04</span>
-          <h3>Brand Support</h3>
-          <p>企画から商品化まで、静かに伴走する。</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="section brands" id="brands">
-      <div class="section-head">
-        <p class="section-kicker">Brands</p>
-        <h2>ブランド紹介</h2>
-      </div>
-      <div class="brand-layout">
-        <a class="brand-feature" href="https://wanhugplus.com/collections/wankoso">
-          <div class="brand-photo brand-photo-dog"></div>
+      <div class="container hero-inner">
+        <div class="hero-grid">
           <div>
-            <p>わん酵素</p>
-            <h3>犬の毎日を、内側から整える。</h3>
-            <span>Fermented pet wellness</span>
+            <h1><span class="accent">発酵から、発幸へ。</span></h1>
+            <p class="hero-sub">酵素ドリンクのOEM・ODMを専門とする佐賀の小さな発酵工場です。</p>
+            <p class="lead">
+              健康とは、誰かに与えられるものではなく、自らの内に育まれるもの。<br>
+              一人ひとりが自分の心と体に耳を傾け、最適な選択ができる世界を目指します。<br>
+              そして、その輪が家族へ、地域へ、社会へと広がっていく未来を描いています。
+            </p>
           </div>
-        </a>
-        <a class="brand-feature" href="https://wanhugplus.com/collections/hagumi">
-          <div class="brand-photo brand-photo-human"></div>
-          <div>
-            <p>はぐみ酵素</p>
-            <h3>人のめぐりを支える、酵素ドリンク。</h3>
-            <span>Fermented enzyme drink</span>
-          </div>
-        </a>
-        <article class="brand-coming">
-          <p>Coming Soon</p>
-          <h3>今後のブランド</h3>
-        </article>
+        </div>
       </div>
     </section>
 
-    <section class="future" id="future">
-      <div class="future-grid" aria-hidden="true">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
+    <!-- About -->
+    <section id="about" class="section" aria-labelledby="about-title">
+      <div class="container">
+        <h2 id="about-title" data-eyebrow="ABOUT">私たちについて</h2>
+        <p class="sub">発幸で、笑顔と喜びを循環させる</p>
+
+        <div class="about-grid">
+          <div class="about-box">
+            <h3>創業の想い</h3>
+            <p>私たちは「発酵＝発幸」という言葉に込めた想いのもと、自然の力で人と社会を幸せにすることを目指して酵素株式会社を立ち上げました。</p>
+            <p>
+              きっかけは、自然や食事療法、発酵、漢方といった「目に見えない力」に触れたことでした。そこには、人間本来の治癒力を支え、心身を整える知恵がありました。一方で、健康をうたう商品の中には、誇張された表現や実態の伴わないものも少なくありません。そんな現実を知る中で、「本当に価値ある商品を、正しい知識とともに届けたい」という想いが強くなりました。
+            </p>
+            <p>
+              「発幸」という言葉には、“幸せを自ら発すること”という願いを込めています。幸せは誰かから与えられるものではなく、自らの中から発酵するように湧き出すもの。それを食や自然の力を通じてサポートしたいという考えから、「発酵」と「発幸」を重ね合わせました。
+            </p>
+
+            <p style="margin:16px 0;">
+              <a href="#service" class="btn ghost btn-small">酵素ドリンクOEMの特徴を見る</a>
+            </p>
+
+            <p>
+              酵素株式会社では、無添加・誠実・顧客本位を大切に、発酵技術・健康食品・漢方の知識を融合させた商品づくりを行っています。一人ひとりが正しい知識を持ち、自分に合った健康を選べる社会をつくる。そして、「発幸」という輪を広げていく——それが私たちの使命です。
+            </p>
+
+            <h3 style="margin-top:18px">会社概要</h3>
+            <ul>
+              <li><strong>会社名：</strong>酵素株式会社</li>
+              <li><strong>所在地：</strong>〒849-0922 佐賀県佐賀市高木瀬東5丁目21-13</li>
+              <li><strong>設立：</strong>2025年7月25日</li>
+              <li><strong>代表取締役：</strong>野尻 明宏</li>
+              <li><strong>事業内容：</strong>酵素ドリンク・発酵食品の製造販売、OEM受託、健康支援</li>
+            </ul>
+          </div>
+
+          <div class="kv" role="img" aria-label="自然と発酵を象徴するイメージ"></div>
+        </div>
       </div>
-      <div class="future-copy">
-        <p>Future</p>
-        <h2>本来の力が、<br />めぐる未来へ。</h2>
+
+      <script type="application/ld+json">
+      {
+        "@context":"https://schema.org",
+        "@type":"Organization",
+        "name":"酵素株式会社",
+        "url":"https://kousoinc-ui.github.io/kouso-homepage/",
+        "logo":"https://kousoinc-ui.github.io/kouso-homepage/icon.svg",
+        "image":"https://kousoinc-ui.github.io/kouso-homepage/img/ogp.jpg",
+        "address":{
+          "@type":"PostalAddress",
+          "addressCountry":"JP",
+          "addressRegion":"佐賀県",
+          "addressLocality":"佐賀市",
+          "streetAddress":"高木瀬東5丁目21-13",
+          "postalCode":"849-0922"
+        },
+        "email":"mailto:kouso.inc@gmail.com",
+        "telephone":"+81-90-6982-5502",
+        "sameAs":[]
+      }
+      </script>
+    </section>
+
+    <!-- Service -->
+    <section id="service" class="section" aria-labelledby="service-title">
+      <div class="container">
+        <h2 id="service-title" data-eyebrow="SERVICE">酵素ドリンクの製造サービス</h2>
+        <p class="sub">厳選した自然素材と独自の発酵技術で、健康と美味しさを両立。OEM/ODM で企画から量産まで伴走します。</p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>原材料へのこだわり</h3>
+            <p>佐賀県産をはじめ、全国から厳選した素材を使用。不要な添加物は使わず、自然のままの味わいを大切にします。</p>
+            <div class="tags"><span class="tag">厳選素材</span><span class="tag">無添加設計</span><span
+                class="tag">アレルゲン配慮</span></div>
+          </article>
+
+          <article class="card">
+            <h3>独自の発酵プロセス</h3>
+            <p>素材の旨味を最大限に引き出し、飲みやすく、安定した品質を実現。長年の発酵ノウハウを活かした製造工程です。</p>
+            <div class="tags"><span class="tag">安定品質</span><span class="tag">風味最適化</span><span class="tag">ロット管理</span>
+            </div>
+          </article>
+
+          <article class="card">
+            <h3>OEM/ODM の柔軟性</h3>
+            <p>味・機能・容量・パッケージまで自由にカスタマイズ。小ロット試作から量産まで対応可能です。</p>
+            <div class="tags"><span class="tag">小ロット</span><span class="tag">スピード試作</span><span
+                class="tag">EC/サロン対応</span></div>
+          </article>
+
+          <article class="card">
+            <h3>品質保証と法令順守</h3>
+            <p>食品表示や薬機法に沿った表現提案、検査・トレーサビリティの整備までサポートします。</p>
+            <div class="tags"><span class="tag">表示サポート</span><span class="tag">検査手配</span><span class="tag">トレース</span>
+            </div>
+          </article>
+        </div>
       </div>
     </section>
 
-    <!--<section class="section recruit" id="recruit">
-        <p class="section-kicker">Recruit</p>
-        <h2>私たちと一緒に<br />未来をつくりませんか</h2>
-      </section>-->
+    <!-- Products -->
+    <section id="products" class="section" aria-labelledby="products-title">
+      <div class="container">
+        <h2 id="products-title" data-eyebrow="PRODUCTS">商品紹介</h2>
+        <p class="sub">ベースとなる酵素ドリンクに加え、ターゲットやお悩みに合わせた「機能性を特化させた酵素ドリンク」の設計が可能です。</p>
 
-    <section class="section contact" id="contact">
-      <p class="section-kicker">Contact</p>
-      <h2>お問い合わせ</h2>
-      <a href="mailto:nojiri@kousoo-erika.com">nojiri@kouso-inc.com</a>
+        <div class="product-grid">
+          <article class="product">
+            <div class="thumb">
+              <img src="img/standard.png" alt="酵素ドリンク（スタンダードタイプ）" loading="lazy" decoding="async" width="640"
+                height="400">
+            </div>
+            <div class="inner">
+              <h3>スタンダード酵素ドリンク</h3>
+              <p>
+                毎日飲み続けやすいフルーツベースの酵素ドリンク。<br>
+                食生活のベースアップや、初めての酵素ドリンクに最適な設計です。
+              </p>
+            </div>
+          </article>
+
+          <article class="product">
+            <div class="thumb">
+              <img src="img/premium.png" alt="機能性を特化させた酵素ドリンク" loading="lazy" decoding="async" width="640" height="400">
+            </div>
+            <div class="inner">
+              <h3>特化型酵素ドリンク</h3>
+              <p>
+                腸内環境サポート、美容・エイジングケア、休息サポートなど、<br>
+                目的に合わせて機能性素材をプラスしたカスタムレシピ。<br>
+                EC・サロン・クリニックなど、販売チャネルごとのコンセプト設計にも対応します。
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Process -->
+    <section id="process" class="section section--timeline" aria-labelledby="process-title">
+      <div class="container">
+        <h2 id="process-title" data-eyebrow="PROCESS">製造工程</h2>
+        <p class="sub">原料受け入れから出荷まで。発酵のちからを最大化しつつ、安定品質を守ります。</p>
+
+        <div class="timeline" aria-label="製造工程の流れ">
+          <article class="step">
+            <header>
+              <h3>原料受け入れ・検査</h3>
+              <span class="badge-lite">目安：当日〜1日</span>
+            </header>
+            <div class="row">
+              <img src="img/process-incoming.jpg" alt="原料受け入れ・検品の様子（イメージ）" loading="lazy" decoding="async" width="640"
+                height="400">
+              <p>産地・規格を確認し、受け入れ検査。洗浄・前処理までを同一ロットで管理します。</p>
+            </div>
+            <div class="meta"><span class="tag">ロット管理</span><span class="tag">受入検査</span><span class="tag">洗浄</span>
+            </div>
+          </article>
+
+          <article class="step">
+            <header>
+              <h3>仕込み・発酵</h3>
+              <span class="badge-lite">目安：数日〜数週間</span>
+            </header>
+            <div class="row">
+              <img src="img/tank.jpg" alt="発酵タンクの様子（イメージ）" loading="lazy" decoding="async" width="640" height="400">
+              <p>配合比・温度・時間をコントロール。風味と安定性のバランスを最適化します。</p>
+            </div>
+            <div class="meta"><span class="tag">温度管理</span><span class="tag">配合比</span><span class="tag">風味最適化</span>
+            </div>
+          </article>
+
+          <article class="step">
+            <header>
+              <h3>熟成・調整</h3>
+              <span class="badge-lite">目安：数日</span>
+            </header>
+            <p>味わいの角を取り、飲みやすく整えます。必要に応じて濃度や酸味を微調整。</p>
+            <div class="meta"><span class="tag">官能評価</span><span class="tag">濃度調整</span></div>
+          </article>
+
+          <article class="step">
+            <header>
+              <h3>充填・検査・出荷</h3>
+              <span class="badge-lite">目安：1日</span>
+            </header>
+            <p>衛生基準に沿って充填し、第三者機関の検査や自社基準の検品を経て出荷します。</p>
+            <div class="meta"><span class="tag">充填</span><span class="tag">検査</span><span class="tag">最終検品</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Steps -->
+    <section id="steps" class="section section--stepper" aria-labelledby="steps-title">
+      <div class="container">
+        <h2 id="steps-title" data-eyebrow="OEM FLOW">OEMの進め方</h2>
+        <p class="sub">最短1〜3か月で販売開始を目指す、シンプルな4ステップ。</p>
+
+        <div class="stepper" role="list" aria-label="OEM進行ステップ">
+          <div class="node active" role="listitem" aria-current="step">
+            <div class="dot">1</div>
+            <div class="label">相談・要件整理</div>
+          </div>
+          <div class="node" role="listitem">
+            <div class="dot">2</div>
+            <div class="label">試作・見積</div>
+          </div>
+          <div class="node" role="listitem">
+            <div class="dot">3</div>
+            <div class="label">設計確定・製造</div>
+          </div>
+          <div class="node" role="listitem">
+            <div class="dot">4</div>
+            <div class="label">出荷・運用</div>
+          </div>
+        </div>
+
+        <div class="step-cards">
+          <article class="card">
+            <h3>STEP 1：相談・要件整理</h3>
+            <p>ターゲット・味・容量・チャネル・納期・ご予算をヒアリング。想定SKUや価格帯も一緒に整理します。</p>
+            <div class="meta"><span class="tag">無料相談</span><span class="tag">ヒアリング</span></div>
+          </article>
+          <article class="card">
+            <h3>STEP 2：試作・見積</h3>
+            <p>小ロットで試作→試飲フィードバック。配合・包材案と合わせて概算見積をご提示します。</p>
+            <div class="meta"><span class="tag">小ロット</span><span class="tag">試飲</span></div>
+          </article>
+          <article class="card">
+            <h3>STEP 3：設計確定・製造</h3>
+            <p>パッケージ・表示確認後に本製造。品質検査の段取りまで含めてスケジュール管理します。</p>
+            <div class="meta"><span class="tag">表示確認</span><span class="tag">品質検査</span></div>
+          </article>
+          <article class="card">
+            <h3>STEP 4：出荷・運用</h3>
+            <p>出荷後は販促素材やFAQ整備を支援。売れ行きに応じた次回ロットの改善提案も行います。</p>
+            <div class="meta"><span class="tag">販促支援</span><span class="tag">継続提案</span></div>
+          </article>
+        </div>
+
+        <div class="cta-row">
+          <a class="btn primary" href="#contact">まずは無料相談</a>
+          <a class="btn ghost" href="#faq">FAQを見る</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="section" aria-labelledby="faq-title">
+      <div class="container">
+        <h2 id="faq-title" data-eyebrow="FAQ">よくあるご質問</h2>
+        <p class="sub">初回相談の前に、よくいただくポイントをまとめました。</p>
+
+        <div class="cards">
+          <article class="card">
+            <h3>最小ロットは？</h3>
+            <p>小ロットから段階的に検証可能です。味・容量・包材により変動しますのでご相談ください。</p>
+          </article>
+          <article class="card">
+            <h3>納期の目安は？</h3>
+            <p>要件確定後、目安1〜3か月。資材や季節要因で前後します。</p>
+          </article>
+          <article class="card">
+            <h3>表示・法令対応は？</h3>
+            <p>食品表示・薬機法の範囲で表現提案と確認をサポートします。</p>
+          </article>
+          <article class="card">
+            <h3>試作費や検査費は？</h3>
+            <p>配合・検査項目に応じてお見積り。キャンペーン有無はお問い合わせください。</p>
+          </article>
+        </div>
+      </div>
+
+      <script type="application/ld+json">
+      {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+        {"@type":"Question","name":"最小ロットは？","acceptedAnswer":{"@type":"Answer","text":"小ロットから段階的に検証可能です。味・容量・包材により変動しますのでご相談ください。"}},
+        {"@type":"Question","name":"納期の目安は？","acceptedAnswer":{"@type":"Answer","text":"要件確定後、目安1〜3か月。資材や季節要因で前後します。"}},
+        {"@type":"Question","name":"表示・法令対応は？","acceptedAnswer":{"@type":"Answer","text":"食品表示・薬機法の範囲で表現提案と確認をサポートします。"}},
+        {"@type":"Question","name":"試作費や検査費は？","acceptedAnswer":{"@type":"Answer","text":"配合・検査項目に応じてお見積り。キャンペーン有無はお問い合わせください。"}}
+      ]}
+      </script>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section" aria-labelledby="contact-title">
+      <div class="container">
+        <h2 id="contact-title" data-eyebrow="CONTACT">お問い合わせ</h2>
+        <p class="sub">OEM 製造のご相談や試作のご依頼は、こちらからお気軽にどうぞ。</p>
+
+        <div class="contact-wrap">
+          <div class="contact-box">
+            <h3>ご連絡先</h3>
+            <ul class="contact-list">
+              <li>📧 <a href="mailto:kouso.inc@gmail.com">kouso.inc@gmail.com</a></li>
+              <li>📞 090-6982-5502（代表）</li>
+              <li>📍 〒849-0922 佐賀県佐賀市高木瀬東5丁目21-13</li>
+            </ul>
+            <p style="color:var(--muted-strong); margin-top:10px">※ パッケージやラベルの相談も可能です。先にターゲット・販売チャネルを共有いただけるとスムーズです。</p>
+          </div>
+
+          <div class="contact-box">
+            <h3>スピード相談フォーム（簡易）</h3>
+            <form id="contactForm" aria-label="お問い合わせフォーム" autocomplete="on"
+              action="https://script.google.com/macros/s/AKfycbw1Mjq-lmDX49VNddIglhw59BVtJT74UDaEMaNVk744y4qQdX4ElxiFKu0C6nQDNPt3/exec"
+              method="post">
+              <div style="display:none;" aria-hidden="true">
+                <label>会社名（空欄のまま）<input type="text" name="hp" autocomplete="off"></label>
+              </div>
+
+              <label>お名前<br>
+                <input required type="text" name="name" autocomplete="name" />
+              </label>
+              <div style="height:10px"></div>
+
+              <label>メールアドレス（返信用）<br>
+                <input required type="email" name="email" autocomplete="email" inputmode="email" />
+              </label>
+              <div style="height:10px"></div>
+
+              <label>ご相談内容<br>
+                <textarea required rows="4" name="message"></textarea>
+              </label>
+              <div style="height:12px"></div>
+
+              <button class="btn primary" type="submit" id="submitBtn" style="border:none">送信する</button>
+              <div id="formNote" role="status" aria-live="polite" style="margin-top:10px; color:var(--muted-strong)">
+              </div>
+            </form>
+
+            <script>
+              const GAS_ENDPOINT = 'https://script.google.com/macros/s/AKfycbw1Mjq-lmDX49VNddIglhw59BVtJT74UDaEMaNVk744y4qQdX4ElxiFKu0C6nQDNPt3/exec';
+              const form = document.getElementById('contactForm');
+              const note = document.getElementById('formNote');
+              const btn = document.getElementById('submitBtn');
+
+              form.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                note.textContent = '送信中です…';
+                btn.disabled = true;
+                try {
+                  const fd = new FormData(form);
+                  await fetch(GAS_ENDPOINT, { method: 'POST', body: fd, mode: 'no-cors' });
+                  note.textContent = 'ありがとうございます！内容を送信しました。折り返しご連絡いたします。';
+                  form.reset();
+                } catch (err) {
+                  note.textContent = '通信エラーが発生しました。メール（kouso.inc@gmail.com）またはお電話でご連絡ください。';
+                } finally {
+                  btn.disabled = false;
+                }
+              });
+            </script>
+          </div>
+        </div>
+      </div>
     </section>
   </main>
 
-  <script src="script.js"></script>
+  <footer>
+    <div class="container">
+      <nav aria-label="フッターナビゲーション">
+        <a href="#service">サービス</a> · <a href="#products">商品紹介</a> · <a href="#about">会社情報</a> · <a
+          href="#contact">お問い合わせ</a>
+      </nav>
+      <small>
+        © 2025 酵素株式会社 — 発酵から、発幸へ。<br>
+        酵素ドリンクOEM・ODM / 小ロットからご相談いただけます。
+      </small>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const toggle = document.querySelector('.menu-toggle');
+      const menu = document.getElementById('primary-menu');
+      if (!toggle || !menu) return;
+
+      const onKeydown = (e) => { if (e.key === 'Escape') { closeMenu(); toggle.focus(); } };
+      const onClickAway = (e) => { if (!menu.contains(e.target) && !toggle.contains(e.target)) closeMenu(); };
+
+      const closeMenu = () => {
+        menu.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        document.removeEventListener('keydown', onKeydown);
+        document.removeEventListener('click', onClickAway);
+      };
+
+      const openMenu = () => {
+        menu.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        const firstLink = menu.querySelector('a');
+        if (firstLink) firstLink.focus({ preventScroll: true });
+        document.addEventListener('keydown', onKeydown);
+        setTimeout(() => document.addEventListener('click', onClickAway));
+      };
+
+      toggle.addEventListener('click', () => {
+        const expanded = toggle.getAttribute('aria-expanded') === 'true';
+        expanded ? closeMenu() : openMenu();
+      });
+
+      menu.addEventListener('click', (e) => {
+        const t = e.target;
+        if (t.closest && t.closest('a')) closeMenu();
+      });
+
+      const mql = window.matchMedia('(min-width: 981px)');
+      mql.addEventListener('change', (ev) => {
+        if (ev.matches) {
+          menu.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        }
+      });
+    })();
+
+    (function () {
+      const targets = document.querySelectorAll('.card,.product,.about-box,.contact-box,.step');
+      targets.forEach(el => { el.style.opacity = '0'; el.style.transform = 'translateY(10px)'; });
+
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+          if (!e.isIntersecting) return;
+          e.target.style.transition = 'opacity .55s ease, transform .55s ease';
+          e.target.style.opacity = '1';
+          e.target.style.transform = 'translateY(0px)';
+          io.unobserve(e.target);
+        });
+      }, { threshold: .12 });
+
+      targets.forEach(el => io.observe(el));
+    })();
+  </script>
 </body>
 
 </html>
