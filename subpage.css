@@ -1,0 +1,1505 @@
+/* ==========================================================
+   KOUSO Inc. — Sub pages (company / enzyme / pet-health /
+   wankoso / hagumi). Loaded after home.css, which provides
+   the design tokens, header, footer, menu, buttons & reveal.
+   ========================================================== */
+
+/* ---------- generic building blocks ---------- */
+
+.sub-page .section {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: clamp(4rem, 9vw, 7.5rem) clamp(1.2rem, 5vw, 4rem);
+}
+
+.sub-page h1,
+.sub-page h2,
+.sub-page h3,
+.sub-page h4 {
+  letter-spacing: 0.04em;
+  line-height: 1.5;
+}
+
+.sub-page p {
+  color: var(--gray);
+}
+
+.sub-page .section > div > h2,
+.sub-page .section-head h2 {
+  font-weight: 900;
+  font-size: clamp(1.55rem, 3.6vw, 2.6rem);
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.sub-page .section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  font-family: var(--en);
+  font-weight: 700;
+  font-size: 0.78rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.4rem;
+}
+
+.sub-page .section-label::before {
+  content: "";
+  width: 34px;
+  height: 1px;
+  background: var(--green);
+  opacity: 0.6;
+}
+
+.sub-page .section-kicker {
+  font-family: var(--en);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.9rem;
+}
+
+.sub-page .section-head {
+  max-width: 780px;
+  margin-bottom: clamp(2rem, 4vw, 3.2rem);
+}
+
+.sub-page .section-lead {
+  margin-top: 1.2rem;
+  font-size: 1rem;
+  color: var(--gray);
+}
+
+.sub-page .section > div > p,
+.sub-page .section p {
+  line-height: 1.95;
+}
+
+.sub-page .section > div > p + p {
+  margin-top: 1.2em;
+}
+
+/* ---------- shared hero ---------- */
+
+.sub-hero,
+.company-hero,
+.enzyme-hero,
+.wankoso-hero,
+.hagumi-hero,
+.pet-health-hero {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(9rem, 20vh, 13rem) clamp(1.2rem, 5vw, 4rem) clamp(4rem, 8vw, 6rem);
+  max-width: 1180px;
+  margin-inline: auto;
+}
+
+.sub-hero > p,
+.company-hero p,
+.enzyme-hero-copy > p,
+.wankoso-hero-copy > p,
+.hagumi-hero-copy > p,
+.pet-health-hero-copy > p:first-child {
+  font-family: var(--en);
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 1.2rem;
+}
+
+.sub-hero h1,
+.company-hero h1,
+.enzyme-hero-copy h1,
+.wankoso-hero-copy h1,
+.hagumi-hero-copy h1,
+.pet-health-hero-copy h1 {
+  font-weight: 900;
+  font-size: clamp(2.2rem, 6.4vw, 4.6rem);
+  letter-spacing: 0.05em;
+  line-height: 1.28;
+  color: var(--ink);
+}
+
+.sub-hero span,
+.enzyme-hero-copy span,
+.wankoso-hero-copy span,
+.hagumi-hero-copy span,
+.pet-health-hero-copy span {
+  display: block;
+  margin-top: 1.6rem;
+  max-width: 40em;
+  color: var(--gray);
+  font-size: clamp(0.95rem, 1.6vw, 1.08rem);
+  line-height: 1.9;
+}
+
+/* hero with side info panel (wankoso / hagumi) */
+
+.wankoso-hero,
+.hagumi-hero {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: end;
+}
+
+.wankoso-hero-panel,
+.hagumi-hero-panel {
+  background: var(--bg-soft);
+  border-radius: 18px;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.wankoso-hero-panel dl,
+.hagumi-hero-panel dl {
+  display: grid;
+  gap: 1.1rem;
+}
+
+.wankoso-hero-panel dl > div,
+.hagumi-hero-panel dl > div {
+  display: grid;
+  gap: 0.3rem;
+  padding-bottom: 1.1rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.wankoso-hero-panel dl > div:last-child,
+.hagumi-hero-panel dl > div:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+
+.wankoso-hero-panel dt,
+.hagumi-hero-panel dt {
+  font-family: var(--en);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+}
+
+.wankoso-hero-panel dd,
+.hagumi-hero-panel dd {
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+
+/* decorative hero elements */
+
+.enzyme-orbit,
+.pet-health-bg-pattern {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.enzyme-orbit span,
+.pet-health-bg-pattern span {
+  position: absolute;
+  border: 1px solid rgba(93, 127, 82, 0.18);
+  border-radius: 50%;
+}
+
+.enzyme-orbit span:nth-child(1) { width: 220px; height: 220px; top: 12%; right: 6%; }
+.enzyme-orbit span:nth-child(2) { width: 360px; height: 360px; top: 4%; right: -4%; }
+.enzyme-orbit span:nth-child(3) { width: 130px; height: 130px; bottom: 18%; right: 22%; }
+.enzyme-orbit span:nth-child(4) { width: 70px; height: 70px; bottom: 30%; right: 8%; background: rgba(93, 127, 82, 0.08); }
+
+.pet-health-bg-pattern span:nth-child(1) { width: 300px; height: 300px; top: 8%; right: -3%; }
+.pet-health-bg-pattern span:nth-child(2) { width: 180px; height: 180px; top: 30%; right: 20%; }
+.pet-health-bg-pattern span:nth-child(3) { width: 90px; height: 90px; bottom: 22%; right: 10%; }
+
+/* ---------- generic cards & lists ---------- */
+
+.sub-page article {
+  color: var(--ink);
+}
+
+/* number-badge cards */
+.enzyme-type-grid,
+.postbiotics-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+.enzyme-type-grid article,
+.postbiotics-grid article {
+  background: var(--bg-soft);
+  border-radius: 16px;
+  padding: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.enzyme-type-grid span,
+.postbiotics-grid span {
+  font-family: var(--en);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--green);
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+.enzyme-type-grid h3,
+.postbiotics-grid h3 {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 0.7rem;
+}
+
+.enzyme-type-grid p,
+.postbiotics-grid p {
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
+/* plain bordered cards */
+.condition-layout,
+.regulation-grid,
+.microbiome-grid,
+.axis-layout,
+.food-enzyme-layout {
+  display: grid;
+  gap: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+.condition-layout { grid-template-columns: repeat(3, 1fr); }
+.regulation-grid { grid-template-columns: repeat(2, 1fr); }
+.microbiome-grid { grid-template-columns: repeat(2, 1fr); }
+.axis-layout { grid-template-columns: repeat(3, 1fr); }
+.food-enzyme-layout { grid-template-columns: repeat(2, 1fr); }
+
+.condition-layout article,
+.regulation-grid article,
+.microbiome-grid article,
+.axis-layout article,
+.food-enzyme-layout article {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(1.6rem, 2.8vw, 2.2rem);
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.condition-layout article:hover,
+.regulation-grid article:hover,
+.microbiome-grid article:hover,
+.axis-layout article:hover,
+.food-enzyme-layout article:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+}
+
+.sub-page article h3 {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+
+.sub-page article p {
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
+.food-enzyme-layout article span,
+.wankoso-component-list article span,
+.pet-enzyme-gap .status-card span {
+  font-family: var(--en);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+/* definition lists (facts) */
+.enzyme-fact-list,
+.physio-fact-list {
+  display: grid;
+  gap: 0;
+  margin-top: clamp(2rem, 4vw, 3rem);
+  border-top: 1px solid var(--line);
+}
+
+.enzyme-fact-list > div,
+.physio-fact-list > div {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.enzyme-fact-list dt,
+.physio-fact-list dt {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: 1rem;
+}
+
+.enzyme-fact-list dd,
+.physio-fact-list dd {
+  color: var(--gray);
+  font-size: 0.94rem;
+  line-height: 1.85;
+}
+
+/* ---------- enzyme: two-column intro ---------- */
+
+.enzyme-intro,
+.pet-physio {
+  display: grid;
+  grid-template-columns: 0.32fr 0.68fr;
+  gap: clamp(1.8rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.enzyme-intro > div > h2,
+.pet-physio > div > h2 {
+  margin-bottom: 1.4rem;
+}
+
+/* enzyme reaction visual */
+.enzyme-reaction,
+.pet-enzyme-gap {
+  background: var(--bg-soft);
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(1.2rem, 5vw, 4rem);
+}
+
+.enzyme-reaction,
+.pet-enzyme-gap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: center;
+}
+
+.reaction-copy h2,
+.gap-copy h2 {
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  color: var(--ink);
+  margin-bottom: 1.4rem;
+}
+
+.reaction-stage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.2rem;
+  padding: clamp(2rem, 4vw, 3rem);
+  background: var(--white);
+  border-radius: 20px;
+}
+
+.reaction-stage .substrate,
+.reaction-stage .enzyme-shape {
+  padding: 0.9em 1.6em;
+  border-radius: 999px;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.reaction-stage .substrate {
+  background: rgba(93, 127, 82, 0.12);
+  color: var(--green-deep);
+}
+
+.reaction-stage .enzyme-shape {
+  background: var(--ink);
+  color: #fff;
+}
+
+.reaction-stage .arrow-line {
+  width: 1px;
+  height: 44px;
+  background: var(--line);
+  position: relative;
+}
+
+.reaction-stage .arrow-line::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 7px;
+  height: 7px;
+  border-right: 1.5px solid var(--gray);
+  border-bottom: 1.5px solid var(--gray);
+  transform: translate(-50%, 2px) rotate(45deg);
+}
+
+.reaction-stage .substrate-parts {
+  display: flex;
+  gap: 0.8rem;
+}
+
+.reaction-stage .substrate-parts span {
+  padding: 0.7em 1.2em;
+  border-radius: 999px;
+  background: rgba(93, 127, 82, 0.1);
+  color: var(--green-deep);
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+/* ---------- pet-health: gap visual ---------- */
+
+.gap-visual-inner {
+  display: grid;
+  gap: 1rem;
+  background: var(--white);
+  border-radius: 20px;
+  padding: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.status-card {
+  border-radius: 14px;
+  padding: 1.4rem 1.6rem;
+  border: 1px solid var(--line);
+}
+
+.status-card b {
+  display: block;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.2rem;
+}
+
+.status-card p {
+  font-size: 0.88rem;
+  margin-top: 0.5rem;
+}
+
+.status-card.raw {
+  border-color: rgba(93, 127, 82, 0.4);
+  background: rgba(93, 127, 82, 0.06);
+}
+
+.status-card.heated {
+  border-color: rgba(17, 18, 20, 0.15);
+}
+
+.versus-line {
+  text-align: center;
+  font-family: var(--en);
+  font-weight: 800;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  color: var(--gray);
+}
+
+/* ---------- enzyme regulation / classification ---------- */
+
+.enzyme-regulation,
+.enzyme-classification,
+.fermentation-link {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: clamp(4rem, 8vw, 6.5rem) clamp(1.2rem, 5vw, 4rem);
+  display: grid;
+  grid-template-columns: 0.9fr 1.1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+
+.enzyme-regulation > div:first-child h2,
+.enzyme-classification > div:first-child h2 {
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3.2vw, 2.3rem);
+  color: var(--ink);
+  margin-bottom: 1.4rem;
+}
+
+.enzyme-classification ol {
+  list-style: none;
+  counter-reset: cls;
+  display: grid;
+  gap: 0;
+}
+
+.enzyme-classification ol li {
+  counter-increment: cls;
+  display: grid;
+  grid-template-columns: 44px 1fr;
+  column-gap: 1.2rem;
+  row-gap: 0.3rem;
+  padding: 1.3rem 0;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.enzyme-classification ol li::before {
+  content: counter(cls, decimal-leading-zero);
+  grid-row: span 2;
+  font-family: var(--en);
+  font-weight: 800;
+  color: var(--green);
+  font-size: 0.95rem;
+}
+
+.enzyme-classification ol li b {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.enzyme-classification ol li span {
+  display: block;
+  color: var(--gray);
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+/* digestion grid */
+.digestion-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+.digestion-grid article {
+  background: var(--ink);
+  color: #fff;
+  border-radius: 16px;
+  padding: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.digestion-grid article b {
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.digestion-grid article span {
+  display: block;
+  margin: 0.5rem 0 1rem;
+  font-family: var(--en);
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.digestion-grid article p {
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 0.9rem;
+  line-height: 1.85;
+}
+
+/* history timeline */
+.history-track {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 1.8rem);
+  counter-reset: none;
+}
+
+.history-track article {
+  border-top: 2px solid var(--ink);
+  padding-top: 1.4rem;
+}
+
+.history-track span {
+  font-family: var(--en);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--green);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.history-track h3 {
+  font-size: 1.05rem;
+  margin-bottom: 0.6rem;
+}
+
+.history-track p {
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+/* fermentation link (photo + text) */
+.fermentation-photo {
+  min-height: 320px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(93, 127, 82, 0.85), rgba(63, 90, 55, 0.95)),
+    var(--hero-2);
+  background-size: cover;
+  background-position: center;
+}
+
+/* ---------- notes / conclusion blocks ---------- */
+
+.enzyme-note,
+.pet-health-summary,
+.wankoso-note,
+.hagumi-note {
+  max-width: 860px;
+  text-align: center;
+}
+
+.enzyme-note h2,
+.pet-health-summary h2,
+.wankoso-note h2,
+.hagumi-note h2 {
+  font-weight: 900;
+  font-size: clamp(1.5rem, 3.4vw, 2.4rem);
+  color: var(--ink);
+  margin: 0.8rem 0 1.4rem;
+}
+
+.enzyme-note .section-kicker,
+.pet-health-summary .section-kicker,
+.wankoso-note .section-kicker,
+.hagumi-note .section-kicker {
+  display: block;
+}
+
+/* ---------- company page ---------- */
+
+.company-intro {
+  display: grid;
+  grid-template-columns: 0.3fr 0.7fr;
+  gap: clamp(1.8rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.company-intro h2 {
+  margin-bottom: 1.4rem;
+}
+
+.company-profile .profile-list {
+  display: grid;
+  border-top: 1px solid var(--line);
+}
+
+.profile-list > div {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 1.5rem;
+  padding: 1.4rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.profile-list dt {
+  font-weight: 700;
+  color: var(--ink);
+  font-family: var(--en);
+  font-size: 0.82rem;
+  letter-spacing: 0.08em;
+}
+
+.profile-list dd {
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+.profile-list dd a {
+  color: var(--green-deep);
+  border-bottom: 1px solid currentColor;
+}
+
+.company-visual {
+  position: relative;
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  overflow: hidden;
+  background: linear-gradient(rgba(10, 14, 10, 0.55), rgba(10, 14, 10, 0.55)), var(--hero-2);
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+.company-visual > div {
+  max-width: 1180px;
+  margin-inline: auto;
+  width: 100%;
+  padding: clamp(3rem, 7vw, 5rem) clamp(1.2rem, 5vw, 4rem);
+}
+
+.company-visual p {
+  font-family: var(--en);
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: 1.2rem;
+}
+
+.company-visual h2 {
+  font-weight: 900;
+  font-size: clamp(1.8rem, 4.4vw, 3.2rem);
+  color: #fff;
+  line-height: 1.4;
+}
+
+.company-contact {
+  text-align: center;
+}
+
+.company-contact h2 {
+  font-weight: 900;
+  font-size: clamp(1.6rem, 3.4vw, 2.4rem);
+  color: var(--ink);
+  margin: 0.6rem 0 1.6rem;
+}
+
+.company-contact > a {
+  font-family: var(--en);
+  font-weight: 800;
+  font-size: clamp(1.1rem, 3vw, 1.9rem);
+  color: var(--ink);
+  border-bottom: 2px solid var(--ink);
+  padding-bottom: 0.3em;
+  transition: color 0.35s, border-color 0.35s;
+}
+
+.company-contact > a:hover {
+  color: var(--green-deep);
+  border-color: var(--green-deep);
+}
+
+/* ---------- tabs (wankoso / hagumi) ---------- */
+
+.wankoso-tab-list,
+.hagumi-tab-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.7rem;
+  margin-bottom: clamp(2rem, 4vw, 3rem);
+}
+
+.wankoso-tab,
+.hagumi-tab {
+  font-family: var(--jp);
+  font-weight: 700;
+  font-size: 0.92rem;
+  padding: 0.7em 1.5em;
+  border-radius: 999px;
+  border: 1px solid var(--line);
+  color: var(--gray);
+  transition: background 0.35s var(--ease), color 0.35s, border-color 0.35s;
+}
+
+.wankoso-tab:hover,
+.hagumi-tab:hover {
+  border-color: var(--green);
+  color: var(--green-deep);
+}
+
+.wankoso-tab.is-active,
+.hagumi-tab.is-active {
+  background: var(--ink);
+  border-color: var(--ink);
+  color: #fff;
+}
+
+.wankoso-tab-panel,
+.hagumi-tab-panel {
+  animation: panelIn 0.5s var(--ease);
+}
+
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: none; }
+}
+
+.panel-label {
+  font-family: var(--en);
+  font-weight: 700;
+  font-size: 0.74rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--green);
+  margin-bottom: 0.9rem;
+}
+
+.wankoso-tab-panel h3,
+.hagumi-tab-panel h3 {
+  font-weight: 900;
+  font-size: clamp(1.3rem, 2.8vw, 1.9rem);
+  color: var(--ink);
+  line-height: 1.5;
+}
+
+.wankoso-tab-panel h4,
+.hagumi-tab-panel h4 {
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  margin-bottom: 0.6rem;
+}
+
+.wankoso-tab-panel p,
+.hagumi-tab-panel p {
+  line-height: 1.9;
+  font-size: 0.95rem;
+}
+
+.wankoso-tab-panel i,
+.hagumi-tab-panel i {
+  font-style: italic;
+}
+
+/* wankoso layouts */
+.wankoso-core-layout,
+.wankoso-product-layout,
+.hagumi-theory-head,
+.hagumi-panel-grid {
+  display: grid;
+  gap: clamp(1.6rem, 4vw, 3rem);
+  margin-bottom: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.wankoso-core-layout,
+.wankoso-product-layout,
+.hagumi-panel-grid {
+  grid-template-columns: 1fr 1fr;
+  align-items: start;
+}
+
+.wankoso-core-cards {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.wankoso-core-cards article,
+.wankoso-mechanism-grid article,
+.wankoso-component-list article,
+.hagumi-theory-grid article,
+.hagumi-ingredient-layout article {
+  background: var(--bg-soft);
+  border-radius: 14px;
+  padding: 1.6rem 1.8rem;
+}
+
+.wankoso-core-cards span,
+.wankoso-mechanism-grid span,
+.hagumi-theory-grid span {
+  font-family: var(--en);
+  font-weight: 800;
+  color: var(--green);
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.wankoso-mechanism-grid,
+.hagumi-theory-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+  margin-bottom: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.hagumi-theory-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.wankoso-insight {
+  background: var(--ink);
+  color: #fff;
+  border-radius: 16px;
+  padding: clamp(1.8rem, 3vw, 2.6rem);
+}
+
+.wankoso-insight h4 {
+  color: #fff !important;
+}
+
+.wankoso-insight p {
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.wankoso-analysis-list,
+.hagumi-rich-text {
+  display: grid;
+}
+
+.wankoso-analysis-list {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--line);
+  align-self: start;
+}
+
+.wankoso-analysis-list > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 0.9rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.wankoso-analysis-list dt {
+  color: var(--gray);
+  font-size: 0.9rem;
+}
+
+.wankoso-analysis-list dd {
+  font-weight: 700;
+  color: var(--ink);
+  font-family: var(--en);
+}
+
+.wankoso-component-list {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.2rem;
+}
+
+.wankoso-component-list.kidney {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.wankoso-kidney-flow {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin-bottom: clamp(1.6rem, 3vw, 2.4rem);
+}
+
+.wankoso-kidney-flow article {
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 1.4rem;
+}
+
+.wankoso-kidney-flow span {
+  font-family: var(--en);
+  font-weight: 800;
+  color: var(--green);
+  font-size: 1.1rem;
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.wankoso-kidney-flow p {
+  font-size: 0.88rem;
+  line-height: 1.8;
+}
+
+/* hagumi layouts */
+.hagumi-ingredient-layout,
+.hagumi-use-layout,
+.hagumi-caution-layout {
+  display: grid;
+  gap: 1.2rem;
+}
+
+.hagumi-ingredient-layout {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.hagumi-ingredient-layout span {
+  font-family: var(--en);
+  font-weight: 700;
+  font-size: 0.75rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.hagumi-ingredient-layout h3 {
+  font-size: 1.1rem;
+  margin-bottom: 0.7rem;
+}
+
+.hagumi-use-layout {
+  grid-template-columns: 1fr 1fr;
+}
+
+.hagumi-use-layout article,
+.hagumi-caution-layout article {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(1.6rem, 2.8vw, 2.2rem);
+}
+
+.hagumi-use-layout h3,
+.hagumi-caution-layout h3 {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.hagumi-use-layout ul,
+.hagumi-caution-layout ul {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+}
+
+.hagumi-use-layout li,
+.hagumi-caution-layout li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--gray);
+  font-size: 0.92rem;
+  line-height: 1.7;
+}
+
+.hagumi-use-layout li::before,
+.hagumi-caution-layout li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.6em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.hagumi-caution-layout {
+  grid-template-columns: 0.9fr 1.1fr;
+  align-items: start;
+}
+
+.hagumi-rich-text p {
+  line-height: 1.9;
+}
+
+/* ---------- news page ---------- */
+
+.news-section {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.2rem, 5vw, 4rem) clamp(5rem, 10vw, 8rem);
+}
+
+.news-list {
+  border-top: 1px solid var(--line);
+}
+
+.news-item {
+  display: grid;
+  grid-template-columns: 120px 116px 1fr 34px;
+  align-items: center;
+  gap: 1.6rem;
+  padding: 1.7rem 0.4rem;
+  border-bottom: 1px solid var(--line);
+  transition: background 0.35s var(--ease), padding 0.35s var(--ease);
+}
+
+.news-item:hover {
+  background: var(--bg-soft);
+  padding-inline: 1.2rem;
+}
+
+.news-date {
+  font-family: var(--en);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  color: var(--gray);
+}
+
+.news-cat {
+  justify-self: start;
+  font-family: var(--en);
+  font-weight: 700;
+  font-size: 0.66rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 0.42em 1em;
+  white-space: nowrap;
+}
+
+.news-title {
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+  line-height: 1.6;
+}
+
+.news-arrow {
+  width: 34px;
+  height: 34px;
+  border: 1px solid var(--line);
+  border-radius: 50%;
+  position: relative;
+  transition: background 0.35s, border-color 0.35s;
+}
+
+.news-arrow::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid var(--ink);
+  border-right: 1.5px solid var(--ink);
+  transform: translate(-60%, -50%) rotate(45deg);
+  transition: border-color 0.35s;
+}
+
+.news-item:hover .news-arrow {
+  background: var(--green);
+  border-color: var(--green);
+}
+
+.news-item:hover .news-arrow::after {
+  border-color: #fff;
+}
+
+.news-note {
+  margin-top: 2.4rem;
+  font-size: 0.9rem;
+  color: var(--gray);
+}
+
+/* ---------- oem page ---------- */
+
+.oem-intro {
+  display: grid;
+  grid-template-columns: 0.32fr 0.68fr;
+  gap: clamp(1.8rem, 4vw, 3.5rem);
+  align-items: start;
+}
+
+.oem-intro h2 {
+  margin-bottom: 1.4rem;
+}
+
+.feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 2rem);
+}
+
+.feature-grid article {
+  background: var(--bg-soft);
+  border-radius: 16px;
+  padding: clamp(1.8rem, 3vw, 2.4rem);
+}
+
+.feature-grid span {
+  font-family: var(--en);
+  font-weight: 800;
+  font-size: 1.4rem;
+  color: var(--green);
+  display: block;
+  margin-bottom: 0.9rem;
+}
+
+.feature-grid h3 {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 0.7rem;
+}
+
+.feature-grid p {
+  font-size: 0.92rem;
+  line-height: 1.85;
+}
+
+.flow-steps {
+  display: grid;
+  gap: 0;
+  border-top: 1px solid var(--line);
+}
+
+.flow-steps article {
+  display: grid;
+  grid-template-columns: 90px 1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  padding: clamp(1.6rem, 3vw, 2.2rem) 0.3rem;
+  border-bottom: 1px solid var(--line);
+  align-items: baseline;
+}
+
+.flow-steps .flow-num {
+  font-family: var(--en);
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--green);
+}
+
+.flow-steps h3 {
+  font-weight: 700;
+  font-size: 1.15rem;
+  margin-bottom: 0.5rem;
+}
+
+.flow-steps p {
+  font-size: 0.94rem;
+  line-height: 1.85;
+}
+
+.oem-cat-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: clamp(1.2rem, 2.5vw, 1.8rem);
+}
+
+.oem-cat-grid article {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: clamp(1.6rem, 2.8vw, 2.2rem);
+  transition: border-color 0.4s var(--ease), transform 0.4s var(--ease);
+}
+
+.oem-cat-grid article:hover {
+  border-color: var(--green);
+  transform: translateY(-4px);
+}
+
+.oem-cat-grid span {
+  font-family: var(--en);
+  font-weight: 700;
+  font-size: 0.72rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--green);
+  display: block;
+  margin-bottom: 0.6rem;
+}
+
+.oem-cta {
+  max-width: 1180px;
+  margin: 0 auto clamp(4rem, 8vw, 6rem);
+  padding: clamp(2.8rem, 6vw, 4.5rem) clamp(1.6rem, 5vw, 4rem);
+  background: var(--ink);
+  color: #fff;
+  border-radius: 22px;
+  text-align: center;
+}
+
+.oem-cta h2 {
+  font-weight: 900;
+  font-size: clamp(1.6rem, 3.6vw, 2.6rem);
+  color: #fff;
+  line-height: 1.5;
+  margin-bottom: 1.8rem;
+}
+
+.oem-cta .contact-mail {
+  color: #fff;
+  border-color: #fff;
+}
+
+.oem-cta .contact-mail:hover {
+  color: #fff;
+  border-color: var(--green);
+}
+
+/* ---------- privacy / policy page ---------- */
+
+.policy {
+  max-width: 860px;
+  margin-inline: auto;
+  padding: clamp(2rem, 5vw, 3.5rem) clamp(1.2rem, 5vw, 4rem) clamp(5rem, 10vw, 8rem);
+}
+
+.policy-block {
+  padding: clamp(1.8rem, 3vw, 2.4rem) 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.policy-block:first-child {
+  border-top: 1px solid var(--line);
+}
+
+.policy-block h2 {
+  font-weight: 900;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+  color: var(--ink);
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.9rem;
+}
+
+.policy-block h2 b {
+  font-family: var(--en);
+  font-weight: 800;
+  font-size: 0.9rem;
+  color: var(--green);
+}
+
+.policy-block p {
+  line-height: 1.95;
+}
+
+.policy-block p + p {
+  margin-top: 1em;
+}
+
+.policy-block ul {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  margin-top: 0.9rem;
+}
+
+.policy-block li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--gray);
+  line-height: 1.8;
+}
+
+.policy-block li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.7em;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.policy-block dl {
+  display: grid;
+  gap: 0;
+  margin-top: 0.6rem;
+}
+
+.policy-block dl > div {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 1.2rem;
+  padding: 0.8rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.policy-block dl > div:last-child {
+  border-bottom: 0;
+}
+
+.policy-block dt {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.policy-block dd {
+  color: var(--gray);
+}
+
+.policy-updated {
+  margin-top: 2rem;
+  font-family: var(--en);
+  font-size: 0.85rem;
+  letter-spacing: 0.06em;
+  color: var(--gray);
+}
+
+/* ---------- footer bottom links ---------- */
+
+.gf-bottom-links {
+  display: flex;
+  align-items: center;
+  gap: clamp(1.4rem, 4vw, 2.6rem);
+}
+
+.gf-bottom-links > a:not(.gf-totop) {
+  font-family: var(--en);
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  color: rgba(255, 255, 255, 0.6);
+  transition: color 0.3s;
+}
+
+.gf-bottom-links > a:not(.gf-totop):hover {
+  color: #fff;
+}
+
+/* ---------- responsive ---------- */
+
+@media (max-width: 900px) {
+  .wankoso-hero,
+  .hagumi-hero,
+  .enzyme-intro,
+  .pet-physio,
+  .company-intro,
+  .enzyme-reaction,
+  .pet-enzyme-gap,
+  .enzyme-regulation,
+  .enzyme-classification,
+  .fermentation-link,
+  .wankoso-core-layout,
+  .wankoso-product-layout,
+  .hagumi-panel-grid,
+  .hagumi-caution-layout,
+  .oem-intro {
+    grid-template-columns: 1fr;
+  }
+
+  .feature-grid,
+  .oem-cat-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-item {
+    grid-template-columns: 1fr auto;
+    grid-template-areas:
+      "date arrow"
+      "cat arrow"
+      "title title";
+    row-gap: 0.7rem;
+    align-items: center;
+  }
+
+  .news-date { grid-area: date; }
+  .news-cat { grid-area: cat; }
+  .news-title { grid-area: title; }
+  .news-arrow { grid-area: arrow; align-self: start; }
+
+  .flow-steps article {
+    grid-template-columns: 60px 1fr;
+  }
+
+  .policy-block dl > div {
+    grid-template-columns: 1fr;
+    gap: 0.3rem;
+  }
+
+  .enzyme-type-grid,
+  .postbiotics-grid,
+  .condition-layout,
+  .regulation-grid,
+  .microbiome-grid,
+  .axis-layout,
+  .food-enzyme-layout,
+  .digestion-grid,
+  .history-track,
+  .wankoso-mechanism-grid,
+  .hagumi-theory-grid,
+  .wankoso-component-list,
+  .wankoso-component-list.kidney,
+  .wankoso-kidney-flow,
+  .wankoso-analysis-list,
+  .hagumi-ingredient-layout,
+  .hagumi-use-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .enzyme-fact-list > div,
+  .physio-fact-list > div,
+  .profile-list > div {
+    grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+
+  .company-visual {
+    background-attachment: scroll;
+  }
+}

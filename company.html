@@ -7,27 +7,44 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Noto+Serif+JP:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="home.css" />
+    <link rel="stylesheet" href="subpage.css" />
   </head>
   <body class="sub-page">
-    <header class="site-header" aria-label="サイトヘッダー">
-      <a class="brand-mark" href="index.html" aria-label="酵素株式会社 トップへ">
+    <header class="gh" id="gh" aria-label="サイトヘッダー">
+      <a class="gh-logo" href="index.html" aria-label="酵素株式会社 トップへ">
         <img src="assets/logo.png" alt="酵素株式会社" />
       </a>
-      <nav class="site-nav" aria-label="グローバルナビゲーション">
-        <a href="index.html#philosophy">Philosophy</a>
-        <a href="index.html#areas">Areas</a>
-        <a href="index.html#story">About</a>
+      <nav class="gh-nav" aria-label="グローバルナビゲーション">
+        <a href="index.html#business">Business</a>
+        <a href="oem.html">OEM</a>
+        <a href="news.html">News</a>
         <a href="enzyme.html">Enzyme</a>
-        <a href="pet-health.html">Pet Health</a>
-        <a href="hagumi.html">Hagumi</a>
         <a href="company.html" aria-current="page">Company</a>
-        <a href="index.html#contact">Contact</a>
       </nav>
+      <a class="gh-cta" href="index.html#contact">Contact</a>
+      <button class="gh-burger" id="ghBurger" aria-label="メニューを開く" aria-expanded="false" aria-controls="ghMenu">
+        <span></span><span></span>
+      </button>
     </header>
+
+    <div class="gh-menu" id="ghMenu" aria-hidden="true">
+      <nav aria-label="メニュー">
+        <a href="index.html#mission"><span>01</span>Mission</a>
+        <a href="index.html#business"><span>02</span>Business</a>
+        <a href="oem.html"><span>03</span>OEM</a>
+        <a href="index.html#brands"><span>04</span>Brands</a>
+        <a href="enzyme.html"><span>05</span>Enzyme</a>
+        <a href="pet-health.html"><span>06</span>Pet Health</a>
+        <a href="news.html"><span>07</span>News</a>
+        <a href="company.html" aria-current="page"><span>08</span>Company</a>
+        <a href="index.html#contact"><span>09</span>Contact</a>
+      </nav>
+      <p class="gh-menu-note">Enabling the power that already exists.</p>
+    </div>
 
     <main>
       <section class="company-hero">
@@ -102,5 +119,46 @@
         <a href="mailto:nojiri@kouso-inc.com">nojiri@kouso-inc.com</a>
       </section>
     </main>
+
+    <footer class="gf">
+      <div class="gf-top">
+        <div class="gf-brand">
+          <img src="assets/logo.png" alt="酵素株式会社" />
+          <p>Enabling the power<br />that already exists.</p>
+        </div>
+        <nav class="gf-nav" aria-label="フッターナビゲーション">
+          <div>
+            <p>Corporate</p>
+            <a href="index.html#mission">Mission</a>
+            <a href="index.html#business">Business</a>
+            <a href="oem.html">OEM</a>
+            <a href="news.html">News</a>
+            <a href="company.html">Company</a>
+            <a href="index.html#contact">Contact</a>
+          </div>
+          <div>
+            <p>Brands</p>
+            <a href="https://wanhugplus.com/collections/wankoso">わん酵素</a>
+            <a href="https://wanhugplus.com/collections/hagumi">はぐみ酵素</a>
+          </div>
+          <div>
+            <p>Knowledge</p>
+            <a href="enzyme.html">酵素とは</a>
+            <a href="pet-health.html">ペットの健康</a>
+            <a href="wankoso.html">わん酵素の設計</a>
+            <a href="hagumi.html">はぐみ酵素の設計</a>
+          </div>
+        </nav>
+      </div>
+      <div class="gf-bottom">
+        <small>&copy; KOUSO Inc. All rights reserved.</small>
+        <div class="gf-bottom-links">
+          <a href="privacy.html">プライバシーポリシー</a>
+          <a class="gf-totop" href="#gh" aria-label="ページ上部へ">Top<i aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </footer>
+
+    <script src="home.js"></script>
   </body>
 </html>

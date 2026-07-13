@@ -6,7 +6,7 @@ if (heroSlides.length > 0) {
     heroSlides[heroIndex].classList.remove("is-active");
     heroIndex = (heroIndex + 1) % heroSlides.length;
     heroSlides[heroIndex].classList.add("is-active");
-  }, 5200);
+  }, 4500);
 }
 
 const areaVisual = document.querySelector(".area-visual");
@@ -39,12 +39,64 @@ areaCards.forEach((card) => {
   });
 });
 
+const tabGroups = [...document.querySelectorAll("[data-tabs]")];
+
+tabGroups.forEach((group) => {
+  const tabs = [...group.querySelectorAll("[role='tab'][data-tab-target]")];
+  const panels = [...group.querySelectorAll("[role='tabpanel'][data-tab-panel]")];
+
+  const activateTab = (tab) => {
+    const target = tab.dataset.tabTarget;
+
+    tabs.forEach((item) => {
+      const isActive = item === tab;
+      item.classList.toggle("is-active", isActive);
+      item.setAttribute("aria-selected", String(isActive));
+      item.setAttribute("tabindex", isActive ? "0" : "-1");
+    });
+
+    panels.forEach((panel) => {
+      const isActive = panel.dataset.tabPanel === target;
+      panel.classList.toggle("is-active", isActive);
+      panel.hidden = !isActive;
+    });
+  };
+
+  tabs.forEach((tab, index) => {
+    tab.setAttribute("tabindex", tab.classList.contains("is-active") ? "0" : "-1");
+
+    tab.addEventListener("click", () => activateTab(tab));
+    tab.addEventListener("keydown", (event) => {
+      const keyMap = {
+        ArrowRight: 1,
+        ArrowDown: 1,
+        ArrowLeft: -1,
+        ArrowUp: -1,
+      };
+
+      if (event.key === "Home" || event.key === "End") {
+        event.preventDefault();
+        const nextTab = event.key === "Home" ? tabs[0] : tabs[tabs.length - 1];
+        activateTab(nextTab);
+        nextTab.focus();
+      }
+
+      if (event.key in keyMap) {
+        event.preventDefault();
+        const nextIndex = (index + keyMap[event.key] + tabs.length) % tabs.length;
+        activateTab(tabs[nextIndex]);
+        tabs[nextIndex].focus();
+      }
+    });
+  });
+});
+
 document.body.classList.add("is-locked");
 
 const header = document.querySelector(".site-header");
 const revealItems = [
   ...document.querySelectorAll(
-    ".section-label, .section-kicker, .philosophy-copy, .belief-lines p, .catalyst-inner > *, .mission-copy > *, .section-head, .area-card, .area-visual, .story-step, .brand-feature, .brand-coming, .future-copy, .recruit > *, .contact > *, .company-hero > *, .company-intro > *, .profile-list div, .company-visual > *, .enzyme-hero-copy > *, .enzyme-orbit, .enzyme-intro > *, .enzyme-fact-list div, .reaction-copy > *, .reaction-stage, .enzyme-type-grid article, .condition-layout article, .enzyme-regulation > *, .regulation-grid article, .digestion-grid article, .food-enzyme-layout article, .enzyme-classification > *, .history-track article, .fermentation-link > *, .microbiome-grid article, .enzyme-note > *",
+    ".section-label, .section-kicker, .philosophy-copy, .belief-lines p, .catalyst-inner > *, .mission-copy > *, .section-head, .area-card, .area-visual, .story-step, .brand-feature, .brand-coming, .future-copy, .recruit > *, .contact > *, .company-hero > *, .company-intro > *, .profile-list div, .company-visual > *, .enzyme-hero-copy > *, .enzyme-orbit, .enzyme-intro > *, .enzyme-fact-list div, .reaction-copy > *, .reaction-stage, .enzyme-type-grid article, .condition-layout article, .enzyme-regulation > *, .regulation-grid article, .digestion-grid article, .food-enzyme-layout article, .enzyme-classification > *, .history-track article, .fermentation-link > *, .microbiome-grid article, .enzyme-note > *, .hagumi-hero-copy > *, .hagumi-hero-panel, .hagumi-tab-list, .hagumi-tab-panel.is-active > *, .hagumi-note > *, .wankoso-hero-copy > *, .wankoso-hero-panel, .wankoso-tab-list, .wankoso-tab-panel.is-active > *, .wankoso-note > *, .pet-health-hero-copy > *, .pet-physio > *, .physio-fact-list div, .gap-copy > *, .gap-visual-inner > *, .postbiotics-grid article, .axis-layout article, .pet-health-summary > *",
   ),
 ];
 
