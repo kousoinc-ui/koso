@@ -92,6 +92,11 @@
             animation: pulse 3.2s ease-in-out infinite;
         }
 
+        /* 下部セクションはタイトル位置がFVと異なるためバッジ位置を調整 */
+        .overlay-img1-bottom {
+            top: 42%;
+        }
+
         /* --- 共感パート --- */
         .empathy-section {
             position: relative;
@@ -220,6 +225,9 @@
             top: 33%;
             left: 19%;
             width: 60%;
+            aspect-ratio: 1 / 1;
+            height: auto;
+            object-fit: cover;
             border-radius: 8px;
             /* カドをほんのり丸くして美しく */
         }
@@ -286,6 +294,9 @@
         .review-gif {
             position: absolute;
             width: 37%;
+            aspect-ratio: 1 / 1;
+            height: auto;
+            object-fit: cover;
             border-radius: 0;
         }
 
@@ -352,6 +363,234 @@
         .cvbtn,
         .cvbtn_2 {
             will-change: transform;
+        }
+
+        /* --- 画像CTAボタンのグロー（明滅で視線を集める） --- */
+        @keyframes ctaGlow {
+            0%,
+            100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.07) saturate(1.05);
+            }
+        }
+
+        .cvbtn img,
+        .cvbtn_2 img {
+            animation: ctaGlow 3.2s ease-in-out infinite;
+        }
+
+        /* --- テキストCTAのシャイン（光が走る） --- */
+        @keyframes ctaShine {
+            0% {
+                left: -80%;
+            }
+
+            36% {
+                left: 130%;
+            }
+
+            100% {
+                left: 130%;
+            }
+        }
+
+        .quick-trust-cta,
+        .popup-cta-btn {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .fixed-cv a {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .quick-trust-cta::after,
+        .popup-cta-btn::after,
+        .fixed-cv a::after {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -80%;
+            width: 55%;
+            height: 100%;
+            background: linear-gradient(105deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, .45) 50%, rgba(255, 255, 255, 0) 100%);
+            transform: skewX(-18deg);
+            animation: ctaShine 4.2s ease-in-out 1.2s infinite;
+            pointer-events: none;
+        }
+
+        /* --- スクロール連動リビール（クラスはJSが付与。JS無効環境では常時表示） --- */
+        .js-reveal {
+            opacity: 0;
+            translate: 0 26px;
+            transition:
+                opacity .85s cubic-bezier(.215, .61, .355, 1),
+                translate .85s cubic-bezier(.215, .61, .355, 1),
+                scale .85s cubic-bezier(.215, .61, .355, 1);
+            transition-delay: var(--reveal-delay, 0s);
+        }
+
+        .js-reveal.from-left {
+            translate: -30px 12px;
+        }
+
+        .js-reveal.from-right {
+            translate: 30px 12px;
+        }
+
+        .js-reveal.pop {
+            translate: 0 16px;
+            scale: .94;
+        }
+
+        .js-reveal.is-visible {
+            opacity: 1;
+            translate: 0 0;
+            scale: 1;
+        }
+
+        /* --- レビュースライダーのスワイプヒント --- */
+        @keyframes sliderHint {
+            0%,
+            100% {
+                transform: translateX(0);
+            }
+
+            50% {
+                transform: translateX(-44px);
+            }
+        }
+
+        .review-slider.hint-swipe .review-card {
+            animation: sliderHint 1.1s ease-in-out .4s 1;
+        }
+
+        video {
+            display: block;
+            max-width: 100%;
+        }
+
+        .quick-trust-section {
+            padding: 24px 18px 26px;
+            background: #fff7ec;
+            border-top: 1px solid #ead8c8;
+            border-bottom: 1px solid #ead8c8;
+            text-align: center;
+        }
+
+        .quick-trust-title {
+            color: #5d3f2d;
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.6;
+            margin: 0 0 16px;
+        }
+
+        .quick-trust-list {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 8px;
+            margin: 0 auto 18px;
+            max-width: 560px;
+        }
+
+        .quick-trust-item {
+            align-items: center;
+            background: #fff;
+            border: 1px solid rgba(188, 132, 82, .22);
+            border-radius: 8px;
+            color: #5a4636;
+            display: flex;
+            font-size: 13px;
+            font-weight: 700;
+            gap: 7px;
+            justify-content: center;
+            line-height: 1.45;
+            min-height: 46px;
+            padding: 8px 6px;
+        }
+
+        .quick-trust-mark {
+            align-items: center;
+            background: #f47a1f;
+            border-radius: 50%;
+            color: #fff;
+            display: inline-flex;
+            flex: 0 0 18px;
+            font-size: 12px;
+            height: 18px;
+            justify-content: center;
+            width: 18px;
+        }
+
+        .quick-trust-cta {
+            align-items: center;
+            background: linear-gradient(180deg, #ff9a2e 0%, #f06f00 100%);
+            border-radius: 8px;
+            box-shadow: 0 8px 18px rgba(185, 91, 0, .24);
+            color: #fff;
+            display: flex;
+            font-size: clamp(14px, 4.3vw, 17px);
+            white-space: nowrap;
+            font-weight: 800;
+            justify-content: center;
+            line-height: 1.35;
+            margin: 0 auto;
+            max-width: 560px;
+            min-height: 56px;
+            padding: 12px 16px;
+            text-decoration: none;
+        }
+
+        .quick-trust-note {
+            color: #7b6757;
+            font-size: 11px;
+            line-height: 1.6;
+            margin: 10px 0 0;
+        }
+
+        /* --- チェックアウト直前の不安解消ノート --- */
+        .checkout-note {
+            margin: 14px auto 0;
+            max-width: 560px;
+            padding: 12px 14px;
+            background: #fff;
+            border: 1px dashed rgba(188, 132, 82, .35);
+            border-radius: 10px;
+            text-align: center;
+        }
+
+        .checkout-note-line1 {
+            color: #5a4636;
+            font-size: 12px;
+            font-weight: 700;
+            line-height: 1.7;
+            margin: 0 0 6px;
+        }
+
+        .checkout-note-line1 strong {
+            color: #e2670f;
+        }
+
+        .checkout-note-pay {
+            color: #7b6757;
+            font-size: 11px;
+            line-height: 1.7;
+            margin: 0;
+        }
+
+        .checkout-note-standalone {
+            margin: 0;
+            max-width: none;
+            padding: 18px 24px 22px;
+            background: #fff7ec;
+            border: none;
+            border-radius: 0;
+            border-bottom: 1px solid #ead8c8;
         }
 
         @media (prefers-reduced-motion: reduce) {
@@ -593,6 +832,22 @@
 
         .qa-answer {
             padding: 0 20px 20px;
+        }
+
+        @keyframes qaOpen {
+            from {
+                opacity: 0;
+                translate: 0 -6px;
+            }
+
+            to {
+                opacity: 1;
+                translate: 0 0;
+            }
+        }
+
+        .qa-item[open] .qa-answer {
+            animation: qaOpen .45s ease both;
         }
 
         .qa-answer::before {
@@ -927,7 +1182,7 @@
         <div class="fv-container">
             <img src="./img/wankosoad1_3.webp" alt="わん酵素メイン" class="fv-img" width="750" height="1620" fetchpriority="high" decoding="async">
             <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1" width="221" height="209" decoding="async">
-            <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cvbtn cv-link">
+            <a href="https://wanhugplus.com/cart/49940432912661:1" class="cvbtn cv-link">
                 <img src="./img/btn.webp" alt="特別モニターに応募する" width="647" height="97" decoding="async">
             </a>
         </div>
@@ -936,6 +1191,25 @@
         <div class="product-container">
             <img src="./img/offer.webp" class="product-img" alt="背景1" width="750" height="868" loading="lazy" decoding="async">
             <img src="./img/wankosoad2.webp" class="product-img" alt="背景1" width="750" height="1500" loading="lazy" decoding="async">
+            <img src="./img/offer_2.webp" class="product-img" alt="背景1" width="750" height="868" loading="lazy" decoding="async">
+
+            <section class="quick-trust-section" aria-label="モニター応募前の安心ポイント">
+                <p class="quick-trust-title">まずは5日間、負担少なく試せます。</p>
+                <div class="quick-trust-list">
+                    <div class="quick-trust-item"><span class="quick-trust-mark">✓</span>980円(税込)</div>
+                    <div class="quick-trust-item"><span class="quick-trust-mark">✓</span>送料無料</div>
+                    <div class="quick-trust-item"><span class="quick-trust-mark">✓</span>全額返金保証</div>
+                    <div class="quick-trust-item"><span class="quick-trust-mark">✓</span>定期購入なし</div>
+                </div>
+                <a href="https://wanhugplus.com/cart/49940432912661:1" class="quick-trust-cta cv-link">
+                    980円で5日間の特別モニターに応募する
+                </a>
+                <p class="quick-trust-note">※数量限定のため、在庫がなくなり次第終了となります。</p>
+                <div class="checkout-note">
+                    <p class="checkout-note-line1">ご入力はこの後の画面で<strong>約1分</strong>。定期購入ではないので、<strong>980円以外の請求は一切ありません</strong>。</p>
+                    <p class="checkout-note-pay">お支払い方法：コンビニ払い（セブン・ローソン・ファミマ等）・PayPay・メルペイ・クレジットカード・PayPal・Apple Pay・Google Pay・Amazon Pay</p>
+                </div>
+            </section>
 
             <div class="relative-box">
                 <img src="./img/wankosoad3.webp" class="product-img fixed-cv-trigger" alt="背景2" width="750" height="747" loading="lazy" decoding="async">
@@ -998,7 +1272,7 @@
 
                 <div class="point2-wrap">
                     <img src="./img/point2.webp" alt="こだわり2詳細" width="750" height="876" loading="lazy" decoding="async">
-                    <img src="./img/hiro_drink.gif" alt="ワンちゃんが夢中で飲む様子" class="overlay-gif-drink" width="320" height="320" loading="lazy" decoding="async">
+                    <video class="overlay-gif-drink js-lazy-video" width="320" height="320" poster="./img/hiro_drink_poster.jpg" muted loop playsinline preload="none" aria-label="ワンちゃんが夢中で飲む様子" data-src="./img/hiro_drink.mp4"></video>
                 </div>
 
                 <div class="point3-wrap">
@@ -1017,9 +1291,9 @@
             <div class="review-gif-wrap">
                 <img src="./img/wankosoad_review1.webp" class="product-img" alt="レビュー1" width="750" height="1577" loading="lazy" decoding="async">
                 <div class="review-gif-layer">
-                    <img src="./img/review_2.gif" class="review-gif review-gif-1" alt="レビュー動画仮1" width="320" height="320" loading="lazy" decoding="async">
-                    <img src="./img/review_1.gif" class="review-gif review-gif-2" alt="レビュー動画仮2" width="320" height="320" loading="lazy" decoding="async">
-                    <img src="./img/review_3.gif" class="review-gif review-gif-3" alt="レビュー動画仮3" width="320" height="320" loading="lazy" decoding="async">
+                    <video class="review-gif review-gif-1 js-lazy-video" width="320" height="320" poster="./img/review_2_poster.jpg" muted loop playsinline preload="none" aria-label="レビュー動画1" data-src="./img/review_2.mp4"></video>
+                    <video class="review-gif review-gif-2 js-lazy-video" width="320" height="320" poster="./img/review_1_poster.jpg" muted loop playsinline preload="none" aria-label="レビュー動画2" data-src="./img/review_1.mp4"></video>
+                    <video class="review-gif review-gif-3 js-lazy-video" width="320" height="320" poster="./img/review_3_poster.jpg" muted loop playsinline preload="none" aria-label="レビュー動画3" data-src="./img/review_3.mp4"></video>
                 </div>
             </div>
 
@@ -1039,11 +1313,19 @@
             </div>
 
             <div class="fv-container">
-                <img src="./img/wankosoad1.webp" alt="わん酵素メイン" class="fv-img" width="750" height="1929" loading="lazy" decoding="async">
-                <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1" width="221" height="209" loading="lazy" decoding="async">
-                <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cvbtn cv-link">
-                    <img src="./img/cvbtn.png" alt="特別モニターに応募する" width="669" height="120" loading="lazy" decoding="async">
-                </a>
+                <div class="relative-box">
+                    <img src="./img/wankosoad1.webp" alt="わん酵素メイン" class="fv-img" width="750" height="1929" loading="lazy" decoding="async">
+                    <img src="./img/award1.png" alt="makuake350%達成" class="overlay-img1 overlay-img1-bottom" width="221" height="209" loading="lazy" decoding="async">
+                    <a href="https://wanhugplus.com/cart/49940432912661:1" class="cvbtn cv-link">
+                        <img src="./img/cvbtn.png" alt="特別モニターに応募する" width="669" height="120" loading="lazy" decoding="async">
+                    </a>
+                </div>
+                <img src="./img/offer_2.webp" alt="わん酵素メイン" class="fv-img" width="750" height="1929" loading="lazy" decoding="async">
+            </div>
+
+            <div class="checkout-note checkout-note-standalone">
+                <p class="checkout-note-line1">ご入力はお届け先とお支払いのみ、<strong>約1分</strong>で完了します。定期購入ではないので、<strong>980円以外の請求は一切ありません</strong>。</p>
+                <p class="checkout-note-pay">お支払い方法：コンビニ払い（セブン・ローソン・ファミマ等）・PayPay・メルペイ・クレジットカード・PayPal・Apple Pay・Google Pay・Amazon Pay</p>
             </div>
 
             
@@ -1143,12 +1425,12 @@
 
             
 
-            <div class="relative-box">
+           <div class="relative-box">
                 <img src="./img/wankosoad_deta.webp" class="product-img" alt="詳細" width="750" height="938" loading="lazy" decoding="async">
             </div>
-            <div class="relative-box">
+            <!-- <div class="relative-box">
                 <img src="./img/wankosoad11.webp" class="product-img" alt="安心へのQA" width="750" height="2405" loading="lazy" decoding="async">
-            </div>
+            </div>-->
             <div class="relative-box">
                 <div class="message-section">
                     <div class="message-content">
@@ -1162,22 +1444,22 @@
                 <img src="./img/wankosoad_msg4.webp" class="product-img" alt="フッター記載4" width="750" height="1199" loading="lazy" decoding="async">
             </div>
 
-            <div class="relative-box">
+           <!-- <div class="relative-box">
                 <img src="./img/wankosoad12.webp" class="product-img" alt="ラスト案内" width="750" height="732" loading="lazy" decoding="async">
-                <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cvbtn_2 cv-link">
+                <a href="https://wanhugplus.com/cart/49940432912661:1" class="cvbtn_2 cv-link">
                     <img src="./img/cvbtn.png" alt="特別モニターに応募する" width="669" height="120" loading="lazy" decoding="async">
                 </a>
-            </div>
+            </div>-->
 
             <footer class="lp-footer">
                 <div class="footer-links">
-                    <a href="https://jfjg1u-sk.myshopify.com/policies/legal-notice">
+                    <a href="https://wanhugplus.com/policies/legal-notice">
                         特定商取引法に関する表示
                     </a>
 
                     <span>|</span>
 
-                    <a href="https://jfjg1u-sk.myshopify.com/policies/privacy-policy">
+                    <a href="https://wanhugplus.com/policies/privacy-policy">
                         プライバシーポリシー
                     </a>
                 </div>
@@ -1191,7 +1473,67 @@
     </div>
 
     <script>
-        const SHOP_URL = "https://jfjg1u-sk.myshopify.com/cart/49940432912661:1";
+        // ===== 計測イベント共通レイヤー =====
+        // 広告を配信する際は下記にIDを設定するだけで有効化されます（空のままなら何もしません）
+        const META_PIXEL_ID = "";       // 例: "1234567890123456"
+        const GA4_MEASUREMENT_ID = "";  // 例: "G-XXXXXXXXXX"
+
+        const TRACK_PRODUCT = {
+            content_ids: ["49940432912661"],
+            content_name: "わん酵素 限定モニターセット",
+            content_type: "product",
+            value: 980,
+            currency: "JPY"
+        };
+
+        if (META_PIXEL_ID) {
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+                n.queue = []; t = b.createElement(e); t.async = !0;
+                t.src = v; s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', META_PIXEL_ID);
+            fbq('track', 'PageView');
+        }
+
+        if (GA4_MEASUREMENT_ID) {
+            const gtagScript = document.createElement('script');
+            gtagScript.async = true;
+            gtagScript.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA4_MEASUREMENT_ID;
+            document.head.appendChild(gtagScript);
+            window.dataLayer = window.dataLayer || [];
+            window.gtag = function () { dataLayer.push(arguments); };
+            gtag('js', new Date());
+            gtag('config', GA4_MEASUREMENT_ID);
+        }
+
+        // Clarity・Meta・GA4へまとめて送る汎用イベント
+        window.lpTrackEvent = (name, params) => {
+            if (window.clarity) clarity("event", name);
+            if (window.fbq) fbq('trackCustom', name, params || {});
+            if (window.gtag) gtag('event', name, params || {});
+        };
+
+        // CTAクリック＝チェックアウト直行なので AddToCart / InitiateCheckout / begin_checkout を発火
+        window.lpTrackCta = label => {
+            if (window.clarity) clarity("event", label);
+            if (window.fbq) {
+                fbq('track', 'AddToCart', TRACK_PRODUCT);
+                fbq('track', 'InitiateCheckout', TRACK_PRODUCT);
+            }
+            if (window.gtag) gtag('event', 'begin_checkout', {
+                currency: 'JPY',
+                value: 980,
+                items: [{ item_id: '49940432912661', item_name: TRACK_PRODUCT.content_name, price: 980, quantity: 1 }],
+                cta_location: label
+            });
+        };
+
+        const SHOP_URL = "https://wanhugplus.com/cart/49940432912661:1";
 
         document.addEventListener("DOMContentLoaded", () => {
 
@@ -1200,42 +1542,158 @@
                 link.href = SHOP_URL;
             });
 
-            // 固定バナーはwankosoad3以降で表示
-            const fixedCv = document.querySelector('.fixed-cv');
-            const fixedCvTrigger = document.querySelector('.fixed-cv-trigger');
+            // 商品LP表示イベント（広告最適化用シグナル）
+            if (window.fbq) fbq('track', 'ViewContent', TRACK_PRODUCT);
+            if (window.gtag) gtag('event', 'view_item', {
+                currency: 'JPY',
+                value: 980,
+                items: [{ item_id: '49940432912661', item_name: TRACK_PRODUCT.content_name, price: 980, quantity: 1 }]
+            });
 
-            if (fixedCv && fixedCvTrigger) {
-                const showFixedCv = () => {
-                    fixedCv.classList.add('is-visible');
-                    window.removeEventListener('scroll', checkFixedCv);
-                    window.removeEventListener('resize', checkFixedCv);
-                };
+            // CTAクリック計測（どのボタンが押されたかをラベルで区別）
+            document.addEventListener('click', e => {
+                const link = e.target.closest('a[href*="/cart/"]');
+                if (!link) return;
 
-                const checkFixedCv = () => {
-                    const triggerTop = fixedCvTrigger.getBoundingClientRect().top;
+                let label = 'cta_other';
+                if (link.classList.contains('quick-trust-cta')) label = 'cta_quick_trust';
+                else if (link.classList.contains('popup-cta-btn')) label = 'cta_exit_popup';
+                else if (link.closest('.fixed-cv')) label = 'cta_fixed_bar';
+                else if (link.classList.contains('cvbtn')) {
+                    label = link.closest('.fv-container') === document.querySelector('.fv-container') ? 'cta_fv' : 'cta_bottom';
+                }
 
-                    if (triggerTop <= window.innerHeight) {
-                        showFixedCv();
+                lpTrackCta(label);
+            });
+
+            // スクロール深度計測（各マイルストーンで一度だけ）
+            const scrollMilestones = [25, 50, 75, 90];
+            const firedMilestones = new Set();
+            window.addEventListener('scroll', () => {
+                const pct = (window.scrollY + window.innerHeight) / document.documentElement.scrollHeight * 100;
+                scrollMilestones.forEach(depth => {
+                    if (pct >= depth && !firedMilestones.has(depth)) {
+                        firedMilestones.add(depth);
+                        lpTrackEvent('scroll_depth_' + depth, { percent: depth });
                     }
+                });
+            }, { passive: true });
+
+            // 固定バナーはFVのCTAが過ぎたら表示して、検討中の押し逃しを減らす
+            const fixedCv = document.querySelector('.fixed-cv');
+            const firstCv = document.querySelector('.fv-container .cv-link');
+
+            if (fixedCv) {
+                const checkFixedCv = () => {
+                    const firstCvBottom = firstCv ? firstCv.getBoundingClientRect().bottom : 0;
+                    const shouldShow = firstCvBottom < 0 || window.scrollY > window.innerHeight * 0.72;
+
+                    fixedCv.classList.toggle('is-visible', shouldShow);
                 };
 
                 window.addEventListener('scroll', checkFixedCv, { passive: true });
                 window.addEventListener('resize', checkFixedCv);
                 checkFixedCv();
             }
+
+            const lazyVideos = document.querySelectorAll('.js-lazy-video[data-src]');
+            const motionReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            // スクロール連動リビール。FV（LCP要素）には適用しない
+            if (!motionReduced && 'IntersectionObserver' in window) {
+                const revealPlan = [
+                    { sel: '.quick-trust-title' },
+                    { sel: '.quick-trust-item', variant: 'pop', stagger: 0.1 },
+                    { sel: '.overlay-omoi' },
+                    { sel: '.empathy-word', stagger: 0.13, alternate: true },
+                    { sel: '.overlay-hakko', variant: 'pop' },
+                    { sel: '.overlay-cmt1', variant: 'from-left' },
+                    { sel: '.overlay-cmt2', variant: 'from-right' },
+                    { sel: '.overlay-hakko_2', variant: 'pop' },
+                    { sel: '.overlay-hakko_3' },
+                    { sel: '.overlay-hakko_4' },
+                    { sel: '.tyoukatsu_4, .tyoukatsu_5, .tyoukatsu_6', variant: 'pop', stagger: 0.15 },
+                    { sel: '.overlay-sarani', variant: 'pop' },
+                    { sel: '.overlay-point3_1, .overlay-point3_2, .overlay-point3_3', stagger: 0.16 },
+                    { sel: '.overlay-step' },
+                    { sel: '.review-card', stagger: 0.12 }
+                ];
+
+                const revealObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            revealObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.15, rootMargin: '0px 0px -6% 0px' });
+
+                revealPlan.forEach(({ sel, variant, stagger, alternate }) => {
+                    document.querySelectorAll(sel).forEach((el, i) => {
+                        el.classList.add('js-reveal');
+                        if (variant) el.classList.add(variant);
+                        if (alternate) el.classList.add(i % 2 ? 'from-right' : 'from-left');
+                        if (stagger && i) el.style.setProperty('--reveal-delay', (i * stagger).toFixed(2) + 's');
+                        revealObserver.observe(el);
+                    });
+                });
+
+                // レビュースライダーが見えたら一度だけスワイプヒントを再生
+                const reviewSlider = document.querySelector('.review-slider');
+                if (reviewSlider) {
+                    const hintObserver = new IntersectionObserver(entries => {
+                        entries.forEach(entry => {
+                            if (!entry.isIntersecting) return;
+                            hintObserver.unobserve(entry.target);
+                            reviewSlider.classList.add('hint-swipe');
+                            reviewSlider.addEventListener('scroll', () => {
+                                reviewSlider.classList.remove('hint-swipe');
+                            }, { once: true, passive: true });
+                        });
+                    }, { threshold: 0.5 });
+                    hintObserver.observe(reviewSlider);
+                }
+            }
+
+            const loadVideo = video => {
+                if (video.dataset.loaded === 'true') return;
+                video.src = video.dataset.src;
+                video.dataset.loaded = 'true';
+                video.load();
+
+                if (!motionReduced) {
+                    const playPromise = video.play();
+                    if (playPromise) playPromise.catch(() => {});
+                }
+            };
+
+            if ('IntersectionObserver' in window) {
+                const videoObserver = new IntersectionObserver(entries => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            loadVideo(entry.target);
+                            videoObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { rootMargin: '450px 0px' });
+
+                lazyVideos.forEach(video => videoObserver.observe(video));
+            } else {
+                lazyVideos.forEach(loadVideo);
+            }
         });
     </script>
     <div class="fixed-cv">
-    <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="cv-link">
+    <a href="https://wanhugplus.com/cart/49940432912661:1" class="cv-link">
 
         <span class="fixed-cv-copy">
 
             <span class="fixed-cv-label">
-                職人が丁寧に仕込む発酵習慣｜限定100食
+                送料無料・返金保証｜限定100食
             </span>
 
             <span class="fixed-cv-main">
-                愛犬の発酵習慣を始める
+                980円で5日間試してみる
             </span>
 
         </span>
@@ -1257,7 +1715,7 @@
                 今回お届けできるのは、<span class="highlight">【限定100食】</span>のみとなります。まだ今の段階でしたら、おひとつ確保させていただくことが可能です。<br><br>
                 「うちの子に合うかしら…」と迷われているなら、ぜひ、お腹がポカポカ温まる変化を、最初の1歩として体験させてあげてください。
             </p>
-            <a href="https://jfjg1u-sk.myshopify.com/cart/49940432912661:1" class="popup-cta-btn">
+            <a href="https://wanhugplus.com/cart/49940432912661:1" class="popup-cta-btn">
                 特別モニターとして、まずは1パック試してみる
             </a>
             <button type="button" class="popup-skip-link" id="popup-skip-btn">今回は見送る（ページに戻る）</button>
@@ -1274,6 +1732,7 @@ document.addEventListener("DOMContentLoaded", () => {
     let isShown = false;
     let maxScrollTop = 0;
     let settleTimer = null;
+    const pageStartTime = Date.now();
 
     // すでにこのセッションで表示済みの場合はフラグを立てる
     if (sessionStorage.getItem("exit-popup-shown") === "true") {
@@ -1285,8 +1744,8 @@ document.addEventListener("DOMContentLoaded", () => {
     // 旧ロジックは「1pxでも上にスクロールしたら発火」「最下部到達1.5秒後に無条件発火」
     // という条件だったため、通常の読み戻しやスクロールの慣性（バウンス）でも誤発火し、
     // ポップアップ（z-index最上位）が固定CTAバーや最後のCTAボタンを覆って
-    // 購入導線を塞いでしまっていた。まとまった量の巻き戻し（80px以上）を
-    // デバウンス（300ms）した上でのみ「離脱意図」とみなすよう修正。
+    // 購入導線を塞いでしまっていた。深く読了した後の大きな巻き戻しと
+    // 一定の滞在時間がある場合のみ「離脱意図」とみなすよう修正。
     window.addEventListener("scroll", () => {
         if (isShown) return;
 
@@ -1297,10 +1756,11 @@ document.addEventListener("DOMContentLoaded", () => {
             maxScrollTop = scrollTop;
         }
 
-        const scrolledBackUp = (maxScrollTop - scrollTop) > 80;
-        const pastHalfway = maxScrollTop > (documentHeight * 0.5);
+        const scrolledBackUp = (maxScrollTop - scrollTop) > 520;
+        const pastDeepEnough = maxScrollTop > (documentHeight * 0.72);
+        const spentEnoughTime = (Date.now() - pageStartTime) > 20000;
 
-        if (scrolledBackUp && pastHalfway) {
+        if (scrolledBackUp && pastDeepEnough && spentEnoughTime) {
             clearTimeout(settleTimer);
             settleTimer = setTimeout(showPopup, 300);
         }
@@ -1312,6 +1772,7 @@ document.addEventListener("DOMContentLoaded", () => {
         popup.classList.add("is-active");
         isShown = true;
         sessionStorage.setItem("exit-popup-shown", "true");
+        if (window.lpTrackEvent) lpTrackEvent('exit_popup_shown');
     }
 
     // 閉じる処理
