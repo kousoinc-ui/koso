@@ -1179,13 +1179,7 @@
     <style>
         /* ===== エリカ健康道場のお客様へ：お手紙セクション ===== */
         .letter-section {
-            background:
-                radial-gradient(circle at 12% 6%, rgba(122, 158, 110, .10), transparent 42%),
-                radial-gradient(circle at 90% 96%, rgba(232, 131, 58, .08), transparent 42%),
-                #fbf6ee;
-            padding: 44px 18px 0;
-            font-family: "Hiragino Mincho ProN", "Yu Mincho", "YuMincho", serif;
-            color: #4a3f35;
+            background:#f7f4ee;
         }
 
         .letter-ribbon {
@@ -1201,7 +1195,7 @@
             content: "";
             width: 44px;
             height: 1px;
-            background: #bfae90;
+            background: #d8c2b0;
         }
 
         .letter-ribbon span {
@@ -1216,7 +1210,7 @@
             line-height: 1.75;
             font-weight: 600;
             color: #3f3428;
-            margin-bottom: 10px;
+            margin-bottom: 30px;
         }
 
         .letter-title em {
@@ -1263,8 +1257,8 @@
             text-align: center;
             font-size: 13px;
             letter-spacing: 4px;
-            background: rgba(164, 190, 152, .45);
-            color: #55684b;
+            background:rgba(214,190,167,.8);
+            color:#8c4110;
             box-shadow: 0 2px 5px rgba(90, 70, 40, .15);
             backdrop-filter: blur(1px);
         }
@@ -1287,7 +1281,7 @@
             max-width: 440px;
             padding: 8px;
             background: #fff;
-            border: 1px solid #e9ddc7;
+            border:1px solid #ebdccb;
             border-radius: 8px;
             box-shadow: 0 7px 18px rgba(90, 70, 40, .12);
             transform: rotate(-1deg);
@@ -1308,7 +1302,7 @@
 
         .letter-em {
             font-weight: 700;
-            background: linear-gradient(transparent 64%, #ffe3c2 64%);
+            background: linear-gradient(transparent 64%, #fae5d3 64%);
             padding: 0 1px;
         }
 
@@ -1319,7 +1313,7 @@
             margin: 44px 0 18px;
             font-size: 19px;
             font-weight: 700;
-            color: #5f7a53;
+            color:#8c4110;
             line-height: 1.5;
         }
 
@@ -1327,7 +1321,7 @@
             content: "";
             flex: 1;
             height: 1px;
-            background: linear-gradient(to right, #cfdcc6, transparent);
+            background: linear-gradient(to right, #d8c2b0, transparent);
         }
 
         .letter-h .letter-h-icon {
@@ -1340,7 +1334,7 @@
             margin: 34px 0;
             padding: 26px 20px;
             text-align: center;
-            background: linear-gradient(135deg, #f3f8f0, #fdf5ea);
+            background:linear-gradient(135deg,#fff8f2,#f8ede2);
             border-radius: 10px;
             position: relative;
         }
@@ -1348,7 +1342,7 @@
         .letter-vow p {
             font-size: 17px;
             font-weight: 700;
-            color: #55684b;
+            color:#8c4110;
             line-height: 2.05;
             margin: 0;
             text-align: center;
@@ -1358,7 +1352,7 @@
         .letter-vow::after {
             position: absolute;
             font-size: 30px;
-            color: #a4be98;
+            color: #c79a73;
             font-weight: 700;
             line-height: 1;
         }
@@ -1376,64 +1370,81 @@
         }
 
         /* 音声カード */
-        .letter-audio {
-            font-family: -apple-system, BlinkMacSystemFont, "Helvetica Neue", "Segoe UI", "Hiragino Kaku Gothic ProN", sans-serif;
-            background: linear-gradient(135deg, #67855c, #82a873);
-            border-radius: 16px;
-            padding: 18px 16px 16px;
-            margin: 0 0 40px;
-            color: #fff;
-            box-shadow: 0 10px 24px rgba(103, 133, 92, .30);
-        }
+        /* ===== 音声（控えめデザイン） ===== */
 
-        .letter-audio-head {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            margin-bottom: 12px;
-        }
+.letter-audio{
 
-        .letter-audio-icon {
-            flex: 0 0 44px;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, .18);
-            display: grid;
-            place-items: center;
-            font-size: 21px;
-        }
+    background:#faf8f4;
 
-        .letter-audio-title {
-            font-size: 15px;
-            font-weight: 700;
-            line-height: 1.5;
-        }
+    border:1px solid #e7ddd2;
 
-        .letter-audio-note {
-            font-size: 11.5px;
-            opacity: .85;
-            margin-top: 2px;
-        }
+    border-radius:10px;
 
-        .letter-audio-badge {
-            margin-left: auto;
-            flex: 0 0 auto;
-            background: rgba(255, 255, 255, .22);
-            border-radius: 999px;
-            padding: 3px 11px;
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: .04em;
-        }
+    padding:16px 18px;
 
-        .letter-audio audio {
-            display: block;
-            width: 100%;
-            height: 40px;
-            border-radius: 999px;
-            background: #fff;
-        }
+    margin:0 0 34px;
+
+    box-shadow:none;
+
+}
+
+.letter-audio-head{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:10px;
+
+    margin-bottom:12px;
+
+}
+
+.letter-audio-icon{
+
+    font-size:18px;
+
+    flex:none;
+
+}
+
+.letter-audio-copy{
+
+    flex:1;
+
+}
+
+.letter-audio-title{
+
+    font-size:15px;
+
+    font-weight:700;
+
+    color:#6a4b33;
+
+    line-height:1.5;
+
+}
+
+.letter-audio-note{
+
+    margin-top:2px;
+
+    font-size:12px;
+
+    color:#9a8b7d;
+
+}
+
+.letter-audio audio{
+
+    width:100%;
+
+    height:36px;
+
+    border-radius:8px;
+
+}
 
         /* こだわりカード */
         .letter-point {
@@ -1579,22 +1590,27 @@
         <section class="letter-section">
             <div class="letter-ribbon"><span>エリカ健康道場のお客様へ</span></div>
             <h1 class="letter-title">大切なご家族<em>（愛犬）</em>のための<br>特別なお手紙</h1>
-            <p class="letter-sub">お読みいただくのに約3分です。</p>
 
             <div class="letter-paper">
                 <div class="letter-tape">🐾</div>
 
                 <div class="letter-audio">
-                    <div class="letter-audio-head">
-                        <div class="letter-audio-icon">🎧</div>
-                        <div>
-                            <p class="letter-audio-title" style="margin:0;">音声で聴く🐶</p>
-                            <p class="letter-audio-note" style="margin:0;">内容を約4分の音声にまとめました</p>
-                        </div>
-                        <span class="letter-audio-badge">4:20</span>
-                    </div>
-                    <audio controls preload="metadata" src="./wankouso-voice.mp3"></audio>
-                </div>
+    <div class="letter-audio-head">
+        <span class="letter-audio-icon">🎧</span>
+
+        <div class="letter-audio-copy">
+            <div class="letter-audio-title">
+                読むのが苦手な方へ
+            </div>
+
+            <div class="letter-audio-note">
+                約4分で内容をお聞きいただけます
+            </div>
+        </div>
+    </div>
+
+    <audio controls preload="metadata" src="./wankouso-voice.mp3"></audio>
+</div>
 
                 <p>いつもエリカ健康道場をご愛顧いただき、本当にありがとうございます。</p>
                 <p>本日は、「大切なご家族（愛犬）」のための特別なお知らせをお届けします。</p>
