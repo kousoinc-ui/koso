@@ -1628,7 +1628,7 @@ a:hover .btn-circle i::after {
   }
 
   .home .hero-slide:first-child {
-    background-image: url("assets/home-hero-mobile.png");
+    background-image: url("assets/home-hero-mobile.png?v=20260913-raw");
     background-position: left center;
     background-size: cover;
   }
