@@ -429,7 +429,8 @@ body.is-ready .hero-line:nth-child(2) { animation-delay: 0.38s; }
   letter-spacing: 0.16em;
   text-transform: uppercase;
   margin-bottom: 1.4rem;
-  opacity: 0.85;
+  color: #27362d;
+  opacity: 0.9;
 }
 
 .hero h1 {
@@ -456,7 +457,8 @@ body.is-ready .hero-line:nth-child(2) { animation-delay: 0.38s; }
   font-size: clamp(1rem, 1.2vw, 1.18rem);
   letter-spacing: 0.1em;
   margin-top: 1.6rem;
-  opacity: 0.9;
+  color: #27362d;
+  opacity: 0.92;
 }
 
 .hero-keywords {
