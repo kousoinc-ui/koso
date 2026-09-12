@@ -1600,3 +1600,18 @@ a:hover .btn-circle i::after {
     inset: auto clamp(3.5rem, 5vw, 8rem) 3.5rem;
   }
 }
+
+/* Keep the first-view message visible even when entrance animations are
+   interrupted by mobile browser page restoration or reduced timers. */
+.home .hero-line,
+.home .hero-eyebrow,
+.home .hero-en,
+.home .hero-foot {
+  opacity: 1;
+}
+
+.home .hero-line {
+  animation: none !important;
+  clip-path: none;
+  transform: none;
+}
