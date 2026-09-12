@@ -1420,11 +1420,47 @@ a:hover .btn-circle i::after {
   }
 
   .hero-copy {
-    padding-inline: 1.5rem;
+    padding: 0 1.5rem clamp(8rem, 18vh, 10rem);
+    width: 100%;
   }
 
   .hero h1 {
-    font-size: clamp(2.05rem, 9.6vw, 3.25rem);
+    font-size: clamp(1.75rem, 8.2vw, 2.05rem);
+    letter-spacing: 0.015em;
+    line-height: 1.55;
+  }
+
+  .hero-line {
+    white-space: nowrap;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    max-width: 32em;
+  }
+
+  .hero-en {
+    font-size: 0.82rem;
+    letter-spacing: 0.07em;
+    line-height: 1.7;
+    margin-top: 1.15rem;
+  }
+
+  .hero-keywords {
+    display: none;
+  }
+
+  .home .hero-slide:first-child {
+    background-position: 61% center;
+  }
+
+  .home .hero-media::after {
+    background:
+      linear-gradient(90deg, rgba(252, 251, 246, 0.92) 0%, rgba(252, 251, 246, 0.58) 52%, rgba(252, 251, 246, 0.08) 82%),
+      linear-gradient(to top, rgba(20, 31, 22, 0.18), transparent 42%);
   }
 
   .hero-count {
