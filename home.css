@@ -1439,3 +1439,48 @@ a:hover .btn-circle i::after {
     font-size: 1.3rem;
   }
 }
+
+/* ---------- large desktop scale ---------- */
+
+@media (min-width: 1600px) {
+  html {
+    font-size: 18px;
+  }
+
+  .gh {
+    padding: 1.45rem clamp(3.5rem, 4.5vw, 7rem);
+  }
+
+  .gh-logo img {
+    height: 2.9rem;
+  }
+
+  .gh-nav a {
+    font-size: 1rem;
+  }
+
+  .hero::before {
+    inset: 6.8rem clamp(2.5rem, 3.8vw, 6rem) 2.8rem;
+  }
+
+  .hero-copy {
+    padding: 0 clamp(3.5rem, 5vw, 8rem) clamp(8.5rem, 12vh, 13.5rem);
+  }
+
+  .hero h1 {
+    font-size: clamp(4.6rem, 4.2vw, 6.5rem);
+    line-height: 1.25;
+  }
+
+  .hero-eyebrow {
+    font-size: 1rem;
+  }
+
+  .hero-en {
+    font-size: 1.08rem;
+  }
+
+  .hero-foot {
+    inset: auto clamp(3.5rem, 5vw, 8rem) 3.5rem;
+  }
+}
