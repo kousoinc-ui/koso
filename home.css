@@ -1419,3 +1419,23 @@ a:hover .btn-circle i::after {
     transform: none !important;
   }
 }
+
+/* ---------- desktop readability ---------- */
+
+@media (min-width: 1024px) {
+  .hero-copy > p,
+  .brand-desc {
+    font-size: 1.05rem;
+    line-height: 1.95;
+  }
+
+  .biz-meta span,
+  .know-card span {
+    font-size: 1rem;
+    line-height: 1.8;
+  }
+
+  .know-card h3 {
+    font-size: 1.3rem;
+  }
+}

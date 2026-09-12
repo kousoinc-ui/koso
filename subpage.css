@@ -4660,6 +4660,37 @@ body.is-ready .enzyme-lab-orbit.orbit-two {
   .enzyme-page .fermentation-photo img { min-height: 380px; }
 }
 
+/* ---------- desktop readability ---------- */
+
+@media (min-width: 1024px) {
+  .sub-page .section-lead,
+  .sub-page .section p:not(.section-kicker),
+  .sub-page article p,
+  .enzyme-fact-list dd,
+  .physio-fact-list dd,
+  .enzyme-classification ol li span,
+  .wanko-daily-copy > p:last-child,
+  .wanko-fermentation-copy > span,
+  .wanko-point-head > div > p,
+  .wanko-core-copy > p,
+  .wanko-formula-more .wankoso-component-list p,
+  .wanko-kidney-story p {
+    font-size: 1rem;
+  }
+
+  .enzyme-hero-copy > span,
+  .wankoso-hero-copy > span,
+  .hagumi-hero-copy > span,
+  .pet-health-hero-copy > span {
+    font-size: 1.08rem;
+    line-height: 2;
+  }
+
+  .sub-page article h3 {
+    font-size: 1.2rem;
+  }
+}
+
 @media (max-width: 540px) {
   .enzyme-hero-lab { min-height: 480px; }
   .enzyme-lab-core { width: 210px; border-width: 7px; }
