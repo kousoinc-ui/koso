@@ -1615,3 +1615,46 @@ a:hover .btn-circle i::after {
   clip-path: none;
   transform: none;
 }
+
+/* ---------- mobile first-view artwork ---------- */
+
+@media (max-width: 600px) {
+  .home .hero {
+    min-height: 100svh;
+  }
+
+  .home .hero-slide:first-child {
+    background-image: url("assets/home-hero-mobile.png");
+    background-position: left center;
+    background-size: cover;
+  }
+
+  .home .hero-media::after,
+  .home .hero::before {
+    display: none;
+  }
+
+  .home .hero-copy {
+    clip: rect(0 0 0 0);
+    clip-path: inset(50%);
+    height: 1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    white-space: nowrap;
+    width: 1px;
+  }
+
+  .home .hero-foot {
+    display: none;
+  }
+
+  .home:not(.menu-open) .gh:not(.is-scrolled) .gh-logo {
+    visibility: hidden;
+  }
+
+  .home:not(.menu-open) .gh:not(.is-scrolled) .gh-burger span {
+    background: #fff;
+    box-shadow: 0 1px 5px rgba(31, 39, 31, 0.24);
+  }
+}
