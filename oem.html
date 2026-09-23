@@ -14,9 +14,10 @@
     rel="stylesheet" />
   <link rel="stylesheet" href="home.css" />
   <link rel="stylesheet" href="subpage.css" />
+  <link rel="stylesheet" href="oem.css" />
 </head>
 
-<body class="sub-page">
+<body class="sub-page oem-page">
   <header class="gh" id="gh" aria-label="サイトヘッダー">
     <a class="gh-logo" href="index.html" aria-label="酵素株式会社 トップへ">
       <img src="assets/logo.png" alt="酵素株式会社" />
@@ -50,14 +51,26 @@
   </div>
 
   <main>
-    <section class="sub-hero">
-      <p>OEM / ODM</p>
-      <h1>ペット向け健康食品の<br />受託開発</h1>
-      <span>
-        発酵素材の技術を軸に、企画・処方設計から試作・製造まで一貫して伴走。
-        小ロットや柔軟な設計にも対応し、ブランドの想いを商品のかたちへ。
-      </span>
+    <section class="oem-hero" aria-labelledby="oem-title">
+      <div class="oem-hero-copy">
+        <p class="oem-eyebrow">FERMENTATION × YOUR BRAND</p>
+        <h1 id="oem-title">発酵のちからを、<br />あなたの<br /><em>ブランドの価値に。</em></h1>
+        <p class="oem-hero-description">ペット向け健康食品のOEM・受託開発。<br />企画から処方設計、試作、製造まで。<br />想いを、一緒に商品のかたちへ。</p>
+        <a class="oem-button" href="#oem-contact">商品開発について相談する <span aria-hidden="true">↗</span></a>
+        <p class="oem-hero-note">小ロット・企画段階からのご相談に対応</p>
+      </div>
+      <figure class="oem-hero-visual">
+        <img src="assets/enzyme-botanical-materials.jpg" alt="発酵素材となる、色とりどりの野菜や果物" fetchpriority="high" width="2400" height="1800" />
+        <figcaption><span>OUR FOUNDATION</span>素材と向き合う。<br />可能性を育てる。</figcaption>
+        <div class="oem-visual-label" aria-hidden="true">OEM / ODM</div>
+      </figure>
     </section>
+    <nav class="oem-index" aria-label="OEMページ内ナビゲーション">
+      <a href="#oem-strengths"><span>01</span>私たちの強み <b aria-hidden="true">↓</b></a>
+      <a href="#oem-process"><span>02</span>開発の流れ <b aria-hidden="true">↓</b></a>
+      <a href="#oem-categories"><span>03</span>対応カテゴリ <b aria-hidden="true">↓</b></a>
+      <a href="#oem-case"><span>04</span>共同開発事例 <b aria-hidden="true">↓</b></a>
+    </nav>
 
     <section class="section oem-intro">
       <div>
@@ -78,7 +91,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section oem-strengths" id="oem-strengths">
       <div class="section-head">
         <p class="section-kicker">Strengths</p>
         <h2>受託開発の特徴</h2>
@@ -111,7 +124,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section oem-process" id="oem-process">
       <div class="section-head">
         <p class="section-kicker">Process</p>
         <h2>開発の流れ</h2>
@@ -159,7 +172,7 @@
       </div>
     </section>
 
-    <section class="section">
+    <section class="section oem-categories" id="oem-categories">
       <div class="section-head">
         <p class="section-kicker">Categories</p>
         <h2>対応カテゴリ</h2>
@@ -178,7 +191,7 @@
       </div>
     </section>
 
-    <section class="section oem-case">
+    <section class="section oem-case" id="oem-case">
       <div class="section-head">
         <p class="section-kicker">Case Study</p>
         <h2>共同開発事例</h2>
@@ -199,8 +212,10 @@
       </article>
     </section>
 
-    <section class="oem-cta">
-      <h2>OEM・商品開発の<br />ご相談はこちらから。</h2>
+    <section class="oem-cta" id="oem-contact">
+      <p class="oem-eyebrow">LET’S CREATE TOGETHER</p>
+      <h2>まだアイデアの段階でも。<br />まずは、お話ししませんか。</h2>
+      <p class="oem-contact-copy">つくりたい商品やブランドの想いを、お聞かせください。</p>
       <a class="contact-mail" href="mailto:nojiri@kouso-inc.com">
         nojiri@kouso-inc.com
         <i aria-hidden="true"></i>
