@@ -729,6 +729,53 @@
   margin-bottom: 1.4rem;
 }
 
+.company-mvv {
+  border-top: 1px solid var(--line);
+  scroll-margin-top: 6rem;
+}
+
+.company-mvv .section-kicker {
+  font-size: 0.875rem;
+  letter-spacing: 0.1em;
+}
+
+.company-mvv-copy {
+  max-width: 48rem;
+  font-size: 1rem;
+  line-height: 2;
+}
+
+.company-mvv-copy p + p {
+  margin-top: 1.25rem;
+}
+
+.company-values {
+  list-style: decimal-leading-zero;
+  padding-left: 2rem;
+}
+
+.company-values li {
+  padding: 1.5rem 0 1.5rem 0.5rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.company-values li::marker {
+  color: var(--green-deep);
+  font-family: var(--en);
+  font-weight: 700;
+}
+
+.company-values h3 {
+  font-size: clamp(1.15rem, 2.5vw, 1.5rem);
+  margin-bottom: 0.75rem;
+}
+
+.company-values p {
+  max-width: 48rem;
+  font-size: 1rem;
+  line-height: 2;
+}
+
 .company-profile .profile-list {
   display: grid;
   border-top: 1px solid var(--line);
