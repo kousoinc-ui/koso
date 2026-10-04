@@ -2,3 +2,6 @@
 
 /* Keep the supplied square mark within the header. */
 .logo{align-items:center;gap:12px}.logo img{width:60px;height:60px;object-fit:contain}.logo>span{font-size:17px;line-height:1.5;white-space:nowrap;font-weight:500}.logo small{display:block;font:500 10px var(--en);letter-spacing:.1em;margin-top:4px;color:var(--muted)}.hero-topline .issue{margin:0}.footer img{width:62px;height:62px;object-fit:contain}@media(max-width:700px){.logo{gap:7px}.logo img{width:42px;height:42px}.logo>span{font-size:13px}.logo small{font-size:9px}.site-header{gap:10px}.contact{padding:8px 11px}}
+
+/* Preserve the PDF cover's A4 proportions at every viewport width. */
+.report-cover{display:block;height:auto;aspect-ratio:828/1170;object-fit:contain}
