@@ -106,6 +106,31 @@
             border: 0;
         }
 
+        /* SmartNews向け広告表記（ファーストビュー内） */
+        .pr-bar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 6px 12px;
+            background: #f5f3ee;
+            border-bottom: 1px solid #e5e5e5;
+        }
+
+        .pr-bar-label {
+            padding: 1px 6px;
+            border: 1px solid #aaa;
+            border-radius: 3px;
+            color: #888;
+            font-size: 11px;
+            font-weight: 700;
+            line-height: 1.4;
+        }
+
+        .pr-bar-advertiser {
+            color: #888;
+            font-size: 11px;
+        }
+
         .product-img {
             display: block;
             width: 100%;
@@ -1052,6 +1077,17 @@
             color: #3f8f5c;
         }
 
+        .footer-company {
+            margin-bottom: 8px;
+            color: #999;
+            font-size: 12px;
+            line-height: 1.8;
+        }
+
+        .footer-company a {
+            color: #999;
+        }
+
         .footer-links span,
         .footer-copy {
             color: #999;
@@ -1189,8 +1225,12 @@
 
 <body>
     <main class="lp-wrapper" aria-label="わん酵素 5日間体験セットのご案内">
-               <h1 class="visually-hidden">愛犬の毎日に寄り添う、わん酵素5日間体験セット</h1>
-        <img src="./img/wankosokind_1.webp" alt="愛犬の毎日に寄り添うわん酵素 5日間980円・送料無料・定期購入なし" class="lp-image" width="749" height="2122" fetchpriority="high" decoding="async">
+        <div class="pr-bar" aria-label="広告表記">
+            <span class="pr-bar-label">PR</span>
+            <span class="pr-bar-advertiser">広告主：酵素株式会社</span>
+        </div>
+        <h1 class="visually-hidden">愛犬の毎日に寄り添う、わん酵素5日間体験セット</h1>
+        <img src="./img/fv_1007.webp" alt="愛犬の毎日に寄り添うわん酵素 5日間980円・送料無料・定期購入なし" class="lp-image" width="749" height="2122" fetchpriority="high" decoding="async">
         <img src="./img/offer_2.webp" alt="わん酵素 オファー" class="lp-image" width="750" height="804" loading="lazy" decoding="async">
 
 
@@ -1484,6 +1524,11 @@
                 <a href="https://wanhugplus.com/policies/legal-notice">特定商取引法に関する表示</a>
                 <span>|</span>
                 <a href="https://wanhugplus.com/policies/privacy-policy">プライバシーポリシー</a>
+            </div>
+            <div class="footer-company">
+                <p>販売業者：酵素株式会社（わんHug+ 運営）</p>
+                <p>所在地：佐賀県佐賀市髙木瀬東5-21-13</p>
+                <p>お問い合わせ：<a href="mailto:nojiri@kouso-inc.com">nojiri@kouso-inc.com</a>（受付 9:00〜17:00）</p>
             </div>
             <p class="footer-copy">© 2026 わんHug+ All Rights Reserved.</p>
         </footer>
