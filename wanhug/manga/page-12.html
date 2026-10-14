@@ -54,7 +54,23 @@
 
 /* Full-width manga on mobile; scroll vertically to read each page. */
 @media(max-width:767px){body{padding:0;align-items:flex-start}.reader{width:100%;box-shadow:none}}
-</style><meta name="manga-animation-pace" content="1.6"></head><body>
+</style><meta name="manga-animation-pace" content="1.6"><meta name="manga-page-number" content="12">
+<!-- Google tag (gtag.js): production manga only -->
+<script>
+(() => {
+  if (!['kouso-inc.com', 'www.kouso-inc.com'].includes(location.hostname) || window.__wanMangaGoogleTagLoaded) return;
+  window.__wanMangaGoogleTagLoaded = true;
+  window.dataLayer = window.dataLayer || [];
+  window.gtag = window.gtag || function(){window.dataLayer.push(arguments);};
+  window.gtag('js', new Date());
+  window.gtag('config', 'G-S64B0PLYYG');
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://www.googletagmanager.com/gtag/js?id=G-S64B0PLYYG';
+  document.head.appendChild(script);
+})();
+</script>
+</head><body>
 <main class="reader" aria-label="漫画 第12ページ、発酵素材の研究から見える可能性">
 <div class="ad-disclosure" aria-label="広告表記"><span class="ad-pr-label">PR</span><span class="ad-advertiser">広告主：酵素株式会社</span></div>
 <header class="bar"><span class="brand">わん酵素</span><span class="chapter">健やかな毎日を、食事から。</span></header>
@@ -92,4 +108,4 @@
   if (art.complete && art.naturalWidth) play();
   else art.addEventListener('load', play, { once: true });
 })();
-</script><script src="assets/manga-swipe.js" defer></script></body></html>
+</script><script src="assets/manga-swipe.js" defer></script><script src="assets/manga-analytics.js" defer></script></body></html>
