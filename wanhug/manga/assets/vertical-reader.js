@@ -52,26 +52,11 @@
       if(played.has(target)||motion.matches||document.hidden||typeof target.animate!=='function')return;
       played.add(target);
       const type=target.dataset.motion;
-      const frames=type==='sound' ? [
-        {opacity:0,rotate:'-6deg',translate:'0 2px',offset:0},
-        {opacity:1,rotate:'6deg',translate:'0 -2px',offset:.15},
-        {opacity:1,rotate:'-5deg',translate:'0 1px',offset:.32},
-        {opacity:1,rotate:'5deg',translate:'0 -1px',offset:.49},
-        {opacity:1,rotate:'-3deg',translate:'0 1px',offset:.66},
-        {opacity:1,rotate:'2deg',translate:'0 0',offset:.83},
-        {opacity:1,rotate:'0deg',translate:'0 0',offset:1}
-      ] : [
+      const frames=[
         {opacity:0,translate:'0 9px',scale:type==='bubble'?'.975':'1'},
         {opacity:1,translate:'0 0',scale:'1'}
       ];
-      const animations=[target.animate(frames,{duration:type==='sound'?1450:850,easing:'cubic-bezier(.2,.65,.3,1)',iterations:1})];
-      if(type==='sound'){
-        const art=target.closest('.manga-panel')?.querySelector('.art');
-        if(typeof art?.animate==='function')animations.push(art.animate([
-          {translate:'0 0'},{translate:'1.5px -.5px'},{translate:'-1px .5px'},
-          {translate:'1px -.5px'},{translate:'-.5px 0'},{translate:'0 0'}
-        ],{duration:1450,easing:'ease-in-out',iterations:1}));
-      }
+      const animations=[target.animate(frames,{duration:850,easing:'cubic-bezier(.2,.65,.3,1)',iterations:1})];
       active.set(target,animations);
       let remaining=animations.length;
       animations.forEach(animation=>{
