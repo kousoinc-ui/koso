@@ -257,3 +257,20 @@ body.pet-oem-page{font-size:16px;line-height:1.95;letter-spacing:.02em;-webkit-t
 html:has(.pet-motion-paused){scroll-behavior:auto}
 .pet-motion-paused .pet-button{transition:none}
 .pet-motion-paused .pet-button:hover{transform:none}
+
+/* Explain PB through the part reused and the part branded by the client. */
+.plan-pb-explainer{display:block;margin:28px 0 10px;padding:25px 15px 20px;background:#fffaf070;border:1px solid #fff9;border-radius:18px;min-height:0}
+.plan-pb-flow{display:grid;grid-template-columns:minmax(0,1fr) 27px minmax(0,1fr);align-items:center;gap:10px;text-align:center}
+.plan-pb-part{display:flex;flex-direction:column;align-items:center;min-width:0}
+.plan-pb-label{display:inline-block;font-size:12px;font-weight:700;line-height:1.7;color:var(--deep);padding:3px 13px;background:#fffdf2;border-radius:20px;margin-bottom:15px}
+.plan-pb-part>strong{font-family:var(--round);font-size:17px;line-height:1.65;margin-top:16px;letter-spacing:0}
+.plan-pb-liquid{display:grid;place-items:center;width:102px;height:119px;color:var(--deep)}
+.plan-pb-liquid svg{width:104px;height:104px}
+.plan-pb-arrow{font-family:'DM Sans',sans-serif;font-size:29px;color:var(--red);margin-top:4px}
+.plan-pb-explainer .plan-pb-pouch{width:90px;height:119px;transform:rotate(5deg);padding:26px 4px 8px;box-shadow:5px 6px 0 #ba9d7933}
+.plan-pb-pouch small{font-family:'Noto Sans JP',sans-serif;font-size:11px}
+.plan-pb-explainer .plan-pb-pouch strong{font-family:var(--round);font-size:16px;line-height:1.8;letter-spacing:0}
+.plan-pb-pouch i{font-size:25px}
+.plan-pb-explainer .plan-pb-caption{text-align:center;font-size:13px;line-height:1.9;color:#5b5147;border-top:1px solid #bda68f55;padding-top:16px;margin-top:20px}
+@media(max-width:760px){.plan-pb-explainer{padding:21px 10px 18px;margin-top:26px}.plan-pb-flow{gap:6px;grid-template-columns:minmax(0,1fr) 23px minmax(0,1fr)}.plan-pb-label{font-size:11px;padding:3px 10px}.plan-pb-part>strong{font-size:16px}.plan-pb-arrow{font-size:25px}.plan-pb-explainer .plan-pb-caption{font-size:13px}.plan-pb-liquid{width:90px}.plan-pb-liquid svg{width:96px}.plan-pb-explainer .plan-pb-pouch{width:82px}}
+@media(max-width:370px){.plan-pb-explainer{padding-inline:6px}.plan-pb-label{font-size:10px;padding-inline:8px}.plan-pb-part>strong{font-size:15px}.plan-pb-liquid{width:80px}.plan-pb-explainer .plan-pb-pouch{width:76px}.plan-pb-explainer .plan-pb-pouch strong{font-size:14px}}
