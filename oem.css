@@ -83,3 +83,19 @@
  .oem-page .oem-cta { padding: 60px 6vw; }
 }
 @media(prefers-reduced-motion:reduce) { html { scroll-behavior: auto; } .oem-page *, .oem-page *::before, .oem-page *::after { transition: none !important; animation: none !important; } }
+
+/* Pet OEM service entry */
+.oem-page .oem-pet-entry { display:grid; grid-template-columns:1fr 260px; gap:50px; align-items:center; padding-top:55px; border-top:1px solid var(--line); }
+.oem-pet-entry h2 { font-size:clamp(25px,3vw,36px); font-weight:500; line-height:1.6; margin-bottom:20px; }
+.oem-pet-entry img { width:220px; height:280px; object-fit:contain; justify-self:center; }
+.oem-page .oem-case-pet-link { padding-top:0; padding-bottom:55px; color:var(--oem-deep); text-decoration:underline; text-underline-offset:5px; }
+@media(max-width:700px) { .oem-page .oem-pet-entry { grid-template-columns:1fr; gap:25px; } .oem-pet-entry img { width:150px; height:190px; } }
+
+/* Pet OEM business service entry */
+.oem-page .oem-pet-entry { background:#edf4f7; border:0; border-top:5px solid #e4b13e; padding:44px; margin-bottom:70px; border-radius:0; }
+.oem-page .oem-pet-entry h2 { color:#193d52; font-weight:700; }
+.oem-page .oem-pet-entry .oem-button { background:#c65a22; border-radius:3px; }
+@media(max-width:700px) { .oem-page .oem-pet-entry { width:88%; padding:28px 22px; margin-bottom:45px; } }
+
+/* Pet OEM warm entry */
+.oem-page .oem-pet-entry{background:#dbe7c7;border:0;border-radius:30px;padding:44px}.oem-page .oem-pet-entry h2{color:#345740}.oem-page .oem-pet-entry .oem-button{background:#c7462f;border-radius:40px}

@@ -1,23 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url>
-    <loc>https://kouso-inc.com/</loc>
-    <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://kouso-inc.com/company.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kouso-inc.com/enzyme.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kouso-inc.com/blog.html</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://kouso-inc.com/research/canine-fermentation-metabolites/</loc>
-    <lastmod>2026-10-04</lastmod>
-  </url>
+  <url><loc>https://kouso-inc.com/</loc></url>
+  <url><loc>https://kouso-inc.com/company.html</loc></url>
+  <url><loc>https://kouso-inc.com/enzyme.html</loc></url>
+  <url><loc>https://kouso-inc.com/hagumi.html</loc></url>
+  <url><loc>https://kouso-inc.com/news.html</loc></url>
+  <url><loc>https://kouso-inc.com/oem.html</loc></url>
+  <url><loc>https://kouso-inc.com/pet-health.html</loc></url>
+  <url><loc>https://kouso-inc.com/pet-supplement-oem.html</loc></url>
+  <url><loc>https://kouso-inc.com/privacy.html</loc></url>
+  <url><loc>https://kouso-inc.com/wankoso.html</loc></url>
+  <url><loc>https://kouso-inc.com/research/canine-fermentation-metabolites/</loc></url>
 </urlset>
