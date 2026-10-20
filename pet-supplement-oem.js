@@ -27,6 +27,108 @@
   });
 })();
 
+// Progressive enhancement: the page stays readable without motion or JavaScript.
+(() => {
+  const page = document.querySelector('.pet-oem-page');
+  const ribbon = document.querySelector('.pet-ribbon');
+  if (!page || !ribbon || !('IntersectionObserver' in window)) return;
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  let paused = reducedMotion.matches;
+  try {
+    paused = paused || sessionStorage.getItem('pet-oem-motion-paused') === 'true';
+  } catch (_) { /* Motion controls also work when browser storage is unavailable. */ }
+
+  const shell = document.createElement('div');
+  shell.className = 'pet-ribbon-shell';
+  ribbon.before(shell);
+  shell.append(ribbon);
+  const track = document.createElement('div');
+  track.className = 'pet-ribbon-track';
+  const group = document.createElement('div');
+  group.className = 'pet-ribbon-group';
+  while (ribbon.firstChild) group.append(ribbon.firstChild);
+  track.append(group, group.cloneNode(true), group.cloneNode(true));
+  ribbon.append(track);
+
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'pet-motion-toggle';
+  shell.append(toggle);
+
+  const targets = document.querySelectorAll([
+    '.pet-intro > h2', '.pet-intro > p:not(.section-kicker)',
+    '.intro-badges > div', '.pet-photo-story figure', '.pet-section-heading',
+    '.pet-spec-product', '.pet-spec-table > div', '.pet-planning-art',
+    '.pet-plan-card', '.pet-case-primary > figure', '.pet-case-primary > div',
+    '.pet-case-collab', '.pet-materials > figure', '.pet-materials-copy',
+    '.pet-cost-table > div', '.pet-consult-prompt', '.pet-steps > li',
+    '.pet-faq-photo', '.pet-faq details', '.pet-contact-layout > div', '.pet-form'
+  ].join(','));
+  const reveal = new IntersectionObserver(entries => {
+    entries.forEach(({ target, isIntersecting }) => {
+      if (!isIntersecting) return;
+      target.classList.add('is-visible');
+      reveal.unobserve(target);
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -24px 0px' });
+
+  if (!paused) {
+    targets.forEach(target => {
+      target.classList.add('pet-reveal');
+      // Elements already passed on an anchor/deep link must remain readable.
+      if (target.getBoundingClientRect().top < window.innerHeight * 0.94) {
+        target.classList.add('is-visible');
+      } else {
+        reveal.observe(target);
+      }
+    });
+  }
+
+  document.querySelectorAll('.intro-badges, .pet-photo-story, .pet-plan-grid, .pet-steps').forEach(group => {
+    [...group.children].forEach((child, index) => {
+      child.style.setProperty('--pet-reveal-delay', `${Math.min(index, 4) * 85}ms`);
+    });
+  });
+
+  const updateMotion = () => {
+    page.classList.toggle('pet-motion-paused', paused);
+    toggle.disabled = reducedMotion.matches;
+    toggle.textContent = reducedMotion.matches ? '動きを控えめに' : paused ? '動きを再生' : '動きを停止';
+    toggle.setAttribute('aria-label', reducedMotion.matches ? '端末の設定に合わせて動きを控えています' : paused ? 'ページのアニメーションを再生' : 'ページのアニメーションを停止');
+    toggle.setAttribute('aria-pressed', String(paused));
+    if (paused) {
+      reveal.disconnect();
+      targets.forEach(target => target.classList.add('is-visible'));
+    }
+  };
+  toggle.addEventListener('click', () => {
+    paused = !paused;
+    updateMotion();
+    try { sessionStorage.setItem('pet-oem-motion-paused', String(paused)); } catch (_) {}
+  });
+  reducedMotion.addEventListener('change', event => {
+    paused = event.matches;
+    updateMotion();
+  });
+  document.addEventListener('focusin', event => {
+    const target = event.target.closest('.pet-reveal');
+    if (target) {
+      target.classList.add('is-visible');
+      reveal.unobserve(target);
+    }
+  });
+  // Pause decorative loops outside the viewport and in background tabs.
+  const visibility = new IntersectionObserver(entries => {
+    entries.forEach(({ target, isIntersecting }) => target.classList.toggle('pet-in-view', isIntersecting));
+  });
+  [document.querySelector('.pet-hero'), shell].filter(Boolean).forEach(target => visibility.observe(target));
+  const updateVisibility = () => page.classList.toggle('pet-motion-idle', document.hidden);
+  document.addEventListener('visibilitychange', updateVisibility);
+  updateVisibility();
+  updateMotion();
+  page.classList.add('pet-motion-ready');
+})();
+
 // The mobile navigation is local to this landing page.
 (() => {
   const button = document.getElementById('ghBurger');
