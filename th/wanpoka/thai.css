@@ -1,0 +1,118 @@
+/* Thai typography: preserve the original composition, allow room for tone marks. */
+:root{--sans:'Noto Sans Thai',Thonburi,Tahoma,sans-serif;--serif:'Noto Serif Thai','Noto Sans Thai',Thonburi,serif}
+body{line-height:1.9;word-break:normal;overflow-wrap:break-word}
+h1,h2,h3,em{letter-spacing:0;font-style:normal;line-height:1.5}
+h1{font-size:clamp(52px,5.3vw,76px);line-height:1.42;margin-bottom:22px}
+h1>span,h1>em{display:block;white-space:nowrap}
+h2{font-size:clamp(37px,3.6vw,52px);line-height:1.5}
+.hero-copy .eyebrow{font-size:12px;letter-spacing:0;margin-bottom:22px}
+.hero-description{font-size:16px;line-height:1.95;max-width:390px}
+.hero-art{margin-top:38px}
+.wordmark,.footer-brand{font-family:var(--display)}
+.wordmark small{font-family:'DM Sans',Arial,sans-serif}
+.site-header nav{font-size:14px}
+.site-header .nav-contact{font-size:14px;line-height:1.6}
+.language-switch{font-family:'DM Sans',Arial,sans-serif}
+.eyebrow,.cover-kicker{font-size:12px;letter-spacing:0;line-height:1.8}
+.button,.text-link{font-size:14px;line-height:1.7}
+.hero-more{font-size:12px}
+.round-seal span{font-size:12px;letter-spacing:0;line-height:1.5}
+.round-seal{gap:4px}
+.photo-note p{font-size:14px;line-height:1.8}
+.scroll-cue{font-size:11px;letter-spacing:0}
+.hero-side-label{font-family:'DM Sans',Arial,sans-serif}
+.benefit-ribbon{font-size:16px}
+.about-intro p:not(.eyebrow){font-size:15px;line-height:1.95}
+.ingredients-panel .eyebrow{font-size:13px;letter-spacing:0}
+.ingredients-panel h3{font-size:44px;line-height:1.55;letter-spacing:0}
+.ingredients-panel>p:not(.eyebrow){font-size:14px;line-height:1.9;max-width:300px}
+.ingredient-foot{font-size:12px;letter-spacing:0}
+.section-heading{gap:40px}
+.section-heading>p{font-size:14px;line-height:1.95;max-width:330px;padding-right:0}
+.cover-tabs button{font-size:18px}
+.cover-description h3{font-size:35px;line-height:1.6;letter-spacing:0;margin-bottom:18px}
+.cover-description p{font-size:15px;line-height:1.95}
+.cover-description .text-link{font-size:14px}
+.cover-kicker{font-size:12px;margin-bottom:25px}
+.cover-kicker>span{font-family:'DM Sans',Arial,sans-serif;font-size:10px;letter-spacing:1px}
+.covers-note p{font-size:13px;line-height:1.9}
+.size-details summary{font-size:27px;letter-spacing:0;line-height:1.7}
+.size-details summary>span{font-size:12px;letter-spacing:0}
+.size-content p{font-size:14px;line-height:1.95}
+table{font-size:14px}thead th{font-size:12px;letter-spacing:0}
+.how-title>p:not(.eyebrow){font-size:15px;line-height:1.95}
+.steps h3{font-family:var(--sans);font-weight:500;font-size:21px;letter-spacing:0;line-height:1.7}
+.steps p{font-size:15px;line-height:1.95}
+.comfort-section h2{font-size:34px;line-height:1.65;letter-spacing:0}
+.comfort-section .eyebrow{font-size:12px}
+.comfort-copy p{font-size:14px;line-height:1.95}
+.comfort-copy .comfort-small{font-size:13px;line-height:1.95}
+.contact-top .eyebrow{font-size:13px;letter-spacing:0}
+.contact-main h2{font-size:clamp(39px,4.4vw,62px);line-height:1.5;letter-spacing:0}
+.contact-description>p{font-size:15px;line-height:1.95;max-width:340px}
+.email-link{font-family:'DM Sans',Arial,sans-serif}
+.contact-section footer>span{font-size:12px;letter-spacing:0}
+.contact-section footer>a:last-child{font-size:12px}
+@media(min-width:761px) and (max-width:1100px){
+  h1{font-size:clamp(40px,4.8vw,54px)}h2{font-size:36px}
+  .hero-description{font-size:14px}.hero-copy .eyebrow{font-size:11px}
+  .hero-art{margin-top:40px}.hero-photo{height:510px}
+  .site-header nav{font-size:12px;gap:18px}.site-header .nav-contact{font-size:12px}
+  .about-section{gap:40px}.about-intro h2{font-size:34px}
+  .ingredients-panel{padding-inline:30px}.ingredients-panel h3{font-size:36px}
+  .ingredients-panel>p:not(.eyebrow){font-size:13px}
+  .section-heading{gap:25px}.section-heading>p{font-size:13px;max-width:260px}
+  .cover-description{padding:35px 25px 60px}.cover-description h3{font-size:27px}
+  .cover-description p,.steps p{font-size:14px}.cover-description .text-link{font-size:13px}
+  .cover-kicker{font-size:10px}.steps h3{font-size:19px}
+  .comfort-section h2{font-size:27px}.comfort-copy p{font-size:13px}
+  .contact-main h2{font-size:42px}.contact-description>p{font-size:14px}
+}
+@media(max-width:760px){
+  h1{font-size:clamp(36px,11.6vw,64px);line-height:1.55;margin-bottom:20px}
+  .hero{padding-top:32px}.hero-copy .eyebrow{font-size:11px;letter-spacing:0;margin-bottom:18px}
+  .hero-description{font-size:14px;line-height:1.95;max-width:100%;margin-bottom:23px}
+  .hero-art{margin-top:30px}.button,.text-link{font-size:13px}
+  .round-seal span{font-size:10px;letter-spacing:0}.round-seal{gap:2px}
+  .photo-note p{font-size:12px}.photo-note{padding:15px 18px}
+  .benefit-ribbon{font-size:12px;gap:12px;padding:18px 16px}
+  .benefit-ribbon div{max-width:110px;gap:7px;line-height:1.8}
+  .benefit-ribbon div>span{font-size:21px}
+  .eyebrow{font-size:12px;letter-spacing:0}
+  h2,.section-heading h2{font-size:34px;line-height:1.6;letter-spacing:0}
+  .about-intro p:not(.eyebrow){font-size:14px;line-height:1.95;max-width:100%}
+  .about-intro .text-link{font-size:13px}
+  .ingredients-panel .eyebrow{font-size:12px}
+  .ingredients-panel h3{font-size:38px;line-height:1.6}
+  .ingredients-panel>p:not(.eyebrow){font-size:13px;line-height:1.9}
+  .ingredient-foot{font-size:11px;letter-spacing:0}
+  .section-heading>p{font-size:13px;line-height:1.95;max-width:100%}
+  .section-heading>p br{display:none}
+  .cover-tabs{gap:8px}.cover-tabs button{font-size:13px;line-height:1.8;gap:7px}
+  .cover-description h3{font-size:29px;line-height:1.65;margin-bottom:18px}
+  .cover-description p{font-size:14px;line-height:1.95}
+  .cover-description .text-link{font-size:13px}
+  .cover-kicker{font-size:11px;letter-spacing:0;margin-bottom:18px}
+  .cover-kicker>span{font-size:9px}.covers-note p{font-size:12px;line-height:1.95}
+  .size-details summary{font-size:23px}.size-details summary>span{font-size:11px;letter-spacing:0}
+  .size-content p{font-size:13px}.size-content table{font-size:13px}
+  .how-title>p:not(.eyebrow){font-size:14px;line-height:1.95}
+  .steps h3{font-size:18px;line-height:1.8;letter-spacing:0}
+  .steps p{font-size:14px;line-height:1.95}
+  .comfort-section h2{font-size:27px;line-height:1.7;letter-spacing:0}
+  .comfort-section .eyebrow{font-size:11px;letter-spacing:0}
+  .comfort-copy p{font-size:13px;line-height:1.95}
+  .comfort-copy .comfort-small{font-size:12px;line-height:1.95}
+  .contact-top .eyebrow{font-size:12px;letter-spacing:0}
+  .contact-main h2{font-size:33px;line-height:1.6;letter-spacing:0}
+  .contact-description>p{font-size:14px;line-height:1.95}
+  .contact-section footer>span{font-size:10px;letter-spacing:0}
+  .contact-section footer>a:last-child{font-size:11px}
+  .mobile-contact{font-size:13px}
+}
+@media(max-width:370px){
+  h1{font-size:36px}.hero-copy .eyebrow{font-size:10px}
+  .cover-tabs button{font-size:12px;gap:5px}.benefit-ribbon{font-size:11px}
+  h2,.section-heading h2{font-size:30px}.cover-description h3{font-size:26px}
+  .cover-description .text-link{font-size:12px}.contact-main h2{font-size:29px}
+}
