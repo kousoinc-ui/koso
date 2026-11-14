@@ -1633,20 +1633,68 @@ a:hover .btn-circle i::after {
     background-size: cover;
   }
 
-  .home .hero-media::after,
+  /* Keep the mobile H1 visible as real text instead of clipping it. */
   .home .hero::before {
     display: none;
   }
 
+  .home .hero-media::after {
+    display: block;
+    background: linear-gradient(
+      to bottom,
+      rgba(252, 251, 246, 0.96) 0%,
+      rgba(252, 251, 246, 0.88) 30%,
+      rgba(252, 251, 246, 0.42) 56%,
+      rgba(252, 251, 246, 0) 78%
+    );
+  }
+
   .home .hero-copy {
-    clip: rect(0 0 0 0);
-    clip-path: inset(50%);
-    height: 1px;
-    overflow: hidden;
-    padding: 0;
     position: absolute;
-    white-space: nowrap;
-    width: 1px;
+    inset: 0;
+    z-index: 2;
+    width: 100%;
+    height: auto;
+    padding: clamp(8rem, 18svh, 10rem) 1.65rem 0;
+    overflow: visible;
+    clip: auto;
+    clip-path: none;
+    white-space: normal;
+  }
+
+  .home .hero h1 {
+    font-size: clamp(1.5rem, 6.5vw, 2.05rem);
+    line-height: 1.5;
+    letter-spacing: 0.02em;
+  }
+
+  .home .hero-line {
+    overflow: visible;
+    white-space: normal;
+  }
+
+  .home .hero-eyebrow {
+    margin-bottom: 1rem;
+    font-size: 0.61rem;
+    letter-spacing: 0.08em;
+  }
+
+  .home .hero-en {
+    max-width: 20rem;
+    margin-top: 1.25rem;
+    font-size: 0.74rem;
+    line-height: 1.6;
+    letter-spacing: 0.04em;
+  }
+
+  /* Loading/restore animations must never hide the first-view message. */
+  .home .hero-eyebrow,
+  .home .hero-line,
+  .home .hero-en {
+    opacity: 1 !important;
+    animation: none !important;
+    transform: none !important;
+    clip-path: none;
   }
 
   .home .hero-foot {
@@ -1831,7 +1879,7 @@ a:hover .btn-circle i::after {
   }
 
   .home:not(.menu-open) .gh:not(.is-scrolled) .gh-burger span {
-    background: #fff;
-    box-shadow: 0 1px 5px rgba(31, 39, 31, 0.24);
+    background: #302013;
+    box-shadow: none;
   }
 }
