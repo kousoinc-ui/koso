@@ -11,6 +11,24 @@
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23425337'/%3E%3Ctext x='32' y='45' font-size='44' text-anchor='middle' fill='%23f6d86b'%3Eわ%3C/text%3E%3C/svg%3E">
 <link rel="preload" as="image" href="assets/total-01.png">
 <link rel="stylesheet" href="style.css">
+<style>
+/* エリカ健康道場専用LP：購入ボタンの下に販売者を小さく表示 */
+.fixed-cta .seller-credit {
+  flex-shrink: 0;
+  margin: 4px 0 0;
+  font-size: 10px;
+  line-height: 1.2;
+  font-weight: 400;
+  letter-spacing: .02em;
+  color: #77796f;
+  text-align: center;
+}
+.fixed-cta .footer-tools { margin-top: 6px; }
+@media (max-height: 640px) {
+  .fixed-cta .seller-credit { margin-top: 2px; font-size: 9px; }
+  .fixed-cta .footer-tools { margin-top: 4px; }
+}
+</style>
 <!-- 既存 app.js の初期化時に #page=32/33 が丸められないよう、元のハッシュを保持します。 -->
 <script>window.__totalLpRequestedHash = window.location.hash;</script>
 <script src="conversion.js" defer></script>
@@ -28,8 +46,9 @@
  <nav class="desktop-navigation" aria-label="ページ送り"><button id="previous" aria-label="前のページへ" title="前のページへ">⌃</button><button id="next" aria-label="次のページへ" title="次のページへ">⌄</button></nav>
  <footer class="fixed-cta">
   <p class="cta-tagline">初回限定｜10mL×5包</p>
-  <a class="action" id="shop" href="https://wanhugplus.com/products/わん酵素-トータルサポート" aria-label="初回限定、わん酵素 トータルサポート5包を980円税込で試してみる"><span class="action-badge" aria-hidden="true"><small>お試し</small><b>5包</b></span><span class="action-copy"><span class="action-title">わん酵素 トータルサポート</span><span class="action-label"><strong class="action-price">980</strong><span class="action-currency">円<small>（税込）</small></span><span class="action-invitation">で試してみる</span></span></span><span class="action-arrow" aria-hidden="true">❯</span></a>
+  <a class="action" id="shop" href="https://wanhugplus.com/cart/50053198872853:1?storefront=true" aria-label="初回限定、わん酵素 トータルサポート5包を980円税込で試してみる"><span class="action-badge" aria-hidden="true"><small>お試し</small><b>5包</b></span><span class="action-copy"><span class="action-title">わん酵素 トータルサポート</span><span class="action-label"><strong class="action-price">980</strong><span class="action-currency">円<small>（税込）</small></span><span class="action-invitation">で試してみる</span></span></span><span class="action-arrow" aria-hidden="true">❯</span></a>
   <div class="footer-tools"><a id="offer-details" href="https://wanhugplus.com/products/わん酵素-トータルサポート">内容・条件を確認</a><span class="tool-divider">｜</span><button id="overview-open">ページ一覧</button><span class="tool-divider">｜</span><button id="zoom-open">画像を拡大</button><button class="footer-next" id="footer-next">続きを読む ↑</button></div>
+  <p class="seller-credit">販売者：酵素株式会社</p>
  </footer>
  <p class="sr-only" id="announcement" aria-live="polite" aria-atomic="true"></p>
 </main>
