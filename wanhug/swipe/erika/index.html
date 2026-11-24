@@ -35,6 +35,28 @@
 <script src="/wanhug/swipe/erika/erika-attribution.js" defer></script>
 <script src="app.js" defer></script>
 <script src="/wanhug/swipe/erika/letter-pages.js" defer></script>
+<!-- Google Analytics 4: KOUSO Inc. -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-NP5P6FYBXZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-NP5P6FYBXZ', {send_page_view: false, allow_google_signals: false, allow_ad_personalization_signals: false});
+  gtag('event', 'page_view', {
+    page_location: location.origin + location.pathname + location.search,
+    page_title: document.title
+  });
+  window.addEventListener('lp_purchase_click', function(event) {
+    var detail = event.detail || {};
+    gtag('event', 'lp_purchase_click', {
+      lp_id: 'wankoso-erika-swipe',
+      placement: detail.placement,
+      slide_number: detail.page,
+      source_page: detail.source_page,
+      transport_type: 'beacon'
+    });
+  });
+</script>
 </head>
 <body>
 <main class="reader" aria-label="わん酵素 トータルサポートのご紹介">
